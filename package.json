@@ -1,0 +1,39 @@
+{
+  "name": "projetfinal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julia Assad",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.5.1",
+    "bootstrap": "^4.3.1",
+    "browser-sync": "^2.26.5",
+    "gsap": "^2.1.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.4.1",
+    "jquery-smooth-scroll": "^2.2.0",
+    "normalize.css": "^8.0.1",
+    "popper.js": "^1.15.0",
+    "sass-module-importer": "^1.4.0",
+    "scrollmagic": "^2.0.7",
+    "swiper": "^4.5.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "waypoints": "^4.0.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}

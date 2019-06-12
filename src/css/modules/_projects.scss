@@ -1,0 +1,49 @@
+/* =Project Section */
+
+.projects {
+  @include atMedium {
+    padding-left: 70px;
+  }
+
+  .project {
+    margin-bottom: 1.5rem;
+    opacity: 1;
+    -webkit-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    position: relative;
+    background-color: #fff;
+
+    &--title {
+      padding: 0.8rem 0;
+      font-size: 1.25rem;
+    }
+
+    &--image {
+      position: relative;
+
+      img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      span {
+        position: absolute;
+        bottom: -10px;
+        right: 10px;
+        color: #000;
+        font-size: 1rem;
+        background-color: #fff;
+        padding: 0.7rem;
+        -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+
+        @include atMedium {
+          font-size: 1.2rem;
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
