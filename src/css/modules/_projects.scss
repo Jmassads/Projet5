@@ -7,15 +7,17 @@
 
   .project {
     margin-bottom: 1.5rem;
-    opacity: 1;
     -webkit-transition: all 1s ease-out;
     transition: all 1s ease-out;
     position: relative;
     background-color: #fff;
 
     &--title {
+      font-family: 'Raleway', Arial, sans-serif;
       padding: 0.8rem 0;
-      font-size: 1.25rem;
+      font-size: 0.9375rem;
+      font-style: normal;
+      font-weight: bold;
     }
 
     &--image {

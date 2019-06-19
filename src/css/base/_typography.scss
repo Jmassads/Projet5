@@ -1,33 +1,36 @@
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  // font-family: 'DearJoe4W00-RegPro';
-  font-weight: 400;
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Crimson Text', Georgia, serif;
+	font-weight: 400;
   line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+a, a:visited{
+	color: #000;
+}
+a:hover{
+  color: #b83b3b;
+  text-decoration: none;
+}
+b, strong{
+	font-weight: 600;
 }
 
-h2 {
-  text-align: left;
-}
+// h2,h3,h4,h5,h6{ font-style: italic; }
 
-h2 span {
-  font-size: 2.25rem;
-  margin-bottom: 1rem; 
-  position: relative;
+h1{ font-size: 2.625rem; } // 42px
+h2{ font-size: 2.25rem; } // 36px
+h3{ font-size: 1.875rem; } // 30px
+h4{ font-size: 1.5rem; } // 24px
+h5{ font-size: 1.125; } // 18px
+h6{ font-size: 1rem; font-weight: 700; } // 16px
+p, li {font-size: 0.875rem;} // 14px
+
+
+.headline--red-dot {
   display: inline-block;
-  text-align: left;
 }
 
-h2 span::after {
+.headline--red-dot::after {
   content: "\A";
   width: 10px;
   height: 10px;
@@ -35,4 +38,6 @@ h2 span::after {
   background: #b83b3b;
   display: inline-block;
   margin-left: 10px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }

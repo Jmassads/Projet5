@@ -1,8 +1,6 @@
 
 .about {
-    margin-top: 100vh;
     @include atMedium {
-      margin-top: 0;
       padding-left: 70px;
     }
   }

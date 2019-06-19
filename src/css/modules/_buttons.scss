@@ -1,4 +1,42 @@
 button:focus {
-    outline: 0px auto -webkit-focus-ring-color;
-  }
-  
+  outline: 0px auto -webkit-focus-ring-color;
+}
+
+
+.btn-outline-dark:hover {
+  color: #fff !important;
+  background-color:#b83b3b;
+  border-color: #b83b3b;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+// back to top button
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 10px; /* Place the button at the bottom of the page */
+  right: 20px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #b83b3b;
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border-radius: 50%; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  cursor: pointer;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+#myBtn:hover {
+  background-color: #000; /* Add a dark-grey background on hover */
+}

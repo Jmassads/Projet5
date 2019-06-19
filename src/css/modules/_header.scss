@@ -1,64 +1,92 @@
 /* Header */
 
-#header {
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  max-width: 100%;
-  text-align: center;
-  height: 100vh;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: absolute;
+.header {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  position: relative;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  overflow:hidden;
+  opacity: 0;
+
+  
+  @include atMedium {
+    margin-left: 70px;
+  }
+
+
+  &--social-icons {
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2rem;
+    
+    
+    
+
+    li {
+      list-style-type: none;
+      a {
+        padding: 1rem;
+        font-size: 1.2rem;
+        i{
+          -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        }
+      }
+    }
+
+    &-facebook{
+      color: #3b5998;
+    }
+    &-twitter {
+      color: #00aced;
+    }
+    &-linkedin {
+      color: #007bb6;
+    }
+
+    @include atMedium{
+      margin-top: 0;
+    }
+  }
 }
 
-.header--image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image:url('');
-  background-size: cover;
-
+.header--social-icons i {
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  min-width: 40px;
+  height: auto;
+  opacity: 0;
 }
 
-#header .content .inner {
-  padding: 3rem 2rem;
-  max-height: 40rem;
-  overflow: hidden;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  z-index: 1;
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
 }
 
+/* Set a specific color for each brand */
 
+/* Facebook */
+.fa-facebook-f {
+  background: #3B5998;
+  color: white;
+}
 
-#header .content p {
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  font-size: 0.8rem;
-  line-height: 2;
-  padding-left: 70px;
-  padding-right: 70px;
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-linkedin-in{
+  background: #007bb6;
+  color: white;
+}
+
+.fa-github{
+  background: #000;
+  color: white;
 }
