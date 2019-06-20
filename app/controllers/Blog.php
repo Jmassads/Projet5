@@ -12,15 +12,24 @@
         $this->BlogModel = $this->model('Blogmodel');
       }
 
-      public function index()
+      public function index($id = null)
       {
-        $articles= $this->BlogModel->getArticles();
+        if(is_null($id)){
+          $articles= $this->BlogModel->getArticles();
         $languages = $this->BlogModel->getLanguages();
         $data = [
           'articles' => $articles,
           'languages' => $languages
          ];
           $this->view('front/pages/blog', $data);
+        }else {
+
+           $article = $this->BlogModel->getArticleById($id);
+          $data = [
+            'article' => $article
+          ];
+          $this->view('front/pages/single-article', $data);
+        }
       }
 
       public function categorie($category){

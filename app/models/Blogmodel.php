@@ -17,6 +17,7 @@ class Blogmodel
   return $results;
  }
 
+
  // Add Article
  public function addArticle($data){
     // Prepare Query

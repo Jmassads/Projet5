@@ -45,7 +45,7 @@
                                 <div class="article--excerpt">
                                     <p><?php echo $article->article_excerpt;?></p>
                                 </div>
-                                <a href="" class="btn btn-sm btn-outline-dark">Lire la suite</a>
+                                <a href="<?php echo URLROOT;?>/Blog/<?php echo $article->id;?>" class="btn btn-sm btn-outline-dark">Lire la suite</a>
                             </div>
                         </div>  
                        <?php endforeach;?>    

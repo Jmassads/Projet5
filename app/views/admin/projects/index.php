@@ -7,19 +7,17 @@
         Projet</a>
 </div>
 
+
 <div class="projects">
 <div class="row my-3">
     <?php foreach($data['projects'] as $project):?>
     <div class="col-md-6 col-lg-4">
         <div class="projects--single">
             <h2><?php echo $project->project_name;?></h2>
-            <p>
-                <?php if (strlen($project->project_description) > 90): ?>
-                <?php echo substr($project->project_description, 0, strpos($project->project_description, ' ', 90)) ?>
-                ...
-            </p>
+            <?php if (strlen($project->project_description) > 90): ?>
+                <?php echo substr($project->project_description, 0, strpos($project->project_description, ' ', 90)) ?> ...
             <?php else: ?>
-            <p><?php echo $project->project_description; ?></p>
+            <?php echo $project->project_description; ?>
             <?php endif;?>
 
             <div>
