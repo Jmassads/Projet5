@@ -17,7 +17,7 @@ class Projectmodel
   return $results;
  }
 
- // Get Post By ID
+ // Get Project By ID
  public function getProjectById($id){
     $this->db->query("SELECT * FROM projects WHERE id = :id");
 
@@ -29,11 +29,22 @@ class Projectmodel
   }
 
 
- // Add Post
+ // Get Project By ID
+ public function getProjectBySlug($slug){
+  $this->db->query("SELECT * FROM projects WHERE project_slug = :slug");
+
+  $this->db->bind(':slug', $slug);
+  
+  $row = $this->db->single();
+
+  return $row;
+}
+
+ // Add Project
  public function addProject($data){
     // Prepare Query
-    $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_categories, project_comments) 
-    VALUES (:name, :description, :small_image, :large_image, :url, :categories, :comments)');
+    $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_categories, project_comments, project_slug) 
+    VALUES (:name, :description, :small_image, :large_image, :url, :categories, :comments, :slug)');
 
     // Bind Values
     $this->db->bind(':name', $data['name']);
@@ -43,6 +54,7 @@ class Projectmodel
     $this->db->bind(':url', $data['url']);
     $this->db->bind(':categories', $data['categories']);
     $this->db->bind(':comments', $data['comments']);
+    $this->db->bind(':slug', $data['slug']);
 
     //Execute
     if($this->db->execute()){
@@ -55,14 +67,18 @@ class Projectmodel
  // Update Project
  public function updateProject($data){
   // Prepare Query
-  $this->db->query('UPDATE projects SET project_name = :name, project_description = :description, project_categories = :categories, project_comments = :comments WHERE id = :id');
+  $this->db->query('UPDATE projects SET project_name = :name, project_description = :description, project_sm_image = :small_image, project_lg_image = :large_image, project_url = :url, project_categories = :categories, project_comments = :comments , project_slug = :slug WHERE id = :id');
 
   // Bind Values
   $this->db->bind(':id', $data['id']);
   $this->db->bind(':name', $data['name']);
   $this->db->bind(':description', $data['description']);
+  $this->db->bind(':small_image', $data['small_image']);
+  $this->db->bind(':large_image', $data['large_image']);
+  $this->db->bind(':url', $data['url']);
   $this->db->bind(':categories', $data['categories']);
   $this->db->bind(':comments', $data['comments']);
+  $this->db->bind(':slug', $data['slug']);
 
   //Execute
   if($this->db->execute()){
@@ -84,8 +100,6 @@ class Projectmodel
 
   return $results;
  }
-
- 
 
 }
 

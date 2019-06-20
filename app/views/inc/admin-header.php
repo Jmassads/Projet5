@@ -41,7 +41,24 @@
         content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'
-        ]
+        ],
+        paste_data_images: true,
+      image_advtab: true,
+    file_picker_callback: function(callback, value, meta) {
+      if (meta.filetype == 'image') {
+        $('#upload').trigger('click');
+        $('#upload').on('change', function() {
+          var file = this.files[0];
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            callback(e.target.result, {
+              alt: ''
+            });
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    }
     });
     </script>
 </head>

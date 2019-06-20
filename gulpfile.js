@@ -7,6 +7,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var php = require('gulp-connect-php');
 var moduleImporter = require('sass-module-importer');
+var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync'); // we want to require a method called create
 var webpack = require('webpack');
 
@@ -24,6 +25,10 @@ gulp.task('styles', function () {
         .pipe(sass({
             importer: moduleImporter()
         }))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
         .pipe(cssnano())
         .pipe(gulp.dest('build/css'));
 });
@@ -33,6 +38,10 @@ gulp.task('adminstyles', function () {
     return gulp.src('./src/admin-css/style.scss')
         .pipe(sass({
             importer: moduleImporter()
+        }))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
         }))
         .pipe(cssnano())
         .pipe(gulp.dest('build/admincss'));

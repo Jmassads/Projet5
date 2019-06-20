@@ -3,7 +3,7 @@
   /**
    *
    */
-  class Project extends Controller
+  class Portfolio extends Controller
   {
 
 
@@ -12,15 +12,13 @@
         $this->projectModel = $this->model('Projectmodel');
       }
 
-      public function index($id)
+      public function index($slug)
       {
         $projects = $this->projectModel->getProjects();
-        $project = $this->projectModel->getprojectById($id);
-        $categories = $this->projectModel->getProjectCategoriesbyProjectID($id);
+        $project = $this->projectModel->getprojectBySlug($slug);
           $data = [
             'projects' => $projects,
-            'project' => $project,
-            'categories' => $categories
+            'project' => $project
            ];
 
           $this->view('front/pages/project', $data);

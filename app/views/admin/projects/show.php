@@ -34,7 +34,7 @@ $categories = (explode(",",$categories_as_string));
         <a href="<?php echo URLROOT; ?>/AdminProjects/edit/<?php echo $data['project']->id; ?>"
             class="btn btn-dark">Modifier</a>
         <form class="ml-2"
-            action="<?php echo URLROOT; ?>/adminChapters/deletechapter/<?php echo $data['chapter']->id; ?>"
+            action="<?php echo URLROOT; ?>/AdminProjects/delete/<?php echo $data['chapter']->id; ?>"
             method="post">
             <button type="submit" class="btn btn-danger"> Supprimer</button>
         </form>

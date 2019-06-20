@@ -1,0 +1,11 @@
+.single-article{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    &--title {
+        margin-bottom: 0;
+    }
+    &--image{
+        width: 40px;
+        height: auto;
+    }
+}

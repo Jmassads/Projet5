@@ -23,21 +23,26 @@
             <label>Sélectionner une image pour mobile:</label>
             <input type="file" name="project_sm_image"
                 class="form-control-file <?php echo (!empty($data['small_image_err'])) ? 'is-invalid' : ''; ?>">
-            <?php if (!empty($data['small_image'])): ?>
-            <?php foreach ($data['image_err'] as $error): ?>
-            <span class="invalid-feedback"><?php echo $error . '</br>'; ?></span>
-            <?php endforeach;?>
-            <?php endif;?>
+                
+                <span class="invalid-feedback">
+                <?php foreach ($data['small_image_err'] as $error): ?>
+                <span><?php echo $error . '</br>'; ?></span>
+                <?php endforeach;?>
+                </span> 
+               
+        
         </div>
+        <input name="image" type="file" id="upload" class="hidden" onchange="">
         <div class="form-group">
             <label>Sélectionner une image pour desktop:</label>
             <input type="file" name="project_lg_image"
                 class="form-control-file <?php echo (!empty($data['large_image_err'])) ? 'is-invalid' : ''; ?>">
-            <?php if (!empty($data['large_image'])): ?>
-            <?php foreach ($data['image_err'] as $error): ?>
-            <span class="invalid-feedback"><?php echo $error . '</br>'; ?></span>
-            <?php endforeach;?>
-            <?php endif;?>
+                <span class="invalid-feedback">
+                <?php foreach ($data['large_image_err'] as $error): ?>
+                <span><?php echo $error . '</br>'; ?></span>
+                <?php endforeach;?>
+                </span> 
+        
         </div>
         <div class="form-group">
             <label>url du projet:<sup>*</sup></label>
@@ -46,6 +51,8 @@
                 placeholder="Ajouter l'url du projet..."><?php echo $data['url']; ?></textarea>
             <span class="invalid-feedback"><?php echo $data['url_err']; ?></span>
         </div>
+        <div class="form-group">
+        <label>Languages:</label>
         <div class="d-flex justify-content-start mb-3">
             <div class="mr-4">
                 <input type="checkbox" name="categories[]" value="html" /> HTML<br>
@@ -68,6 +75,7 @@
                <input type="checkbox" name="categories[]" value="Bootstrap" /> Bootstrap<br>
                <input type="checkbox" name="categories[]" value="Gulp" /> Gulp<br>
             </div>
+        </div>
         </div>
         <div class="form-group">
             <label>Commentaires du mentor:<sup>*</sup></label>

@@ -13,3 +13,7 @@ define('URLROOT', 'http://localhost:8888/FinalProjectphp');
 define('SITENAME', 'Julia Assad | Développeuse Web');
 
 define('APPVERSION', '1');
+
+// Language
+
+define('DEFAULT_LANGUAGE', 'fr');

@@ -22,17 +22,17 @@ class Uploader
   $file_tmp = $_FILES[$fileToUpload]['tmp_name']; //L'adresse vers le fichier uploadé dans le répertoire temporaire.
   $file_parts = explode('.', $file_name);
   $file_ext = strtolower(end($file_parts));
-  $extensions = array("jpeg", "jpg", "png", "gif");
+  $extensions = array("jpeg", "jpg", "png", "gif", "ico");
   // $ext         =   $this->getExtension($file_name);
 
 
 
-  if(empty($file_name)){
-    $this->addError("Merci de rajouter une image");
-  } 
+  // if(empty($file_name)){
+  //   $this->addError("Merci de rajouter une image");
+  // } 
 
-  if (in_array($file_ext, $extensions) === false) {
-    $this->addError("Les fichiers autorises sont: .jpg, .jpeg, .png, .gif");
+  if (!empty($file_name) && in_array($file_ext, $extensions) === false) {
+    $this->addError("Les fichiers autorises sont: .jpg, .jpeg, .png, .gif, .ico");
    }
 
   if ($file_size > 500000) {

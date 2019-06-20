@@ -1,5 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php';?>
 
+<?php 
+$categories_as_string = $data['project']->project_categories;
+$categories = (explode(",",$categories_as_string));
+?>
+
 
 <!-- Overlay -->
 <div class="overlay">
@@ -49,9 +54,10 @@
                             <?php echo $data['project']->project_description;?>
                         </div>
                         <div class="single-project--languages-used mt-3">
-                            <?php foreach ($data['categories'] as $category): ?>
-                            <button class="btn"><?php echo $category->category_name;?></button>
-                            <?php endforeach;?>
+                        <h3 class="my-3">Languages utilisés</h3>
+                        <?php foreach($categories as $category):?>
+                        <button class="btn"><?php echo $category;?></button>
+                        <?php endforeach;?>
                         </div>
                     </div>
                     <div class="single-project--feedback my-4">
@@ -64,7 +70,7 @@
                     <ul class="list-group">
                         <?php foreach($data['projects'] as $project):?>
                         <?php if($data['project']->id != $project->id):?>
-                        <li class="list-group-item rounded-0"><a href="<?php echo URLROOT;?>/Project/<?php echo $project->id;?>"><?php echo $project->project_name;?></a></li>
+                        <li class="list-group-item rounded-0"><a href="<?php echo URLROOT;?>/Portfolio/<?php echo $project->project_slug;?>"><?php echo $project->project_name;?></a></li>
                         <?php endif;?>
                         <?php endforeach;?>
                     </ul>
