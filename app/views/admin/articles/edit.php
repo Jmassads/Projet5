@@ -15,7 +15,7 @@
         <div class="form-group">
             <label>Contenu de l'article:<sup>*</sup></label>
             <textarea name="content"
-                class="mytextarea form-control form-control-md <?php echo (!empty($data['content_err'])) ? 'is-invalid' : ''; ?>"
+                id="editor" class="mytextarea form-control form-control-md <?php echo (!empty($data['content_err'])) ? 'is-invalid' : ''; ?>"
                 placeholder="Ajouter un contenu..."><?php echo $data['content']; ?></textarea>
             <span class="invalid-feedback"><?php echo $data['content_err']; ?></span>
         </div>
@@ -98,7 +98,7 @@
                
         
         </div>
-        <input name="image" type="file" id="upload" class="hidden" onchange="">
+        <!-- <input name="image" type="file" id="upload" class="hidden" onchange=""> -->
         
         <input type="submit" class="btn btn-success" value="Envoyer">
     </form>

@@ -9,7 +9,7 @@
     <h3 class="my-3">Excerpt de l'article</h3>
     <p><?php echo $data['article']->article_excerpt;?></p>
     <h3 class="my-3">Contenu de l'article</h3>
-    <p><?php echo $data['article']->article_content;?></p>
+    <?php echo $data['article']->article_content;?>
 
 
     <div class="d-flex justify-content-end">

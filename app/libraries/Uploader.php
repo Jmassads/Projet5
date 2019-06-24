@@ -32,7 +32,7 @@ class Uploader
   // } 
 
   if (!empty($file_name) && in_array($file_ext, $extensions) === false) {
-    $this->addError("Les fichiers autorises sont: .jpg, .jpeg, .png, .gif, .ico");
+    $this->addError("Les fichiers autorises sont: .jpg, .jpeg, .png, .gif, .ico, .svg");
    }
 
   if ($file_size > 500000) {

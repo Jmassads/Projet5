@@ -29,38 +29,70 @@
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=prdte4ybij6mu30q8a7qo4pf5aj26up92ct59lgswpopxodr">
+
+  
+ 
+  <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=prdte4ybij6mu30q8a7qo4pf5aj26up92ct59lgswpopxodr">
     </script>
+
     <script>
     tinymce.init({
         selector: '.mytextarea',
         height: 400,
-        plugins: 'colorpicker code image emoticons textcolor link media lists',
+        plugins: 'code image emoticons link media lists',
         paste_data_images: true,
         toolbar: 'insertfile | formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | undo redo | code image',
         content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'
         ],
-        paste_data_images: true,
-      image_advtab: true,
-    file_picker_callback: function(callback, value, meta) {
-      if (meta.filetype == 'image') {
-        $('#upload').trigger('click');
-        $('#upload').on('change', function() {
-          var file = this.files[0];
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            callback(e.target.result, {
-              alt: ''
-            });
-          };
-          reader.readAsDataURL(file);
-        });
-      }
-    }
+        convert_urls: false,
+        // image_prepend_url: "<?php echo URLROOT;?>/",
+    // without images_upload_url set, Upload tab won't show up
+    images_upload_url: '<?php echo URLROOT;?>/upload.php',
+    image_dimensions: true,
+    automatic_uploads: false,
+    forced_root_block : 'div',
+    extended_valid_elements: "*[*]",
+
+    // override default upload handler to simulate successful upload
+    images_upload_handler: function (blobInfo, success, failure) {
+        var xhr, formData;
+      
+        xhr = new XMLHttpRequest();
+        xhr.withCredentials = false;
+        
+      
+        xhr.open('POST', '<?php echo URLROOT;?>/upload.php');
+      
+        xhr.onload = function() {
+            var json;
+        
+            if (xhr.status != 200) {
+                failure('HTTP Error: ' + xhr.status);
+                return;
+            }
+        
+            json = JSON.parse(xhr.responseText);
+            console.log(json);
+            if (!json || typeof json.location != 'string') {
+                failure('Invalid JSON: ' + xhr.responseText);
+                return;
+            }
+        
+            success(json.location);
+
+        };
+      
+        formData = new FormData();
+        console.log(formData);
+        formData.append('file', blobInfo.blob(), blobInfo.filename());
+      
+        let test = xhr.send(formData);
+        console.log(test);
+    },
     });
-    </script>
+    </script> 
 </head>
 
 <body>

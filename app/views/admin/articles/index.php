@@ -16,7 +16,7 @@
             <img class="single-article--image img-fluid mr-3" srcset="<?php echo URLROOT;?>/uploads/<?php echo $article->article_image;?>" alt="">
             <h2><?php echo $article->article_title;?></h2>
             </div>
-            <p><?php echo $article->article_excerpt;?></p>
+            <?php echo $article->article_excerpt;?>
 
             <div>
              
