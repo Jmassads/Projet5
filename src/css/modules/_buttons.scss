@@ -40,3 +40,13 @@ button:focus {
 #myBtn:hover {
   background-color: #000; /* Add a dark-grey background on hover */
 }
+
+.contact-button {
+  border: 1px solid #b83b3b;
+  background-color: #b83b3b;
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}

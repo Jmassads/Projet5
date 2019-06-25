@@ -11,7 +11,7 @@ $categories = (explode(",",$categories_as_string));
     <div class="nav-container">
         <ul>
             <li><a href="<?php echo URLROOT;?>#about">À propos</a></li>
-            <li><a href="<?php echo URLROOT;?>#projects">Portfolio</a></li>
+            <li><a href="<?php echo URLROOT;?>/Portfolio">Portfolio</a></li>
             <li><a href="<?php echo URLROOT;?>#skills">Skills</a></li>
             <li><a href="<?php echo URLROOT;?>/Blog">Blog</a></li>
         </ul>

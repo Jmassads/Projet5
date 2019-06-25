@@ -30,9 +30,9 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-  
- 
-  <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=prdte4ybij6mu30q8a7qo4pf5aj26up92ct59lgswpopxodr">
+
+
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=prdte4ybij6mu30q8a7qo4pf5aj26up92ct59lgswpopxodr">
     </script>
 
     <script>
@@ -47,55 +47,58 @@
             '//www.tinymce.com/css/codepen.min.css'
         ],
         convert_urls: false,
-        // image_prepend_url: "<?php echo URLROOT;?>/",
-    // without images_upload_url set, Upload tab won't show up
-    images_upload_url: '<?php echo URLROOT;?>/upload.php',
-    image_dimensions: true,
-    automatic_uploads: false,
-    forced_root_block : 'div',
-    extended_valid_elements: "*[*]",
+        image_prepend_url: "../../",
+        // without images_upload_url set, Upload tab won't show up
+        images_upload_url: '../../upload.php',
+        image_dimensions: true,
+        relative_urls: false,
+        remove_script_host: false,
+        convert_urls: true,
+        // forced_root_block: 'div',
+        extended_valid_elements: "*[*]",
 
-    // override default upload handler to simulate successful upload
-    images_upload_handler: function (blobInfo, success, failure) {
-        var xhr, formData;
-      
-        xhr = new XMLHttpRequest();
-        xhr.withCredentials = false;
-        
-      
-        xhr.open('POST', '<?php echo URLROOT;?>/upload.php');
-      
-        xhr.onload = function() {
-            var json;
-        
-            if (xhr.status != 200) {
-                failure('HTTP Error: ' + xhr.status);
-                return;
-            }
-        
-            json = JSON.parse(xhr.responseText);
-            console.log(json);
-            if (!json || typeof json.location != 'string') {
-                failure('Invalid JSON: ' + xhr.responseText);
-                return;
-            }
-        
-            success(json.location);
+        // override default upload handler to simulate successful upload
+        images_upload_handler: function(blobInfo, success, failure) {
+            var xhr, formData;
 
-        };
-      
-        formData = new FormData();
-        console.log(formData);
-        formData.append('file', blobInfo.blob(), blobInfo.filename());
-      
-        let test = xhr.send(formData);
-        console.log(test);
-    },
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+
+
+            xhr.open('POST', '../../upload.php');
+            // xhr.open('POST', 'index.php?url=Upload');
+            xhr.onload = function() {
+                var json;
+
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                json = JSON.parse(xhr.responseText);
+                console.log(json);
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                success(json.location);
+
+            };
+
+            formData = new FormData();
+            console.log(formData);
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+         
+        },
     });
-    </script> 
+    </script>
 </head>
 
 <body>
 
     <?php require APPROOT . '/views/inc/admin-navbar.php';?>
     <div class="container">
+

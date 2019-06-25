@@ -21,7 +21,7 @@
             <div>
              
                 <a class="btn btn-md btn-outline-dark rounded-0"
-                    href="<?php echo URLROOT;?>/AdminArticles/show/<?php echo $article->id;?>">Voir l'article</a>
+                    href="<?php echo URLROOT;?>/AdminArticles/show/<?php echo $article->article_id;?>">Voir l'article</a>
             </div>
 
         </div>

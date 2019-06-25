@@ -14,11 +14,11 @@
 
       public function index()
       {
-        $projects = $this->projectModel->getProjects();
+        $projects = $this->projectModel->getFirstProjects();
         $data = [
             'projects' => $projects
            ];
-        $projects = $this->projectModel->getProjects();
+     
           $this->view('front/pages/index', $data);
       }
   }

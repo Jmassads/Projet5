@@ -13,14 +13,18 @@ body{
   max-width: 1200px;
 }
 
+// .section {
+//   padding: 0.875rem 0;
+//   opacity: 0;
+//   transition: all 1.4s ease-out;
+// }
+// .section.fade-in {
+//   opacity: 1;
+  
+// }
+
 .section {
   padding: 0.875rem 0;
-  opacity: 0;
-  transition: all 1.4s ease-out;
-}
-.section.fade-in {
-  opacity: 1;
-  
 }
 .container {
   max-width: 1140px
@@ -57,3 +61,11 @@ hr {
   border-color: #000;
 }
 
+.navbar {
+  position: relative;
+  padding: .5rem 0rem;
+}
+.navbar-toggler {
+  color: #b83b3b;
+  border-color: transparent;
+}

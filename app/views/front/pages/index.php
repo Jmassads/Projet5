@@ -6,7 +6,7 @@
         <ul>
             <li><a class="is-active" href="">Accueil</a></li>
             <li><a href="<?php echo URLROOT;?>#about">À propos</a></li>
-            <li><a href="<?php echo URLROOT;?>#projects">Portfolio</a></li>
+            <li><a href="<?php echo URLROOT;?>/Portfolio">Portfolio</a></li>
             <li><a href="<?php echo URLROOT;?>#skills">Skills</a></li>
             <li><a href="<?php echo URLROOT;?>/Blog">Blog</a></li>
         </ul>
@@ -16,7 +16,8 @@
 
 <div class="sidenav">
     <div class="home-icon">
-        <a href="<?php echo URLROOT;?>"><img class="img-fluid" src="<?php echo URLROOT;?>/img/iconmonstr-home-thin.svg" alt=""></a>
+        <a href="<?php echo URLROOT;?>"><img class="img-fluid" src="<?php echo URLROOT;?>/img/iconmonstr-home-thin.svg"
+                alt=""></a>
     </div>
     <div id="btn-menu" class="btn-open">
         <button class="hamburger hamburger--collapse" type="button">
@@ -25,7 +26,7 @@
             </span>
         </button>
     </div>
-    <a href="#contact" class="btn btn-sm btn-outline-dark rounded-0 contact-button shadow-none">Contact</a>
+    <a href="#contact" class="btn rounded-0 contact-button shadow-none">Contact</a>
 </div>
 
 <div id="main" class="main-container">
@@ -36,14 +37,14 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <h1>Julia Assad</h1>
-                    <p>Je suis Développeuse Web</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem voluptatem voluptatibus ullam at
-                        saepe consequuntur accusamus nulla dolorum deserunt dolor, iste illum, culpa possimus itaque
-                        esse modi soluta molestias illo?</p>
+                    <h2 class="h4 mb-3">Développeuse Web Junior</h2>
+                    <p></p>
                     <div class="my-4 d-flex justify-content-between align-items-center">
-                        <a href="#projects" class="project-button btn btn-outline-dark rounded-0">Portfolio</a>
+                        <a href="#projects"
+                            class="project-button btn btn-outline-dark shadow-none rounded-0">Projets</a>
                         <hr class="hr-line">
-                        <a href="<?php echo URLROOT;?>/Blog" class="blog-button btn btn-outline-dark rounded-0">Blog</a>
+                        <a href="<?php echo URLROOT;?>/Blog"
+                            class="blog-button btn btn-outline-dark shadow-none rounded-0">Blog</a>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -60,14 +61,17 @@
     <section id="projects" class="section projects">
         <div class="container-fluid">
             <h2 class="headline--red-dot">Projets</h2>
-            <div class="row"> 
-            <?php foreach($data['projects'] as $project):?>
-            <div class="col-md-6">
+            <div class="row">
+                <?php foreach($data['projects'] as $project):?>
+                <div class="col-md-6">
                     <div class="project">
                         <div class="project--image">
                             <picture>
-                                <source srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_sm_image;?>" media="(min-width:768px)">
-                                <img class="img-fluid" srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>" alt="" class="large-hero__image">
+                                <source srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_sm_image;?>"
+                                    media="(min-width:768px)">
+                                <img class="img-fluid"
+                                    srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>"
+                                    alt="" class="large-hero__image">
                                 <a href="<?php echo URLROOT;?>/Portfolio/<?php echo $project->project_slug;?>"><span
                                         class="lnr lnr-chevron-right"></span></a>
                             </picture>
@@ -76,6 +80,10 @@
                     </div>
                 </div>
                 <?php endforeach;?>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="<?php echo URLROOT;?>/Portfolio"
+                    class="blog-button btn btn-outline-dark shadow-none rounded-0">Tous mes projets</a>
             </div>
         </div>
     </section>

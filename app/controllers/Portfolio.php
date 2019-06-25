@@ -1,26 +1,35 @@
 <?php
 
-  /**
-   *
-   */
-  class Portfolio extends Controller
-  {
+/**
+ *
+ */
+class Portfolio extends Controller
+{
 
-
-      public function __construct()
-      {
+    public function __construct()
+    {
         $this->projectModel = $this->model('Projectmodel');
-      }
+    }
 
-      public function index($slug)
-      {
-        $projects = $this->projectModel->getProjects();
-        $project = $this->projectModel->getprojectBySlug($slug);
-          $data = [
-            'projects' => $projects,
-            'project' => $project
-           ];
+    public function index($slug = null)
+    {
 
-          $this->view('front/pages/project', $data);
-      }
-  }
+        if (is_null($slug)) {
+            $projects = $this->projectModel->getProjects();
+            $data = [
+                'projects' => $projects,
+            ];
+            $this->view('front/pages/projects', $data);
+        } else {
+            $projects = $this->projectModel->getProjects();
+            $project = $this->projectModel->getprojectBySlug($slug);
+            $data = [
+                'projects' => $projects,
+                'project' => $project,
+            ];
+
+            $this->view('front/pages/project', $data);
+        }
+
+    }
+}

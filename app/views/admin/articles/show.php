@@ -13,7 +13,7 @@
 
 
     <div class="d-flex justify-content-end">
-        <a href="<?php echo URLROOT; ?>/AdminArticles/edit/<?php echo $data['article']->id; ?>"
+        <a href="<?php echo URLROOT; ?>/AdminArticles/edit/<?php echo $data['article']->article_id; ?>"
             class="btn btn-dark">Modifier</a>
         <form class="ml-2"
             action="<?php echo URLROOT; ?>/AdminArticles/delete/<?php echo $data['chapter']->id; ?>"

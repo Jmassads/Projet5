@@ -30,6 +30,9 @@ tlHeader
     .set($projectButton, {
         autoAlpha:0
     })
+    .set($projectSection, {
+        autoAlpha:0
+    })
     .set($blogButton, {
         autoAlpha:0
     })
@@ -55,10 +58,14 @@ tlHeader
     .to($projectButton, 1, {
         autoAlpha: 1
     }, '-=0.2')
+    .to($projectSection, 1, {
+        autoAlpha:1
+    }, '-=0.3')
     .fromTo($hrLine, 1, {width:0, autoAlpha:0}, {width:'100%', autoAlpha:1})
     .to($blogButton, 1, {
         autoAlpha: 1
     }, '-=1')
+    
 
 
 var parallaxTl = new TimelineMax();
@@ -98,7 +105,7 @@ $('.section').each(function(){
     // build a scene
     var ourScene = new ScrollMagic.Scene({
         triggerElement: this.children[0],
-        triggerHook: 0.7
+        triggerHook: 0.6
     })
     .setClassToggle(this, 'fade-in') // add class to project01
     .addIndicators({

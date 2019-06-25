@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
 
 
-    <script src="<?php echo URLROOT; ?>/js/animations-homepage.js"></script>
+    <!-- <script src="<?php echo URLROOT; ?>/js/animations-homepage.js"></script> -->
     <script src="<?php echo URLROOT; ?>/js/app.js"></script>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

@@ -5,7 +5,7 @@
   padding-bottom: 1rem;
   position: relative;
   top: 0;
-  opacity: 0;
+  // opacity: 0;
 
   
   @include atMedium {
@@ -59,7 +59,6 @@
   font-size: 1rem;
   min-width: 40px;
   height: auto;
-  opacity: 0;
 }
 
 /* Add a hover effect if you want */

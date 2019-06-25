@@ -17,6 +17,15 @@ class Projectmodel
   return $results;
  }
 
+ public function getFirstProjects()
+ {
+  $this->db->query('SELECT * FROM projects ORDER BY id ASC limit 4 ');
+
+  $results = $this->db->resultSet();
+
+  return $results;
+ }
+
  // Get Project By ID
  public function getProjectById($id){
     $this->db->query("SELECT * FROM projects WHERE id = :id");
@@ -43,8 +52,8 @@ class Projectmodel
  // Add Project
  public function addProject($data){
     // Prepare Query
-    $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_categories, project_comments, project_slug) 
-    VALUES (:name, :description, :small_image, :large_image, :url, :categories, :comments, :slug)');
+    $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_comments, project_slug) 
+    VALUES (:name, :description, :small_image, :large_image, :url, :comments, :slug)');
 
     // Bind Values
     $this->db->bind(':name', $data['name']);
@@ -52,7 +61,6 @@ class Projectmodel
     $this->db->bind(':small_image', $data['small_image']);
     $this->db->bind(':large_image', $data['large_image']);
     $this->db->bind(':url', $data['url']);
-    $this->db->bind(':categories', $data['categories']);
     $this->db->bind(':comments', $data['comments']);
     $this->db->bind(':slug', $data['slug']);
 
