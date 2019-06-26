@@ -10,7 +10,7 @@ class Blogmodel
 
     public function getArticles()
     {
-        $this->db->query('SELECT * FROM articles ORDER BY articles.article_id ASC LIMIT 3');
+        $this->db->query('SELECT * FROM articles ORDER BY articles.article_id DESC');
 
         $results = $this->db->resultSet();
 
@@ -18,10 +18,18 @@ class Blogmodel
     }
 
     
+    public function getArticlesLimit3()
+    {
+        $this->db->query('SELECT * FROM articles ORDER BY articles.article_id DESC LIMIT 3');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
 
     public function getArticleswithAjax($article_id)
     {
-        $this->db->query('SELECT * FROM articles  WHERE article_id > :id ORDER BY articles.article_id ASC LIMIT 3');
+        $this->db->query('SELECT * FROM articles  WHERE article_id < :id ORDER BY articles.article_id DESC LIMIT 3');
 
         $this->db->bind(":id", $article_id);
         $results = $this->db->resultSet();
@@ -141,23 +149,11 @@ class Blogmodel
         return $results;
     }
 
-    // public function getCategoriesByArticleId($id)
-    // {
-    //     $this->db->query('SELECT * FROM article_categories 
-    //     INNER JOIN article_categories.article_id on 
-    //     WHERE article_id = :id');
-
-    //     $this->db->bind(':id', $id);
-
-    //     $results = $this->db->resultSet();
-
-    //     return $results;
-    // }
-
     // Get all languages (HTML, CSS< Javascript...)
     public function getCategories()
     {
-        $this->db->query('SELECT * FROM categories');
+        $this->db->query('SELECT * FROM categories
+        INNER JOIN article_categories on article_categories.category_id = categories.category_id');
 
         $results = $this->db->resultSet();
 

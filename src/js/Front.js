@@ -15,7 +15,9 @@ $('#btn-menu').click(function () {
 })
 
 
-$('.nav-container li').on('click', function(){
+$('.nav-container li a').on('click', function(){
+    $('.nav-container a.is-active').removeClass('is-active');
+    $(this).addClass('is-active');
     if($( "#btn-menu" ).hasClass( "btn-open" )){
         $('.overlay').css('width', '100%');
     } else if($( "#btn-menu" ).hasClass( "btn-close" )){

@@ -16,12 +16,15 @@
       public function index()
       {
         
-        $articles = $this->blogModel->getArticles();
-        $projects = $this->projectModel->getProjects();    
+        $articles = $this->blogModel->getArticlesLimit3();
+        $categories = $this->blogModel->getCategories();
+        $projects = $this->projectModel->getProjects(); 
+         
         $data = [
           
           'projects' => $projects,
           'articles' => $articles,
+          'categories' => $categories
 
          ];
           $this->view('admin/pages/index', $data);

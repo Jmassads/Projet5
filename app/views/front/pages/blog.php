@@ -1,31 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php';?>
 
-<!-- Overlay -->
-<div class="overlay">
-    <div class="nav-container">
-        <ul>
-            <li><a href="<?php echo URLROOT; ?>#about">À propos</a></li>
-            <li><a href="<?php echo URLROOT; ?>/Portfolio">Portfolio</a></li>
-            <li><a href="<?php echo URLROOT; ?>#skills">Skills</a></li>
-            <li><a href="<?php echo URLROOT; ?>/Blog">Blog</a></li>
-        </ul>
-    </div>
-</div>
-
-<div class="sidenav">
-    <div class="home-icon">
-        <a href="<?php echo URLROOT; ?>"><img class="img-fluid"
-                src="<?php echo URLROOT; ?>/img/iconmonstr-home-thin.svg" alt=""></a>
-    </div>
-    <div id="btn-menu" class="btn-open">
-        <button class="hamburger hamburger--collapse" type="button">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>
-    </div>
-    <a href="#contact" class="btn btn-sm btn-outline-dark rounded-0 contact-button shadow-none">Contact</a>
-</div>
+<?php require APPROOT . '/views/inc/sidenav.php';?>
 
 <div id="main" class="main-container">
     <section class="blog">
@@ -87,32 +62,34 @@
 
             <div id="load_data_table">
                 <div class="row align-items-start">
-                <?php foreach ($data['articles'] as $article): ?>
-                <div class="col-md-4">
-                    <div class="article">
-                        <div class="article--meta">
-                            <img class="article--image img-fluid"
-                                src="<?php echo URLROOT; ?>/uploads/<?php echo $article->article_image; ?>" alt="">
-                            <h3 class="article--title"><a href="<?php echo $article->article_url; ?>"
-                                    target="blank"><?php echo $article->article_title; ?></a></h3>
+                    <?php foreach ($data['articles'] as $article): ?>
+                    <div class="col-md-4">
+                        <div class="article">
+                            <div class="article--meta">
+                                <img class="article--image img-fluid"
+                                    src="<?php echo URLROOT; ?>/uploads/<?php echo $article->article_image; ?>" alt="">
+                                <h3 class="article--title"><a href="<?php echo $article->article_url; ?>"
+                                        target="blank"><?php echo $article->article_title; ?></a></h3>
+                            </div>
+                            <div class="article--excerpt">
+                                <p><?php echo $article->article_excerpt; ?></p>
+                            </div>
+                            <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_id; ?>"
+                                class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Lire la suite</a>
                         </div>
-                        <div class="article--excerpt">
-                            <p><?php echo $article->article_excerpt; ?></p>
-                        </div>
-                        <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_id; ?>"
-                            class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Lire la suite</a>
                     </div>
-                </div>
-                <?php endforeach;?>
-                </div>
-                
-   
-                <div id="remove_row"><button type="button" name="btn_more" data-article="<?php echo $article->article_id; ?>"
-        id="btn_more" class="btn btn-sm btn-outline-dark rounded-0 mb-4 shadow-none">Voir plus d'articles</button></div>
+                    <?php endforeach;?>
                 </div>
 
-          
-            
+
+                <div id="remove_row" class="d-dlex justify-content-center">
+                    <button type="button" name="btn_more" data-article="<?php echo $article->article_id; ?>"
+                        id="btn_more" class="btn btn-sm btn-outline-dark rounded-0 mb-4 shadow-none">Voir plus
+                        d'articles</button>
+                </div>
+
+
+
         </div>
     </section>
 

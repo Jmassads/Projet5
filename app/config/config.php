@@ -8,7 +8,7 @@ define('DB_NAME', 'ja_site');
 define('APPROOT', dirname(dirname(__FILE__))); // /Applications/MAMP/htdocs/FinalProjectphp/app
 
 // URL Root
-define('URLROOT', 'http://localhost:3000/FinalProjectphp');
+define('URLROOT', 'http://localhost:8888/FinalProjectphp');
 
 define('SITENAME', 'Julia Assad | Développeuse Web');
 
