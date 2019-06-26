@@ -3,7 +3,7 @@
 /**
  *
  */
-class Blog extends Controller
+class BlogTest extends Controller
 {
 
     public function __construct()
@@ -19,6 +19,11 @@ class Blog extends Controller
             $frontCategories = $this->BlogModel->getFrontCategories();
             $backCategories = $this->BlogModel->getBackCategories();
             $databaseCategories = $this->BlogModel->getDatabaseCategories();
+            $per_page = 6;
+            $total_count = $this->BlogModel->ArticlesPagination();
+            $pagination = new Pagination($current_page, $per_page, $total_count);
+            $offset = $pagination->offset();
+            $articles = $this->BlogModel->GetPaginatedArticles($per_page, $offset);
 
             $data = [
                 'articles' => $articles,
@@ -26,33 +31,14 @@ class Blog extends Controller
                 'frontCategories' => $frontCategories,
                 'backCategories' => $backCategories,
                 'databaseCategories' => $databaseCategories,
-
+                'articles' => $articles,
+                'previous_page' => $pagination->previous_page(),
+                'next_page' => $pagination->next_page(),
+                'total_pages' => $pagination->total_pages(),
+                'current_page' => $current_page,
 
             ];
-            $this->view('front/pages/blogTest', $data);
-    }
-
-    public function ajax(){
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $article_id = $_POST['last_article_id'];
-
-            if(!empty($this->BlogModel->getArticleswithAjax($article_id))){
-                $newArticles = $this->BlogModel->getArticleswithAjax($article_id);
-            } else {
-                die();
-            }
-            
-            $data = [
-                'newArticles' => $newArticles
-            ];
-            
-
-            $this->view('front/pages/ajax_more', $data);
-        } else {
-            $article_id = '';
-        }    
+            $this->view('front/pages/blog', $data);
     }
 
     public function article($id){
@@ -88,6 +74,4 @@ class Blog extends Controller
         ];
         $this->view('front/pages/category', $data);
     }
-
-  
 }

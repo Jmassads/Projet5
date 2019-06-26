@@ -10,11 +10,20 @@ class Blogmodel
 
     public function getArticles()
     {
-        $this->db->query('SELECT * FROM articles
-        INNER JOIN article_categories on article_categories.article_id = articles.article_id
-        INNER JOIN categories on article_categories.category_id = categories.category_id
-        ORDER BY articles.article_id ASC');
+        $this->db->query('SELECT * FROM articles ORDER BY articles.article_id ASC LIMIT 3');
 
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    
+
+    public function getArticleswithAjax($article_id)
+    {
+        $this->db->query('SELECT * FROM articles  WHERE article_id > :id ORDER BY articles.article_id ASC LIMIT 3');
+
+        $this->db->bind(":id", $article_id);
         $results = $this->db->resultSet();
 
         return $results;

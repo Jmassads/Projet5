@@ -26,8 +26,6 @@ $('.nav-container li').on('click', function(){
     
 });
 
-
-
 /* all links animation */
 $(document).on('click', 'a[href^="#"]', function (event) {
     event.preventDefault();
@@ -55,5 +53,29 @@ $('#myBtn').click(function () {
 });
 
 
-
+$(document).on('click', '#btn_more', function(){  
+    var last_article_id = $(this).data("article");  
+    $('#btn_more').html("Loading...");  
+    console.log(last_article_id);
+    $.ajax({  
+        url:"http://localhost:3000/FinalProjectphp/Blog/ajax",  
+        method:"POST",  
+        data:{last_article_id:last_article_id},  
+        dataType:"text",  
+        success:function(data)  
+        {  
+             if(data != '')  
+             {  
+                  $('#remove_row').remove();  
+                  $('#load_data_table').append(data);  
+                  $('#load_data_table').add(); 
+                  $("html, body").animate({ scrollTop: $('#remove_row').offset().top}, 1500);  
+             }  
+             else  
+             {  
+                  $('#btn_more').html("Plus d'Articles");  
+             }  
+        }  
+   });  
+});  
 
