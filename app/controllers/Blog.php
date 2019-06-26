@@ -29,7 +29,7 @@ class Blog extends Controller
 
 
             ];
-            $this->view('front/pages/blogTest', $data);
+            $this->view('front/pages/blog', $data);
     }
 
     public function ajax(){

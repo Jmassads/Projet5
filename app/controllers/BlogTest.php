@@ -38,7 +38,7 @@ class BlogTest extends Controller
                 'current_page' => $current_page,
 
             ];
-            $this->view('front/pages/blog', $data);
+            $this->view('front/pages/blogTest', $data);
     }
 
     public function article($id){

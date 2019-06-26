@@ -12,7 +12,7 @@
                             <p><?php echo $article->article_excerpt; ?></p>
                         </div>
                         <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_id; ?>"
-                            class="btn btn-sm btn-outline-dark rounded-0">Lire la suite</a>
+                            class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Lire la suite</a>
                     </div>
                 </div>
                 <?php endforeach;?>
@@ -20,4 +20,4 @@
                 
    
                 <div id="remove_row"><button type="button" name="btn_more" data-article="<?php echo $article->article_id; ?>"
-        id="btn_more" class="btn btn-sm btn-outline-dark rounded-0 mb-4">Plus d'articles</button></div>
+        id="btn_more" class="btn btn-sm btn-outline-dark rounded-0 mb-4 shadow-none">Voir plus d'articles</button></div>

@@ -43,10 +43,7 @@ $categories = (explode(",",$categories_as_string));
                     </h2>
                     <div class="single-project--inner">
                         <div class="single-project--image">
-                            <picture>
-                                <source srcset="<?php echo URLROOT;?>/uploads/<?php echo $data['project']->project_image;?>" media="(min-width:768px)">
-                                <img class="img-fluid" srcset="<?php echo URLROOT;?>/uploads/<?php echo $data['project']->project_lg_image;?>" alt="" class="large-hero__image">
-                            </picture>
+                             <img class="img-fluid" srcset="<?php echo URLROOT;?>/uploads/<?php echo $data['project']->project_lg_image;?>" alt="" class="large-hero__image">
                         </div>
                         <div class="pointer py-4"><span class="lnr lnr-pointer-right"></span> <a href="<?php echo $data['project']->project_url;?>" target="blank">Voir le Projet</a></div>
                         <div class="single-project--description">

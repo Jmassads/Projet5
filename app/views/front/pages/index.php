@@ -1,3 +1,66 @@
+<?php
+
+// Message Vars
+
+$msg = '';
+$msgClass = '';
+
+// Check for Submit
+
+// Here we put submit as it's looking at the form name="submit"
+if(filter_has_var(INPUT_POST, 'submit')){
+    // Get Form Data
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+    
+    // Check Required Fields
+    
+    if(!empty($email) && !empty($name) && !empty($message)){
+        // PASSED
+        
+        // Check Email
+        if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
+            // Failed
+            $msg = 'Please use a valid email';
+            $msgClass = 'alert-danger';
+        } else {
+            // Passed
+           
+          
+            // Recipien Email
+            $toEmail = 'juliasajah85@gmail.com';
+            $subject = 'Contact Request From ' .$name;
+            $body =  "<h2>Contact Request</h2>
+                     <h4>Name</h4>
+                     <p>$name</p>
+                     <h4>Email</h4><p>$email</p>
+                     <h4>Message</h4><p>$message</p>";
+            // Email Headers
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
+            
+            // Additional Headers
+            $headers .= "From: " .$name. "<" .$email. ">" . "\r\n";
+            
+            if(mail($toEmail, $subject, $body, $headers)){
+                $msg = 'Your email has been sent';
+                $msgClass = 'alert-success';
+            } else {
+                $msg = 'Your email was not sent';
+                $msgClass = 'alert-alert';
+            }
+        }
+    }else{
+        $msg = 'Please fill in all fields';
+        $msgClass = 'alert-danger';
+    }
+}
+
+    
+
+?>
+
 <?php require APPROOT . '/views/inc/header.php';?>
 
 <!-- Overlay -->
@@ -38,7 +101,9 @@
                 <div class="col-sm-6">
                     <h1>Julia Assad</h1>
                     <h2 class="h4 mb-3">Développeuse Web Junior</h2>
-                    <p></p>
+                    <p>Ayant une passion pour l'informatique, j'ai choisi de faire une reconversion professionelle en
+                        2017. Je me suis d'abord formée en autodidacte puis j'ai suivi le parcours 'Développeur Web
+                        Junior' chez Openclassrooms</p>
                     <div class="my-4 d-flex justify-content-between align-items-center">
                         <a href="#projects"
                             class="project-button btn btn-outline-dark shadow-none rounded-0">Projets</a>
@@ -49,10 +114,10 @@
                 </div>
                 <div class="col-sm-6">
                     <ul class="header--social-icons">
-                        <li><a href=""><i class="header--social-icons-facebook fab fa-facebook-f"></i></a></li>
-                        <li><a href=""><i class="header--social-icons-linkedin fab fa-linkedin-in"></i></a></li>
-                        <li><a href=""><i class="header--social-icons-twitter fab fa-twitter"></i></a></li>
-                        <li><a href=""><i class="header--social-icons-github fab fa-github"></i></a></li>
+                        <li><a href="https://www.facebook.com/julia.assadchevreux" target="_blank"><i class="header--social-icons-facebook fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/julia-assad/" target="_blank"><i class="header--social-icons-linkedin fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://twitter.com/jmassads" target="_blank"><i class="header--social-icons-twitter fab fa-twitter"></i></a></li>
+                        <li><a href="https://github.com/Jmassads" target="_blank"><i class="header--social-icons-github fab fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -61,9 +126,9 @@
     <section id="projects" class="section projects">
         <div class="container-fluid">
             <h2 class="headline--red-dot">Projets</h2>
-            <div class="row">
+            <div class="row justify-content-center">
                 <?php foreach($data['projects'] as $project):?>
-                <div class="col-md-6">
+                <div class="col-md-6 col-lg-4">
                     <div class="project">
                         <div class="project--image">
                             <picture>
@@ -90,23 +155,27 @@
 
     <section id="about" class="section about">
         <div class="container-fluid">
-            <h2 class="headline--red-dot">About me</h2>
+            <h2 class="headline--red-dot">Qui suis-je?</h2>
             <p class="about--description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla maxime impedit cumque eaque possimus
-                ipsum explicabo eos quisquam labore obcaecati? Temporibus officia similique consequatur et ratione
-                totam, tempore molestias excepturi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae fugit
-                quod voluptates ratione harum tempore voluptatem incidunt facilis reprehenderit praesentium, explicabo
-                dolore mollitia porro voluptate, debitis vero fugiat enim aliquam.</p>
+                J'ai obtenu mon diplôme en management de système d'information en 2009 aux États Unis. Je suis rentrée
+                en France en 2012 et j'ai passé plusieurs années à travailler dans l'hôtellerie. Fin 2016, le
+                développement web est devenu une réelle passion pour moi et j'ai décidé de me former chez
+                Openclassrooms.</p>
+            <div class="d-flex justify-content-end">
+                <a href="files/julia_assad_cv.pdf" download
+                    class="blog-button btn btn-outline-dark shadow-none rounded-0"> <i class="fas fa-download"></i> Curriculum vitae</a>
+            </div>
         </div>
     </section>
 
     <section id="skills" class="section skills">
         <div class="container-fluid">
             <div class="py-4">
-                <h2 class="headline--red-dot">Skills</h2>
+                <h2 class="headline--red-dot">Compétences</h2>
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
-                        <h3>Front End</h3>
+                        <div class="mb-3">
+                        <h3><img class="img-fluid" src="img/front.png" width="45" height="45"> Front End</h3>
                         <ul>
                             <li>HTML5/CSS3</li>
                             <li>Flexbox</li>
@@ -116,36 +185,82 @@
                             <li>Webpack</li>
                             <li>jQuery</li>
                             <li>Javascript es5/es6</li>
-                            <li>GSAP</li>
+                            <li>AJAX</li>
                         </ul>
+                        </div>
                     </div>
                     <div class="col-sm-4">
 
-                        <h3>Back End</h3>
+                       <div class="mb-3">
+                       <h3><img class="img-fluid" src="img/back.png" width="35" height="35"> Back End</h3>
                         <ul>
                             <li>PHP</li>
                             <li>MySQL</li>
                             <li>Architecture MVC</li>
                             <li>Wordpress</li>
                         </ul>
+                       </div>
 
                     </div>
                     <div class="col-sm-4">
-                        <h3>Autres</h3>
+                        <div class="mb-3">
+                        <h3><img class="img-fluid" src="img/command-line.png" width="45" height="45"> Autres</h3>
                         <ul>
                             <li>Git</li>
                             <li>Basic Command Line</li>
                         </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section contact">
-        <div class="container">
-            <div class="contact--content py-4">
-                <h2><span>Contact</span></h2>
+    <section id=contact class=contact>
+        <div class=container>
+            <div class=head-section>
+                <h2 class="headline--red-dot">Contact</h2>
+            </div>
+            <div class=row>
+                <div class=col-lg-6>
+                    <ul class="info-contact list-unstyled ">
+                        <li class=mb-4>N'hésitez pas à me contacter pour plus d'informations</li>
+                        <li><i class="mr-2 fa fa-map-marker "></i> Saint Germain en Laye</li>
+                        <li>
+                            <i class="mr-2 fa fa-envelope "></i> <a
+                                href=mailto:support@me.com>juliasajah85@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class=col-lg-6>
+                    <?php if($msg != ''): ?>
+                    <div class="alert_msg alert <?php echo $msgClass;?>">
+                        <?php echo $msg;?>
+                    </div>
+                    <?php endif; ?>
+                    <form method="post" action="index.php#contact">
+
+                        <div class="row box-form">
+
+                            <div class="col-12 col-lg-6">
+                                <input type="text" name="name" class="form-control" placeholder="Votre nom*"
+                                    value="<?php echo isset($name) ? $name : '';?>">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <input type="text" name="email" class="form-control" placeholder="Votre email*"
+                                    value="<?php echo isset($email) ? $email : '';?>">
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <textarea name="message" class="form-control" placeholder="Votre message.."
+                                    rows=3><?php echo isset($message) ? $message : '';?></textarea>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <button class="btn btn-sm btn-outline-dark shadow-none rounded-0" type="submit"
+                                    name="submit">Envoyer <i class="fa fa-paper-plane-o com-i ml-1"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

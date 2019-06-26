@@ -1,5 +1,74 @@
 .contact {
+  margin-bottom: 2rem;
   @include atMedium {
     padding-left: 70px;
   }
+}
+
+.contact .info-contact {
+  width: 80%
+}
+
+
+.contact .info-contact a:hover {
+  color: #333
+}
+
+.contact .info-contact li:first-child {
+  font-weight: 400;
+  color: #444;
+  text-transform: uppercase
+}
+
+.contact .info-contact li i {
+  color: #444
+}
+
+.contact ul li {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 13px
+}
+
+.contact .social-media h5 {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #444;
+  margin-right: 20px
+}
+
+.contact .social-media a {
+  display: inline-block;
+  font-size: 15px;
+  color: #444;
+  margin-right: 11px
+}
+
+.contact .social-media:hover a {
+  color: #c3c3c3
+}
+
+.contact .social-media a:hover {
+  color: #444
+}
+
+.contact form .form-control {
+  border: 0;
+  border-bottom: 1px solid #DDD;
+  border-radius: 0;
+  font-size: 13px;
+  margin: 13px 0;
+  padding: 7px 3px;
+  background: 0 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important
+}
+
+.contact form .form-control:focus {
+  border-color: #444
+}
+
+.alert_msg {
+  font-size: 13px
 }
