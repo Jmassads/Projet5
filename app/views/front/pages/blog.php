@@ -74,7 +74,7 @@
                             <div class="article--excerpt">
                                 <p><?php echo $article->article_excerpt; ?></p>
                             </div>
-                            <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_id; ?>"
+                            <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"
                                 class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Lire la suite</a>
                         </div>
                     </div>

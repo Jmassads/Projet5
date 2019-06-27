@@ -80,6 +80,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label>Slug de l'article:<sup>*</sup></label>
+            <input disabled type="text"
+                class="form-control form-control-md"
+                value="<?php echo $data['slug']; ?>">
+        </div>
+        <div class="form-group">
             <p><strong>Image actuelle:</strong>
                 <?php echo $data['article_image']; ?>
                 <label>Sélectionner une image</label>

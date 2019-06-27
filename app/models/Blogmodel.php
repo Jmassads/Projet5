@@ -204,6 +204,17 @@ class Blogmodel
         return $results;
     }
 
+    // Get Project By ID
+ public function getarticleBySlug($slug){
+    $this->db->query("SELECT * FROM articles WHERE article_slug = :slug");
+  
+    $this->db->bind(':slug', $slug);
+    
+    $row = $this->db->single();
+  
+    return $row;
+  }
+
     // FOR PAGINATION
     public function ArticlesPagination()
     {
@@ -221,4 +232,6 @@ class Blogmodel
         $results = $this->db->resultSet();
         return $results;
     }
+
+
 }
