@@ -34,7 +34,6 @@ class AdminArticles extends Controller
             //     $categories = '';
             // }
 
-           
             $data = [
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
@@ -71,13 +70,14 @@ class AdminArticles extends Controller
             if (empty($data['title_err']) && empty($data['content_err']) && empty($data['excerpt_err']) && empty($data['article_image_err'])) {
                 // Validation passed
                 //Execute
-                
+
                 if ($this->blogModel->addArticle($data)) {
 
+                    // (lastInsertId) — Retourne l'identifiant de la dernière ligne insérée ou la valeur d'une séquence
                     $article_id = $this->blogModel->getId();
-                    
+
                     $categories = $_POST['categories'];
-                    foreach($categories as $category){
+                    foreach ($categories as $category) {
                         // die(print_r($categories));
                         $this->blogModel->addArticleCategory($category, $article_id);
                     }
@@ -100,7 +100,7 @@ class AdminArticles extends Controller
                 'image' => '',
                 'slug' => '',
                 'excerpt' => '',
-                'categories' => []
+                'categories' => [],
             ];
 
             $this->view('admin/articles/add', $data);
@@ -140,7 +140,6 @@ class AdminArticles extends Controller
                 'url' => trim($_POST['url']),
                 'slug' => clean(trim($_POST['title'])),
 
-
                 'title_err' => '',
                 'content_err' => '',
                 'excerpt_err' => '',
@@ -171,24 +170,47 @@ class AdminArticles extends Controller
             // Make sure there are no errors
             if (empty($data['title_err']) && empty($data['content_err']) && empty($data['article_image_err'])) {
                 $categories = $this->blogModel->getCategoriesByArticleId($id);
-          
-                $checkedCategories = array_map(function($category){
+
+                $checkedCategories = array_map(function ($category) {
                     return $category->category_id;
                 }, $categories);
- 
-                $newCategories = $_POST['categories'];
+
+                // on verifie si il y a des catégories
+                if (!empty($_POST['categories'])) {
+                    $newCategories = $_POST['categories'];
+                } else {
+                    $newCategories = [];
+                }
+               
+
+                
                 // Validation passed
                 //Execute
                 if ($this->blogModel->updateArticle($data)) {
-                    
-                  
-                
+
                     // die(print_r($checkedCategories));
-                    foreach($newCategories as $newCategory){
+                    foreach ($newCategories as $newCategory) {
                         // die(print_r($categories));
-                        if(!in_array($newCategory, $checkedCategories))
-                        $this->blogModel->addArticleCategory($newCategory, $id);
+                        // on verifie si la categorie existe deja. si elle existe on ne la rajoute pas. si elle n'existe pas on la rajoute
+                        if (!in_array($newCategory, $checkedCategories)) {
+                            $this->blogModel->addArticleCategory($newCategory, $id);
                         }
+                    }
+
+                    $databaseCategories = $this->blogModel->getCategoriesByArticleId($id);
+
+                    foreach ($newCategories as $newCategory) {
+                        // die(print_r($categories));
+                        // on verifie si la categorie existe deja. si elle existe on ne la rajoute pas. si elle n'existe pas on la rajoute
+                        if (!in_array($newCategory, $databaseCategories)) {
+                            $this->blogModel->deleteArticleCategory($newCategory, $id);
+                        }
+                    }
+
+                    
+                    // die(print_r($databaseCategories));
+                    // get all categories with article_id
+                    // $this->blogModel->deleteArticleCategory($newCategory, $id);
 
                     // Redirect to login
                     flash('article_message', 'Article modifié');
@@ -212,7 +234,7 @@ class AdminArticles extends Controller
                 'slug' => $article->article_slug,
                 'excerpt' => $article->article_excerpt,
                 'url' => $article->article_url,
-                'checkedCategories' => $checkedCategories
+                'checkedCategories' => $checkedCategories,
             ];
 
             $this->view('admin/articles/edit', $data);

@@ -37,21 +37,6 @@ class Blogmodel
         return $results;
     }
 
-    public function ArticlesPagination()
-    {
-        $this->db->query("SELECT COUNT(article_id) as numarticles FROM articles");
-        $row = $this->db->single();
-        return $row;
-    }
-
-    public function GetPaginatedArticles($per_page, $offset)
-    {
-        $this->db->query("SELECT * FROM articles ORDER BY article_id DESC LIMIT :limit OFFSET :offset");
-        $this->db->bind(":limit", $per_page);
-        $this->db->bind(":offset", $offset);
-        $results = $this->db->resultSet();
-        return $results;
-    }
 
     // Add Article
     public function addArticle($data)
@@ -99,6 +84,23 @@ class Blogmodel
             return false;
         }
     }
+
+    // Delete Post
+    public function deleteArticleCategory($category_id, $article_id){
+        // Prepare Query
+        $this->db->query('DELETE FROM article_categories WHERE category_id = :category_id AND article_id = :article_id');
+  
+        // Bind Values
+        $this->db->bind(':category_id', $category_id);
+        $this->db->bind(':article_id', $article_id);
+
+        //Execute
+        if($this->db->execute()){
+          return true;
+        } else {
+          return false;
+        }
+      }
 
     // Get Article By ID
     public function getArticleById($id)
@@ -198,6 +200,24 @@ class Blogmodel
         $this->db->query('SELECT * FROM article_categories 
         WHERE article_id = :id');
         $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    // FOR PAGINATION
+    public function ArticlesPagination()
+    {
+        $this->db->query("SELECT COUNT(article_id) as numarticles FROM articles");
+        $row = $this->db->single();
+        return $row;
+    }
+
+    // FOR PAGINATION
+    public function GetPaginatedArticles($per_page, $offset)
+    {
+        $this->db->query("SELECT * FROM articles ORDER BY article_id DESC LIMIT :limit OFFSET :offset");
+        $this->db->bind(":limit", $per_page);
+        $this->db->bind(":offset", $offset);
         $results = $this->db->resultSet();
         return $results;
     }
