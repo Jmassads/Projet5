@@ -11,9 +11,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync'); // we want to require a method called create
 var webpack = require('webpack');
 
-var prefixerOptions = {
-    browsers: ['last 2 versions']
-  };
 
 gulp.task('php', function(){
     php.server({base:'./', port:3000, keepalive:true});
@@ -26,8 +23,8 @@ gulp.task('styles', function () {
             importer: moduleImporter()
         }))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
+            // browsers: ['> 1%', 'last 3 versions', 'Firefox >= 20', 'iOS >=7'],
+            // cascade: false
         }))
         .pipe(cssnano())
         .pipe(gulp.dest('build/css'));

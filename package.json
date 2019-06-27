@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "browserslist": [
+    "> 0.01%",
+    "last 2 versions"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

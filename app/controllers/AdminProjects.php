@@ -53,7 +53,7 @@ class AdminProjects extends Controller
                 'url' => trim($_POST['url']),
                 'categories' => $categories,
                 'comments' => trim($_POST['comments']),
-                'slug' => clean(trim($_POST['name'])),
+                'slug' => cleaner(trim($_POST['name'])),
 
                 'name_err' => '',
                 'description_err' => '',
@@ -158,7 +158,7 @@ class AdminProjects extends Controller
                 'categories' => $categories, 
                 'url' => trim($_POST['url']),
                 'comments' => trim($_POST['comments']),
-                'slug' => clean(trim($_POST['name'])),
+                'slug' => cleaner(trim($_POST['name'])),
 
                 'name_err' => '',
                 'description_err' => '',

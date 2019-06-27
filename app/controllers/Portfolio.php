@@ -21,14 +21,21 @@ class Portfolio extends Controller
             ];
             $this->view('front/pages/projects', $data);
         } else {
+
             $projects = $this->projectModel->getProjects();
             $project = $this->projectModel->getprojectBySlug($slug);
             $data = [
                 'projects' => $projects,
                 'project' => $project,
+
             ];
 
-            $this->view('front/pages/project', $data);
+            if (!$project) {
+                die("le projet n'existe pas");
+            } else {
+                $this->view('front/pages/project', $data);
+            }
+
         }
 
     }

@@ -38,7 +38,7 @@ class AdminArticles extends Controller
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
                 'article_image' => str_replace(' ', '', $_FILES['article_image']['name']),
-                'slug' => clean(trim($_POST['title'])),
+                'slug' => cleaner(trim($_POST['title'])),
                 'excerpt' => trim($_POST['excerpt']),
 
                 'title_err' => '',
@@ -138,7 +138,7 @@ class AdminArticles extends Controller
                 'article_image' => $article_image,
                 'excerpt' => trim($_POST['excerpt']),
                 'url' => trim($_POST['url']),
-                'slug' => clean(trim($_POST['title'])),
+                'slug' => cleaner(trim($_POST['title'])),
 
                 'title_err' => '',
                 'content_err' => '',
@@ -199,9 +199,11 @@ class AdminArticles extends Controller
 
                     // array with std objects
                     $databaseCategoriesStd = $this->blogModel->getCategoriesByArticleId($id);
+                    
 
-                    // convert to array to be able to compare 2 array later on
+                    // convert to array to be able to compare 2 arrays later
                     $databaseCategories = json_decode(json_encode($databaseCategoriesStd),true);
+                    // die(print_r($databaseCategories));
 
 
         
