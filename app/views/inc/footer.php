@@ -16,6 +16,11 @@
 
     <!-- <script src="<?php echo URLROOT; ?>/js/animations-homepage.js"></script> -->
     <script src="<?php echo URLROOT; ?>/js/app.js"></script>
+
+    <script>
+     
+    </script>
+    
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

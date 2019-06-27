@@ -1,4 +1,4 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 import 'bootstrap';
 // import StickyHeader from './front-modules/StickyHeader';
 
@@ -16,9 +16,6 @@ $('#btn-menu').click(function () {
 
 
 $('.nav-container a').on('click', function(){
-    console.log($('a.is-active'));
-    $('a.is-active').removeClass('is-active');
-    $(this).addClass('is-active');
     if($( "#btn-menu" ).hasClass( "btn-open" )){
         $('.overlay').css('width', '100%');
     } else if($( "#btn-menu" ).hasClass( "btn-close" )){

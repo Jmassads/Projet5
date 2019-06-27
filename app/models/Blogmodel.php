@@ -151,6 +151,30 @@ class Blogmodel
         return $results;
     }
 
+    public function getArticlesbyCategoryName($name)
+    {
+        $this->db->query('SELECT * FROM articles
+        INNER JOIN article_categories on article_categories.article_id = articles.article_id
+        INNER JOIN categories on categories.category_id = article_categories.category_id
+        WHERE categories.category_name = :name');
+
+        $this->db->bind(':name', $name);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getCategoriesByName($name){
+        $this->db->query('SELECT * FROM categories WHERE category_name = :name');
+
+        $this->db->bind(':name', $name);
+        
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
     // Get all languages (HTML, CSS< Javascript...)
     public function getCategories()
     {
@@ -162,11 +186,20 @@ class Blogmodel
         return $results;
     }
 
+    public function getAllDatabaseCategories()
+    {
+        $this->db->query('SELECT * FROM categories');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
     public function getFrontCategories()
     {
         $this->db->query('SELECT * FROM categories WHERE category_type = :type');
 
-        $this->db->bind(':type', 'front');
+        $this->db->bind(':type', 'front-end');
 
         $results = $this->db->resultSet();
 
@@ -177,7 +210,7 @@ class Blogmodel
     {
         $this->db->query('SELECT * FROM categories WHERE category_type = :type');
 
-        $this->db->bind(':type', 'back');
+        $this->db->bind(':type', 'back-end');
 
         $results = $this->db->resultSet();
 

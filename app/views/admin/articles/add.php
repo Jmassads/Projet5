@@ -28,27 +28,16 @@
             <span class="invalid-feedback"><?php echo $data['content_err']; ?></span>
         </div>
         <div class="form-group">
-            <label>Languages:</label>
-            <div class="d-flex justify-content-start mb-3">
-                <div class="mr-4">
-                    <input type="checkbox" name="categories[]" value="1" /> HTML<br>
-                    <input type="checkbox" name="categories[]" value="2" /> CSS<br>
-                    <input type="checkbox" name="categories[]" value="3" /> Javascript<br>
-                    <input type="checkbox" name="categories[]" value="4" /> PHP<br>
-                    <input type="checkbox" name="categories[]" value="5" /> jQuery<br>
-
-                </div>
-                <div class="mr-4">
-                    <input type="checkbox" name="categories[]" value="6" /> Wordpress<br>
-                    <input type="checkbox" name="categories[]" value="7" /> flexbox<br>
-                    <input type="checkbox" name="categories[]" value="8" /> Bootstrap<br>
-                    <input type="checkbox" name="categories[]" value="9" /> mySql<br>
-                    <input type="checkbox" name="categories[]" value="10" /> Architecture MVC<br>
-                </div>
-                <div class="mr-4">
-                <input type="checkbox" name="categories[]" value="11" /> Webpack<br>
-                </div> 
+            <div class="my-4">
+                <label>Languages:</label>
+                <br>
+                <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
+                <?php $category_id = $databaseCategory->category_id;?>
+                <input type="checkbox" name="categories[]" value="<?php echo $databaseCategory->category_id; ?>" />
+                <?php echo $databaseCategory->category_name; ?>
+                <?php endforeach;?>
             </div>
+
         </div>
         <div class="form-group">
             <label>Sélectionner une image</label>

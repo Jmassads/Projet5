@@ -27,13 +27,6 @@ class AdminArticles extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            // To join array elements with a string
-            // if (!empty($_POST['categories'])) {
-            //     $categories = implode(",", $_POST["categories"]);
-            // } else {
-            //     $categories = '';
-            // }
-
             $data = [
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
@@ -94,6 +87,8 @@ class AdminArticles extends Controller
             }
 
         } else {
+            $databaseCategories = $this->blogModel->getAllDatabaseCategories();
+
             $data = [
                 'title' => '',
                 'content' => '',
@@ -101,6 +96,7 @@ class AdminArticles extends Controller
                 'slug' => '',
                 'excerpt' => '',
                 'categories' => [],
+                'databaseCategories' => $databaseCategories
             ];
 
             $this->view('admin/articles/add', $data);
@@ -227,7 +223,8 @@ class AdminArticles extends Controller
                 $this->view('admin/articles/edit', $data);
             }
         } else {
-            // Get Project from model
+            // Get Article from model
+            $databaseCategories = $this->blogModel->getAllDatabaseCategories();
             $article = $this->blogModel->getArticleById($id);
             $checkedCategories = $this->blogModel->getCategoriesByArticleId($id);
             $data = [
@@ -239,6 +236,7 @@ class AdminArticles extends Controller
                 'excerpt' => $article->article_excerpt,
                 'url' => $article->article_url,
                 'checkedCategories' => $checkedCategories,
+                'databaseCategories' => $databaseCategories
             ];
 
             $this->view('admin/articles/edit', $data);

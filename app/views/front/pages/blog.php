@@ -27,7 +27,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($data['frontCategories'] as $frontCategory): ?>
                                 <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $frontCategory->category_id; ?>"><?php echo $frontCategory->category_name; ?></a>
+                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $frontCategory->category_name; ?>"><?php echo $frontCategory->category_name; ?></a>
                                 <?php endforeach;?>
                             </div>
                         </li>
@@ -39,7 +39,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($data['backCategories'] as $backCategory): ?>
                                 <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $backCategory->category_id; ?>"><?php echo $backCategory->category_name; ?></a>
+                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $backCategory->category_name; ?>"><?php echo $backCategory->category_name; ?></a>
                                 <?php endforeach;?>
                             </div>
                         </li>
@@ -51,7 +51,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
                                 <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $databaseCategory->category_id; ?>"><?php echo $databaseCategory->category_name; ?></a>
+                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $databaseCategory->category_name; ?>"><?php echo $databaseCategory->category_name; ?></a>
                                 <?php endforeach;?>
                             </div>
                         </li>

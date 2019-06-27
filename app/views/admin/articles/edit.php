@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/admin-header.php'; ?>
+<?php require APPROOT . '/views/inc/admin-header.php';?>
 
 <a href="<?php echo URLROOT; ?>/AdminArticles" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i>
     Retour</a>
@@ -37,72 +37,47 @@
         </div>
         <div class="form-group">
             <label>Languages:<sup>*</sup></label>
-            <div class="d-flex justify-content-start mb-3">
+            <div class=" my-3">
 
                 <?php
-                $categories = array_map(function($category){
+                $categories = array_map(function ($category) {
                     return $category->category_id;
                 }, $data['checkedCategories']);
                 ?>
 
-             
-                
-                <div class="mr-4">
-                    <input type="checkbox" name="categories[]" value="1" <?php if (in_array("1", $categories)) {
-                echo "checked";};?> /> HTML<br>
-                    <input type="checkbox" name="categories[]" value="2" <?php if (in_array("2", $categories)) {
-                echo "checked";};?> /> CSS<br>
-                    <input type="checkbox" name="categories[]" value="3" <?php if (in_array("3", $categories)) {
-                echo "checked";};?> /> Javascript<br>
-                    <input type="checkbox" name="categories[]" value="4" <?php if (in_array("4", $categories)) {
-                echo "checked";};?> /> PHP<br>
-                    <input type="checkbox" name="categories[]" value="5" <?php if (in_array("5", $categories)) {
-                echo "checked";};?> /> jQuery<br>
+                <!-- get database categories and checked echo checked for all the ones that are checked for an article -->
 
-                </div>
-                <div class="mr-4">
-                    <input type="checkbox" name="categories[]" value="6" <?php if (in_array("6", $categories)) {
-                echo "checked";};?> /> Wordpress<br>
-                    <input type="checkbox" name="categories[]" value="7" <?php if (in_array("7", $categories)) {
-                echo "checked";};?> /> flexbox<br>
-                    <input type="checkbox" name="categories[]" value="8" <?php if (in_array("8", $categories)) {
-                echo "checked";};?> /> Bootstrap<br>
-                    <input type="checkbox" name="categories[]" value="9" <?php if (in_array("9", $categories)) {
-                echo "checked";};?> /> mySql<br>
-                 <input type="checkbox" name="categories[]" value="10" <?php if (in_array("10", $categories)) {
-                echo "checked";};?> /> Architecture mvc<br>
-                </div>
-                <div class="mr-4">
-                <input type="checkbox" name="categories[]" value="11" <?php if (in_array("11", $categories)) {
-                echo "checked";};?> /> Webpack<br>
-                 </div>
-               
+                <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
+                <?php $category_id = $databaseCategory->category_id;?>
+                <input type="checkbox" name="categories[]" value="<?php echo $databaseCategory->category_id; ?>" <?php if (in_array("$category_id", $categories)) {
+                    echo "checked";}
+                ;?> />
+                <?php echo $databaseCategory->category_name; ?>
+                <?php endforeach;?>
+
             </div>
-        </div>
-        <div class="form-group">
-            <label>Slug de l'article:<sup>*</sup></label>
-            <input disabled type="text"
-                class="form-control form-control-md"
-                value="<?php echo $data['slug']; ?>">
-        </div>
-        <div class="form-group">
-            <p><strong>Image actuelle:</strong>
-                <?php echo $data['article_image']; ?>
-                <label>Sélectionner une image</label>
-                <input type="file" name="article_image"
-                    class="form-control-file <?php echo (!empty($data['article_image_err'])) ? 'is-invalid' : ''; ?>">
+            <div class="form-group">
+                <label>Slug de l'article:<sup>*</sup></label>
+                <input disabled type="text" class="form-control form-control-md" value="<?php echo $data['slug']; ?>">
+            </div>
+            <div class="form-group">
+                <p><strong>Image actuelle:</strong>
+                    <?php echo $data['article_image']; ?>
+                    <label>Sélectionner une image</label>
+                    <input type="file" name="article_image"
+                        class="form-control-file <?php echo (!empty($data['article_image_err'])) ? 'is-invalid' : ''; ?>">
 
-                <span class="invalid-feedback">
-                    <?php foreach ($data['article_image_err'] as $error): ?>
-                    <span><?php echo $error . '</br>'; ?></span>
-                    <?php endforeach;?>
-                </span>
+                    <span class="invalid-feedback">
+                        <?php foreach ($data['article_image_err'] as $error): ?>
+                        <span><?php echo $error . '</br>'; ?></span>
+                        <?php endforeach;?>
+                    </span>
 
 
-        </div>
+            </div>
 
-        <input type="submit" class="btn btn-success" value="Envoyer">
+            <input type="submit" class="btn btn-success" value="Envoyer">
     </form>
 </div>
 
-<?php require APPROOT . '/views/inc/admin-footer.php'; ?>
+<?php require APPROOT . '/views/inc/admin-footer.php';?>

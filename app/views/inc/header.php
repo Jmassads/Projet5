@@ -24,6 +24,7 @@
   <!-- Custom CSS -->
   <link type="text/css" rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
 
+  
 </head>
 
 <body>

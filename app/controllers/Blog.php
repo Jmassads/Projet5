@@ -83,10 +83,10 @@ class Blog extends Controller
         }
     }
 
-    public function categorie($id)
+    public function categorie($name)
     {
-
-        $articles = $this->BlogModel->getArticlesbyCategory($id);
+        $categoryName = $this->BlogModel->getCategoriesByName($name);
+        $articles = $this->BlogModel->getArticlesbyCategoryName($name);
         $categories = $this->BlogModel->getCategories();
         $frontCategories = $this->BlogModel->getFrontCategories();
         $backCategories = $this->BlogModel->getBackCategories();
@@ -98,8 +98,11 @@ class Blog extends Controller
             'backCategories' => $backCategories,
             'databaseCategories' => $databaseCategories,
         ];
-        $this->view('front/pages/category', $data);
-    }
 
-  
+        if(!$categoryName){
+            die("Redirection - la catégorie n'existe pas");
+        } else {
+            $this->view('front/pages/category', $data);
+        }  
+    }
 }

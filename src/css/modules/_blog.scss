@@ -20,12 +20,12 @@ margin-bottom: 3rem;
     position: relative;
     margin-bottom: 0;
     a{
-      color: #b83b3b;
+      color: $mainRed;
     }
   }
   &--author-name {
     display: inline-block;
-    color: #b83b3b;
+    color: $mainRed;
   }
   &--excerpt {
     margin-top: 1rem;
@@ -49,8 +49,8 @@ margin-bottom: 3rem;
 .card-header {
   padding: .75rem 1.25rem;
   margin-bottom: 0;
-  background-color: #b83b3b;
-  border-bottom: 1px solid #b83b3b;
+  background-color: $mainRed;
+  border-bottom: 1px solid $mainRed;
   color: #fff;
   border-radius: 0;
   &:first-child {

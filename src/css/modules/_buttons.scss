@@ -5,8 +5,8 @@ button:focus {
 
 .btn-outline-dark:hover {
   color: #fff !important;
-  background-color:#b83b3b;
-  border-color: #b83b3b;
+  background-color:$mainRed;
+  border-color: $mainRed;
 }
 
 .btn:hover {
@@ -24,7 +24,7 @@ button:focus {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: #b83b3b;
+  background-color: $mainRed;
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   width: 46px;
@@ -42,8 +42,8 @@ button:focus {
 }
 
 .contact-button {
-  border: 1px solid #b83b3b;
-  background-color: #b83b3b;
+  border: 1px solid $mainRed;
+  background-color: $mainRed;
   color: #fff;
 
   &:hover {

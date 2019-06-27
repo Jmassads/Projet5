@@ -2,4 +2,16 @@
   @include atMedium {
     padding-left: 70px;
   }
+
+  h2 a {
+    color: $mainRed;
+
+    &:hover {
+      color: darken($mainRed, 80%)
+    }
+  }
+
+  .lnr-link {
+    font-size: 1.2rem;
+  }
 }

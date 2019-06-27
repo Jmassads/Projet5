@@ -27,7 +27,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <?php foreach ($data['frontCategories'] as $frontCategory): ?>
                                         <a class="dropdown-item"
-                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $frontCategory->category_id;?>"><?php echo $frontCategory->category_name;?></a>
+                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $frontCategory->category_name;?>"><?php echo $frontCategory->category_name;?></a>
                                         <?php endforeach;?>
                                     </div>
                                 </li>
@@ -39,7 +39,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <?php foreach ($data['backCategories'] as $backCategory): ?>
                                         <a class="dropdown-item"
-                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $backCategory->category_id;?>"><?php echo $backCategory->category_name;?></a>
+                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $backCategory->category_name;?>"><?php echo $backCategory->category_name;?></a>
                                         <?php endforeach;?>
                                     </div>
                                 </li>
@@ -51,13 +51,13 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
                                         <a class="dropdown-item"
-                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $databaseCategory->category_id;?>"><?php echo $databaseCategory->category_name;?></a>
+                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $databaseCategory->category_name;?>"><?php echo $databaseCategory->category_name;?></a>
                                         <?php endforeach;?>
                                     </div>
                                 </li>
                         </div>
                     </nav>
-                    <h2 class="mt-3 h4"><a href="<?php echo $data['article']->article_url;?>" target="_blank"><?php echo $data['article']->article_title; ?></a></h2>
+                    <h2 class="mt-3 h4"><a href="<?php echo $data['article']->article_url;?>" target="_blank"><span class="lnr lnr-link"></span> <?php echo $data['article']->article_title; ?></a></h2>
                     <p><?php echo $data['article']->article_content; ?></p>
                 </div>
             </div>

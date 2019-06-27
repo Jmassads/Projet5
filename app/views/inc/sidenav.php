@@ -2,11 +2,11 @@
 <div class="overlay">
     <div class="nav-container">
         <ul>
-            <li><a class="is-active" href="<?php echo URLROOT;?>">Accueil</a></li>
-            <li><a href="<?php echo URLROOT;?>#about">À propos</a></li>
-            <li><a href="<?php echo URLROOT;?>/Portfolio">Portfolio</a></li>
-            <li><a href="<?php echo URLROOT;?>#skills">Skills</a></li>
-            <li><a href="<?php echo URLROOT;?>/Blog">Blog</a></li>
+            <li><a class="animsition-link is-active" href="<?php echo URLROOT;?>">Accueil</a></li>
+            <li><a class="animsition-link" href="<?php echo URLROOT;?>#about">À propos</a></li>
+            <li><a class="animsition-link" href="<?php echo URLROOT;?>/Portfolio">Portfolio</a></li>
+            <li><a class="animsition-link" href="<?php echo URLROOT;?>#skills">Skills</a></li>
+            <li><a class="animsition-link" href="<?php echo URLROOT;?>/Blog">Blog</a></li>
         </ul>
     </div>
 </div>
