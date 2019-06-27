@@ -94,12 +94,9 @@
 
 
         </div>
-        <!-- <input name="image" type="file" id="upload" class="hidden" onchange=""> -->
 
         <input type="submit" class="btn btn-success" value="Envoyer">
     </form>
 </div>
-
-<?php print_r($data);?>
 
 <?php require APPROOT . '/views/inc/admin-footer.php'; ?>

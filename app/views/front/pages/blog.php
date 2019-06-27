@@ -82,7 +82,7 @@
                 </div>
 
 
-                <div id="remove_row" class="d-dlex justify-content-center">
+                <div id="remove_row" class="d-flex justify-content-center">
                     <button type="button" name="btn_more" data-article="<?php echo $article->article_id; ?>"
                         id="btn_more" class="btn btn-sm btn-outline-dark rounded-0 mb-4 shadow-none">Voir plus
                         d'articles</button>
@@ -90,7 +90,7 @@
 
 
 
-        </div>
+            </div>
     </section>
 
 </div>

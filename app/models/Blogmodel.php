@@ -192,4 +192,13 @@ class Blogmodel
 
         return $results;
     }
+
+    public function getCategoriesByArticleId($id)
+    {
+        $this->db->query('SELECT * FROM article_categories 
+        WHERE article_id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
 }

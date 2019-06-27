@@ -57,13 +57,14 @@ $('#myBtn').click(function () {
 
 $(document).on('click', '#btn_more', function(){  
     var last_article_id = $(this).data("article");  
-    $('#btn_more').html("Loading...");  
+    $('#btn_more').html("Chargement...");  
     console.log(last_article_id);
     var delay = 500;
     $.ajax({  
-        url:"/FinalProjectphp/Blog/ajax",  
-        method:"POST",  
-        data:{last_article_id:last_article_id},  
+        url:"/FinalProjectphp/Blog/ajax",   // La ressource ciblée
+        method:"POST",  // Le type de la requête HTTP.
+        // data:{last_article_id:last_article_id},
+        data:{last_article_id},  // // On fait passer nos variables au script /FinalProjectphp/Blog/ajax
         dataType:"text",  
         success:function(data) {
             setTimeout(function() {

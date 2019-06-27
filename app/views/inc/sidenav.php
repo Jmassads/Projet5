@@ -2,7 +2,7 @@
 <div class="overlay">
     <div class="nav-container">
         <ul>
-            <li><a class="is-active" href="">Accueil</a></li>
+            <li><a class="is-active" href="<?php echo URLROOT;?>">Accueil</a></li>
             <li><a href="<?php echo URLROOT;?>#about">À propos</a></li>
             <li><a href="<?php echo URLROOT;?>/Portfolio">Portfolio</a></li>
             <li><a href="<?php echo URLROOT;?>#skills">Skills</a></li>
