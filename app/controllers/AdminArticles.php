@@ -197,22 +197,24 @@ class AdminArticles extends Controller
                         }
                     }
 
-                    $databaseCategories = $this->blogModel->getCategoriesByArticleId($id);
+                    // array with std objects
+                    $databaseCategoriesStd = $this->blogModel->getCategoriesByArticleId($id);
 
-                    foreach ($newCategories as $newCategory) {
-                        // die(print_r($categories));
-                        // on verifie si la categorie existe deja. si elle existe on ne la rajoute pas. si elle n'existe pas on la rajoute
-                        if (!in_array($newCategory, $databaseCategories)) {
-                            $this->blogModel->deleteArticleCategory($newCategory, $id);
-                        }
+                    // convert to array to be able to compare 2 array later on
+                    $databaseCategories = json_decode(json_encode($databaseCategoriesStd),true);
+
+
+        
+                    foreach ($databaseCategories as $databaseCategory) {
+
+                        $databaseCategoryId = $databaseCategory['category_id'];
+                
+                        if (!in_array($databaseCategory['category_id'], $newCategories)) {
+                            // die(print_r($databaseCategory));
+                            $this->blogModel->deleteArticleCategory($databaseCategory['category_id'], $id);
                     }
-
+                }
                     
-                    // die(print_r($databaseCategories));
-                    // get all categories with article_id
-                    // $this->blogModel->deleteArticleCategory($newCategory, $id);
-
-                    // Redirect to login
                     flash('article_message', 'Article modifié');
                     redirect('AdminArticles');
                 } else {
