@@ -12,9 +12,11 @@
     <div class="row my-3">
         <?php foreach($data['projects'] as $project):?>
         <div class="col-md-6 col-lg-4">
-            <div class="projects--single">
-                <h2><?php echo $project->project_name;?></h2>
-
+            <div class="projects--single pb-3">
+                <div class="d-flex align-items-center mb-2">
+                    <img src="<?php echo URLROOT;?>/img/project-icon.png" alt="" width="40">
+                    <h2 class="m-0 pl-3 h4"><?php echo $project->project_name;?></h2>
+                </div>
                 <?php 
                 $string = strip_tags($project->project_description);
                 if (strlen($project->project_description) > 200) {

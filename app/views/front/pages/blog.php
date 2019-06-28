@@ -27,7 +27,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($data['frontCategories'] as $frontCategory): ?>
                                 <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $frontCategory->category_slug; ?>"><?php echo $frontCategory->category_name; ?></a>
+                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $frontCategory->category_name_slug; ?>"><?php echo $frontCategory->category_name; ?></a>
                                 <?php endforeach;?>
                             </div>
                         </li>

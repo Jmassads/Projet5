@@ -78,12 +78,20 @@ class AdminCategories extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            $category = $this->categoryModel->getCategoryById($id);
+
+            if(!empty($_POST['type'])){
+                $type = trim($_POST['type']);
+            } else {
+                $type = $category->category_type;
+            }
+
             $data = [
                 'id' => $id,
                 'name' => trim($_POST['name']),
-                'type' => trim($_POST['type']),
+                'type' => $type,
                 'name_slug' => cleaner(trim($_POST['name'])),
-                'type_slug' => cleaner(trim($_POST['type'])),
+                'type_slug' => cleaner($type),
 
                 'name_err' => '',
                 'type_err' => '',

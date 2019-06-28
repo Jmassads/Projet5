@@ -11,7 +11,7 @@ class AdminProjects extends Controller
         $this->projectModel = $this->model('Projectmodel');
     }
 
-// Tous les projets
+    // Tous les projets
     public function index()
     {
         $projects = $this->projectModel->getProjects();
@@ -22,7 +22,7 @@ class AdminProjects extends Controller
         $this->view('admin/projects/index', $data);
     }
 
-// Un seul Projet
+    // Un seul Projet
     public function show($id)
     {
 
@@ -34,17 +34,17 @@ class AdminProjects extends Controller
         $this->view('admin/projects/show', $data);
     }
 
-// Ajouter un projet
+    // Ajouter un projet
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if(isset($_POST['categories'])){
+            if (isset($_POST['categories'])) {
                 $categories = implode(",", $_POST["categories"]);
             } else {
                 $categories = '';
             }
-                
+
             $data = [
                 'name' => trim($_POST['name']),
                 'description' => trim($_POST['description']),
@@ -118,7 +118,7 @@ class AdminProjects extends Controller
                 'url' => '',
                 'comments' => '',
                 'categories' => '',
-                'slug' => ''
+                'slug' => '',
             ];
 
             $this->view('admin/projects/add', $data);
@@ -128,7 +128,7 @@ class AdminProjects extends Controller
     public function edit($id)
     {
 
-        if(!empty($_POST['categories'])){
+        if (!empty($_POST['categories'])) {
             $categories = implode(",", $_POST["categories"]);
         } else {
             $categories = '';
@@ -136,13 +136,13 @@ class AdminProjects extends Controller
 
         $project = $this->projectModel->getProjectById($id);
 
-        if(!empty($_FILES['project_sm_image']['name'])){
+        if (!empty($_FILES['project_sm_image']['name'])) {
             $small_image = str_replace(' ', '', $_FILES['project_sm_image']['name']);
         } else {
             $small_image = $project->project_sm_image;
         }
 
-        if(!empty($_FILES['project_lg_image']['name'])){
+        if (!empty($_FILES['project_lg_image']['name'])) {
             $large_image = str_replace(' ', '', $_FILES['project_lg_image']['name']);
         } else {
             $large_image = $project->project_lg_image;
@@ -155,7 +155,7 @@ class AdminProjects extends Controller
                 'description' => trim($_POST['description']),
                 'small_image' => $small_image,
                 'large_image' => $large_image,
-                'categories' => $categories, 
+                'categories' => $categories,
                 'url' => trim($_POST['url']),
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
@@ -171,13 +171,12 @@ class AdminProjects extends Controller
             // Validate project name
             if (empty($data['name'])) {
                 $data['name_err'] = 'Merci de rajouter un nom pour le projet';
-               
+
             }
-             // Validate project description
+            // Validate project description
             if (empty($data['description'])) {
                 $data['description_err'] = 'Merci de rajouter une description';
             }
-            
 
             $small_image_uploader = new Uploader();
             $small_image_uploader->uploadFile('project_sm_image');
@@ -217,7 +216,7 @@ class AdminProjects extends Controller
                 'url' => $project->project_url,
                 'categories' => $project->project_categories,
                 'comments' => $project->project_comments,
-                'slug' => $project->project_slug
+                'slug' => $project->project_slug,
             ];
 
             $this->view('admin/projects/edit', $data);

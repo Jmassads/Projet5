@@ -12,53 +12,80 @@ class Blog extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
-    public function index($current_page=1)
+    public function index($current_page = 1)
     {
-       
-            $articles = $this->BlogModel->getArticlesLimit3();
+
+        $articles = $this->BlogModel->getArticlesLimit3();
+        $categories = $this->categoryModel->getCategories();
+        $frontCategories = $this->categoryModel->getFrontCategories();
+        $backCategories = $this->categoryModel->getBackCategories();
+        $databaseCategories = $this->categoryModel->getDatabaseCategories();
+
+        $data = [
+            'articles' => $articles,
+            'categories' => $categories,
+            'frontCategories' => $frontCategories,
+            'backCategories' => $backCategories,
+            'databaseCategories' => $databaseCategories,
+
+        ];
+        $this->view('front/pages/blog', $data);
+    }
+
+    public function ajax()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $article_id = $_POST['last_article_id'];
+
+            if (!empty($this->BlogModel->getArticleswithAjax($article_id))) {
+                $newArticles = $this->BlogModel->getArticleswithAjax($article_id);
+            } else {
+                die();
+            }
+
+            $data = [
+                'newArticles' => $newArticles,
+            ];
+
+            $this->view('front/pages/ajax_more', $data);
+        } else {
+            $article_id = '';
+        }
+    }
+
+    public function categorie($nameSlug = null)
+    {
+        if (is_null($nameSlug)) {
+            die("redirection");
+        } else {
+            $categoryByNameSlug = $this->categoryModel->getCategoriesByNameSlug($nameSlug);
+            $articles = $this->BlogModel->getArticlesbyCategoryName($nameSlug);
             $categories = $this->categoryModel->getCategories();
             $frontCategories = $this->categoryModel->getFrontCategories();
             $backCategories = $this->categoryModel->getBackCategories();
             $databaseCategories = $this->categoryModel->getDatabaseCategories();
-
             $data = [
                 'articles' => $articles,
                 'categories' => $categories,
                 'frontCategories' => $frontCategories,
                 'backCategories' => $backCategories,
                 'databaseCategories' => $databaseCategories,
-
-
             ];
-            $this->view('front/pages/blog', $data);
-    }
 
-    public function ajax(){
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $article_id = $_POST['last_article_id'];
-
-            if(!empty($this->BlogModel->getArticleswithAjax($article_id))){
-                $newArticles = $this->BlogModel->getArticleswithAjax($article_id);
+            if (!$categoryByNameSlug) {
+                die("Redirection - la catégorie n'existe pas");
             } else {
-                die();
+                $this->view('front/pages/category', $data);
             }
-            
-            $data = [
-                'newArticles' => $newArticles
-            ];
-            
-
-            $this->view('front/pages/ajax_more', $data);
-        } else {
-            $article_id = '';
-        }    
+        }
     }
+    
+    public function article($slug = null)
+    {
 
-    public function article($slug = null){
-
-        if (is_null($slug)){
+        if (is_null($slug)) {
             die('redirection page');
         } else {
 
@@ -75,36 +102,13 @@ class Blog extends Controller
                 'databaseCategories' => $databaseCategories,
             ];
 
-            if(!$article){
-              die("cet article n'existe pas"); 
+            if (!$article) {
+                die("cet article n'existe pas");
             } else {
                 $this->view('front/pages/single-article', $data);
             }
-            
+
         }
     }
 
-    public function categorie($nameSlug)
-    {
-        $categoryName = $this->categoryModel->getCategoriesByName($nameSlug);
-        // $categoryName = $this->categoryModel->getCategoriesByName($name);
-        $articles = $this->BlogModel->getArticlesbyCategoryName($nameSlug);
-        $categories = $this->categoryModel->getCategories();
-        $frontCategories = $this->categoryModel->getFrontCategories();
-        $backCategories = $this->categoryModel->getBackCategories();
-        $databaseCategories = $this->categoryModel->getDatabaseCategories();
-        $data = [
-            'articles' => $articles,
-            'categories' => $categories,
-            'frontCategories' => $frontCategories,
-            'backCategories' => $backCategories,
-            'databaseCategories' => $databaseCategories,
-        ];
-
-        if(!$nameSlug){
-            die("Redirection - la catégorie n'existe pas");
-        } else {
-            $this->view('front/pages/category', $data);
-        }  
-    }
 }

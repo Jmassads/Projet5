@@ -22,7 +22,6 @@ class AdminArticles extends Controller
         ];
         $this->view('admin/articles/index', $data);
     }
-
     // Ajouter un article
     public function add()
     {
@@ -100,7 +99,7 @@ class AdminArticles extends Controller
                 'slug' => '',
                 'excerpt' => '',
                 'categories' => [],
-                'databaseCategories' => $databaseCategories
+                'databaseCategories' => $databaseCategories,
             ];
 
             $this->view('admin/articles/add', $data);
@@ -181,9 +180,7 @@ class AdminArticles extends Controller
                 } else {
                     $newCategories = [];
                 }
-               
 
-                
                 // Validation passed
                 //Execute
                 if ($this->blogModel->updateArticle($data)) {
@@ -199,24 +196,21 @@ class AdminArticles extends Controller
 
                     // array with std objects
                     $databaseCategoriesStd = $this->categoryModel->getCategoriesByArticleId($id);
-                    
 
                     // convert to array to be able to compare 2 arrays later
-                    $databaseCategories = json_decode(json_encode($databaseCategoriesStd),true);
+                    $databaseCategories = json_decode(json_encode($databaseCategoriesStd), true);
                     // die(print_r($databaseCategories));
 
-
-        
                     foreach ($databaseCategories as $databaseCategory) {
 
                         $databaseCategoryId = $databaseCategory['category_id'];
-                
+
                         if (!in_array($databaseCategory['category_id'], $newCategories)) {
                             // die(print_r($databaseCategory));
                             $this->blogModel->deleteArticleCategory($databaseCategory['category_id'], $id);
+                        }
                     }
-                }
-                    
+
                     flash('article_message', 'Article modifié');
                     redirect('AdminArticles');
                 } else {
@@ -240,11 +234,13 @@ class AdminArticles extends Controller
                 'excerpt' => $article->article_excerpt,
                 'url' => $article->article_url,
                 'checkedCategories' => $checkedCategories,
-                'databaseCategories' => $databaseCategories
+                'databaseCategories' => $databaseCategories,
             ];
 
             $this->view('admin/articles/edit', $data);
         }
     }
+
+
 
 }

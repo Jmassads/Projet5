@@ -4,7 +4,10 @@
 
 <a href="<?php echo URLROOT; ?>/AdminProjects" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
 <div class="card card-body bg-light my-5">
-    <h2>Modifier le Projet</h2>
+    <div class="d-flex align-items-center mb-3">
+        <img src="<?php echo URLROOT; ?>/img/project-icon.png" alt="" width="40">
+        <h2 class="m-0 pl-3 h3">Modifier le Projet</h2>
+    </div>
     <p>Changer les détails du projet</p>
     <form action="<?php echo URLROOT; ?>/AdminProjects/edit/<?php echo $data['id']; ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -121,7 +124,7 @@
                 placeholder="Ajouter les commentaires du mentor..."><?php echo $data['comments']; ?></textarea>
             <span class="invalid-feedback"><?php echo $data['comments_err']; ?></span>
         </div>
-        <input type="submit" class="btn btn-success" value="Envoyer">
+        <input type="submit" class="btn btn-primary" value="Envoyer">
     </form>
 </div>
 

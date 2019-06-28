@@ -16,13 +16,12 @@
                 <?php echo $category->category_name;?>
             </div>
             <div class="d-flex">
-                <a class="btn btn-sm btn-outline-secondary" href="">Voir</a>
-                <a class="btn btn-sm btn-outline-info ml-2"
+                <a class="btn btn-md btn-outline-info ml-2 rounded-0"
                     href="<?php echo URLROOT;?>/AdminCategories/edit/<?php echo $category->category_id;?>">Modifier</a>
 
                 <form action="<?php echo URLROOT; ?>/AdminCategories/delete/<?php echo $category->category_id; ?>"
                     method="post">
-                    <input type="submit" class="btn-sm btn-outline-danger ml-2" value="Supprimer">
+                    <input type="submit" class="btn-md btn-outline-danger ml-2" value="Supprimer">
                 </form>
             </div>
         </li>

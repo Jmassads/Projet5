@@ -62,8 +62,8 @@
             </div>
             <div class="form-group">
                 <p><strong>Image actuelle:</strong>
-                    <?php echo $data['article_image']; ?>
-                    <label>Sélectionner une image</label>
+                    <?php echo $data['article_image']; ?></p>
+                    <label>Sélectionner une nouvelle image</label>
                     <input type="file" name="article_image"
                         class="form-control-file <?php echo (!empty($data['article_image_err'])) ? 'is-invalid' : ''; ?>">
 
