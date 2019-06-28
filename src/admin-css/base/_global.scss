@@ -16,3 +16,22 @@ body {
 .hidden {
    display: none;
 }
+
+.badge {
+    display: inline-block;
+    padding: .65em .8em;
+}
+
+.badge-red {
+    background-color: #b83b3b;
+    color: #fff;
+}
+
+.btn-red {
+    background-color: #b83b3b;
+    color: #fff;
+    &:hover {
+        background-color: darken(#b83b3b, 5%);
+        color: #fff;
+    }
+}

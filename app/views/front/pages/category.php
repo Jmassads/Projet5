@@ -27,7 +27,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <?php foreach ($data['frontCategories'] as $frontCategory): ?>
                                         <a class="dropdown-item"
-                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $frontCategory->category_name;?>"><?php echo $frontCategory->category_name;?></a>
+                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $frontCategory->category_name_slug;?>"><?php echo $frontCategory->category_name;?></a>
                                         <?php endforeach;?>
                                     </div>
                                 </li>
@@ -39,7 +39,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <?php foreach ($data['backCategories'] as $backCategory): ?>
                                         <a class="dropdown-item"
-                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $backCategory->category_name;?>"><?php echo $backCategory->category_name;?></a>
+                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $backCategory->category_name_slug;?>"><?php echo $backCategory->category_name;?></a>
                                         <?php endforeach;?>
                                     </div>
                                 </li>
@@ -51,13 +51,15 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
                                         <a class="dropdown-item"
-                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $databaseCategory->category_name;?>"><?php echo $databaseCategory->category_name;?></a>
+                                            href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $databaseCategory->category_name_slug;?>"><?php echo $databaseCategory->category_name;?></a>
                                         <?php endforeach;?>
                                     </div>
                                 </li>
                         </div>
                     </nav>
                     <div class="row align-items-start mt-3">
+
+                        <?php if($data['articles']):?>
                         <?php foreach($data['articles'] as $article):?>
                         <div class="col-md-6">
                             <div class="article">
@@ -76,12 +78,23 @@
                             </div>
                         </div>
                         <?php endforeach;?>
+
+                        <?php else:?>
+
+                        <div class="col-12">
+                            <p>Pas d'articles pour l'instant</p>
+                        </div>
+                        <?php endif;?>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+
 
 <button id="myBtn" title="Go to top"><span class="lnr lnr-chevron-up"></span></button>
 

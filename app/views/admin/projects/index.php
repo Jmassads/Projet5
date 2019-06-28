@@ -17,10 +17,10 @@
 
                 <?php 
                 $string = strip_tags($project->project_description);
-                if (strlen($project->project_description) > 300) {
+                if (strlen($project->project_description) > 200) {
 
                     // truncate string
-                    $stringCut = substr($string, 0, 300);
+                    $stringCut = substr($string, 0, 200);
                     $endPoint = strrpos($stringCut, ' ');
 
                     //if the string doesn't contain any space then it will cut without word basis.

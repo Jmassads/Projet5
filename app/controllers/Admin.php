@@ -11,13 +11,14 @@
       {
         $this->projectModel = $this->model('Projectmodel');
         $this->blogModel = $this->model('Blogmodel');
+        $this->categoryModel = $this->model('Categorymodel');
       }
 
       public function index()
       {
         
         $articles = $this->blogModel->getArticlesLimit3();
-        $categories = $this->blogModel->getCategories();
+        $categories = $this->categoryModel->getCategories();
         $projects = $this->projectModel->getProjects(); 
          
         $data = [

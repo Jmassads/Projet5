@@ -17,7 +17,6 @@ class Blogmodel
         return $results;
     }
 
-    
     public function getArticlesLimit3()
     {
         $this->db->query('SELECT * FROM articles ORDER BY articles.article_id DESC LIMIT 3');
@@ -36,7 +35,6 @@ class Blogmodel
 
         return $results;
     }
-
 
     // Add Article
     public function addArticle($data)
@@ -67,51 +65,22 @@ class Blogmodel
         return $article_id;
     }
 
-    // Add Article with article category
-    public function addArticleCategory($category, $article_id)
+    // Delete Post
+    public function deleteArticleCategory($category_id, $article_id)
     {
         // Prepare Query
-        $this->db->query('INSERT INTO article_categories (category_id, article_id)
-  VALUES (:category, :article_id)');
+        $this->db->query('DELETE FROM article_categories WHERE category_id = :category_id AND article_id = :article_id');
 
         // Bind Values
-        $this->db->bind(':category', $category);
+        $this->db->bind(':category_id', $category_id);
         $this->db->bind(':article_id', $article_id);
+
         //Execute
         if ($this->db->execute()) {
             return true;
         } else {
             return false;
         }
-    }
-
-    // Delete Post
-    public function deleteArticleCategory($category_id, $article_id){
-        // Prepare Query
-        $this->db->query('DELETE FROM article_categories WHERE category_id = :category_id AND article_id = :article_id');
-  
-        // Bind Values
-        $this->db->bind(':category_id', $category_id);
-        $this->db->bind(':article_id', $article_id);
-
-        //Execute
-        if($this->db->execute()){
-          return true;
-        } else {
-          return false;
-        }
-      }
-
-    // Get Article By ID
-    public function getArticleById($id)
-    {
-        $this->db->query("SELECT * FROM articles WHERE article_id = :id");
-
-        $this->db->bind(':id', $id);
-
-        $row = $this->db->single();
-
-        return $row;
     }
 
     // Update Article
@@ -137,6 +106,18 @@ class Blogmodel
         }
     }
 
+    // Get Article By ID
+    public function getArticleById($id)
+    {
+        $this->db->query("SELECT * FROM articles WHERE article_id = :id");
+
+        $this->db->bind(':id', $id);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
     public function getArticlesbyCategory($id)
     {
         $this->db->query('SELECT * FROM articles
@@ -151,120 +132,32 @@ class Blogmodel
         return $results;
     }
 
-    public function getArticlesbyCategoryName($name)
+    // Get Article by slug
+    // Pour lire un article, ex:article/object-oriented-php-mvc
+    public function getarticleBySlug($slug)
+    {
+        $this->db->query("SELECT * FROM articles WHERE article_slug = :slug");
+
+        $this->db->bind(':slug', $slug);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    // pour trouver des articles par nom (slug) (html, cs, javascript...)
+    public function getArticlesbyCategoryName($nameSlug)
     {
         $this->db->query('SELECT * FROM articles
         INNER JOIN article_categories on article_categories.article_id = articles.article_id
         INNER JOIN categories on categories.category_id = article_categories.category_id
-        WHERE categories.category_name = :name');
+        WHERE categories.category_name_slug = :slug');
 
-        $this->db->bind(':name', $name);
-
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    public function getCategoriesByName($name){
-        $this->db->query('SELECT * FROM categories WHERE category_name = :name');
-
-        $this->db->bind(':name', $name);
-        
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    // Get all languages (HTML, CSS< Javascript...)
-    public function getCategories()
-    {
-        $this->db->query('SELECT * FROM categories
-        INNER JOIN article_categories on article_categories.category_id = categories.category_id');
+        $this->db->bind(':slug', $nameSlug);
 
         $results = $this->db->resultSet();
 
         return $results;
     }
-
-    public function getAllDatabaseCategories()
-    {
-        $this->db->query('SELECT * FROM categories');
-
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    public function getFrontCategories()
-    {
-        $this->db->query('SELECT * FROM categories WHERE category_type = :type');
-
-        $this->db->bind(':type', 'front-end');
-
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    public function getBackCategories()
-    {
-        $this->db->query('SELECT * FROM categories WHERE category_type = :type');
-
-        $this->db->bind(':type', 'back-end');
-
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    public function getDatabaseCategories()
-    {
-        $this->db->query('SELECT * FROM categories WHERE category_type = :type');
-
-        $this->db->bind(':type', 'database');
-
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    public function getCategoriesByArticleId($id)
-    {
-        $this->db->query('SELECT * FROM article_categories 
-        WHERE article_id = :id');
-        $this->db->bind(':id', $id);
-        $results = $this->db->resultSet();
-        return $results;
-    }
-
-    // Get Project By ID
- public function getarticleBySlug($slug){
-    $this->db->query("SELECT * FROM articles WHERE article_slug = :slug");
-  
-    $this->db->bind(':slug', $slug);
-    
-    $row = $this->db->single();
-  
-    return $row;
-  }
-
-    // FOR PAGINATION
-    public function ArticlesPagination()
-    {
-        $this->db->query("SELECT COUNT(article_id) as numarticles FROM articles");
-        $row = $this->db->single();
-        return $row;
-    }
-
-    // FOR PAGINATION
-    public function GetPaginatedArticles($per_page, $offset)
-    {
-        $this->db->query("SELECT * FROM articles ORDER BY article_id DESC LIMIT :limit OFFSET :offset");
-        $this->db->bind(":limit", $per_page);
-        $this->db->bind(":offset", $offset);
-        $results = $this->db->resultSet();
-        return $results;
-    }
-
 
 }

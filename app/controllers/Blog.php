@@ -9,16 +9,17 @@ class Blog extends Controller
     public function __construct()
     {
         $this->BlogModel = $this->model('Blogmodel');
+        $this->categoryModel = $this->model('Categorymodel');
     }
 
     public function index($current_page=1)
     {
        
             $articles = $this->BlogModel->getArticlesLimit3();
-            $categories = $this->BlogModel->getCategories();
-            $frontCategories = $this->BlogModel->getFrontCategories();
-            $backCategories = $this->BlogModel->getBackCategories();
-            $databaseCategories = $this->BlogModel->getDatabaseCategories();
+            $categories = $this->categoryModel->getCategories();
+            $frontCategories = $this->categoryModel->getFrontCategories();
+            $backCategories = $this->categoryModel->getBackCategories();
+            $databaseCategories = $this->categoryModel->getDatabaseCategories();
 
             $data = [
                 'articles' => $articles,
@@ -61,11 +62,11 @@ class Blog extends Controller
             die('redirection page');
         } else {
 
-            $categories = $this->BlogModel->getcategories();
+            $categories = $this->categoryModel->getcategories();
             $article = $this->BlogModel->getarticleBySlug($slug);
-            $frontCategories = $this->BlogModel->getFrontCategories();
-            $backCategories = $this->BlogModel->getBackCategories();
-            $databaseCategories = $this->BlogModel->getDatabaseCategories();
+            $frontCategories = $this->categoryModel->getFrontCategories();
+            $backCategories = $this->categoryModel->getBackCategories();
+            $databaseCategories = $this->categoryModel->getDatabaseCategories();
             $data = [
                 'categories' => $categories,
                 'article' => $article,
@@ -83,14 +84,15 @@ class Blog extends Controller
         }
     }
 
-    public function categorie($name)
+    public function categorie($nameSlug)
     {
-        $categoryName = $this->BlogModel->getCategoriesByName($name);
-        $articles = $this->BlogModel->getArticlesbyCategoryName($name);
-        $categories = $this->BlogModel->getCategories();
-        $frontCategories = $this->BlogModel->getFrontCategories();
-        $backCategories = $this->BlogModel->getBackCategories();
-        $databaseCategories = $this->BlogModel->getDatabaseCategories();
+        $categoryName = $this->categoryModel->getCategoriesByName($nameSlug);
+        // $categoryName = $this->categoryModel->getCategoriesByName($name);
+        $articles = $this->BlogModel->getArticlesbyCategoryName($nameSlug);
+        $categories = $this->categoryModel->getCategories();
+        $frontCategories = $this->categoryModel->getFrontCategories();
+        $backCategories = $this->categoryModel->getBackCategories();
+        $databaseCategories = $this->categoryModel->getDatabaseCategories();
         $data = [
             'articles' => $articles,
             'categories' => $categories,
@@ -99,7 +101,7 @@ class Blog extends Controller
             'databaseCategories' => $databaseCategories,
         ];
 
-        if(!$categoryName){
+        if(!$nameSlug){
             die("Redirection - la catégorie n'existe pas");
         } else {
             $this->view('front/pages/category', $data);

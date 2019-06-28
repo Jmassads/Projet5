@@ -9,6 +9,7 @@ class AdminArticles extends Controller
     public function __construct()
     {
         $this->blogModel = $this->model('Blogmodel');
+        $this->categoryModel = $this->model('Categorymodel');
     }
 
 // Tous les articles
@@ -27,12 +28,15 @@ class AdminArticles extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
+
             $data = [
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
                 'article_image' => str_replace(' ', '', $_FILES['article_image']['name']),
                 'slug' => cleaner(trim($_POST['title'])),
                 'excerpt' => trim($_POST['excerpt']),
+                'databaseCategories' => $databaseCategories,
 
                 'title_err' => '',
                 'content_err' => '',
@@ -72,7 +76,7 @@ class AdminArticles extends Controller
                     $categories = $_POST['categories'];
                     foreach ($categories as $category) {
                         // die(print_r($categories));
-                        $this->blogModel->addArticleCategory($category, $article_id);
+                        $this->categoryModel->addArticleCategory($category, $article_id);
                     }
                     // Redirect to login
                     flash('article_message', 'Article ajouté');
@@ -87,7 +91,7 @@ class AdminArticles extends Controller
             }
 
         } else {
-            $databaseCategories = $this->blogModel->getAllDatabaseCategories();
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
 
             $data = [
                 'title' => '',
@@ -165,7 +169,7 @@ class AdminArticles extends Controller
 
             // Make sure there are no errors
             if (empty($data['title_err']) && empty($data['content_err']) && empty($data['article_image_err'])) {
-                $categories = $this->blogModel->getCategoriesByArticleId($id);
+                $categories = $this->categoryModel->getCategoriesByArticleId($id);
 
                 $checkedCategories = array_map(function ($category) {
                     return $category->category_id;
@@ -189,12 +193,12 @@ class AdminArticles extends Controller
                         // die(print_r($categories));
                         // on verifie si la categorie existe deja. si elle existe on ne la rajoute pas. si elle n'existe pas on la rajoute
                         if (!in_array($newCategory, $checkedCategories)) {
-                            $this->blogModel->addArticleCategory($newCategory, $id);
+                            $this->categoryModel->addArticleCategory($newCategory, $id);
                         }
                     }
 
                     // array with std objects
-                    $databaseCategoriesStd = $this->blogModel->getCategoriesByArticleId($id);
+                    $databaseCategoriesStd = $this->categoryModel->getCategoriesByArticleId($id);
                     
 
                     // convert to array to be able to compare 2 arrays later
@@ -224,9 +228,9 @@ class AdminArticles extends Controller
             }
         } else {
             // Get Article from model
-            $databaseCategories = $this->blogModel->getAllDatabaseCategories();
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
             $article = $this->blogModel->getArticleById($id);
-            $checkedCategories = $this->blogModel->getCategoriesByArticleId($id);
+            $checkedCategories = $this->categoryModel->getCategoriesByArticleId($id);
             $data = [
                 'id' => $id,
                 'content' => $article->article_content,
