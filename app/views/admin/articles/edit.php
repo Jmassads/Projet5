@@ -56,27 +56,28 @@
                 <?php endforeach;?>
 
             </div>
-            <div class="form-group">
-                <label>Slug de l'article:<sup>*</sup></label>
-                <input disabled type="text" class="form-control form-control-md" value="<?php echo $data['slug']; ?>">
-            </div>
-            <div class="form-group">
-                <p><strong>Image actuelle:</strong>
-                    <?php echo $data['article_image']; ?></p>
-                    <label>Sélectionner une nouvelle image</label>
-                    <input type="file" name="article_image"
-                        class="form-control-file <?php echo (!empty($data['article_image_err'])) ? 'is-invalid' : ''; ?>">
+        </div>
+        <div class="form-group">
+            <label>Slug de l'article:<sup>*</sup></label>
+            <input disabled type="text" class="form-control form-control-md" value="<?php echo $data['slug']; ?>">
+        </div>
+        <div class="form-group">
+            <p><strong>Image actuelle:</strong>
+                <?php echo $data['article_image']; ?></p>
+            <label>Sélectionner une nouvelle image</label>
+            <input type="file" name="article_image"
+                class="form-control-file <?php echo (!empty($data['article_image_err'])) ? 'is-invalid' : ''; ?>">
 
-                    <span class="invalid-feedback">
-                        <?php foreach ($data['article_image_err'] as $error): ?>
-                        <span><?php echo $error . '</br>'; ?></span>
-                        <?php endforeach;?>
-                    </span>
+            <span class="invalid-feedback">
+                <?php foreach ($data['article_image_err'] as $error): ?>
+                <span><?php echo $error . '</br>'; ?></span>
+                <?php endforeach;?>
+            </span>
 
 
-            </div>
+        </div>
 
-            <input type="submit" class="btn btn-success" value="Envoyer">
+        <input type="submit" class="btn btn-success" value="Envoyer">
     </form>
 </div>
 

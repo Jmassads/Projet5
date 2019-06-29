@@ -11,6 +11,52 @@ class Projectmodel
 
     // CRUD
 
+    public function getCategoriesByProjectId($id)
+    {
+        $this->db->query('SELECT * FROM project_categories
+        WHERE project_id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    public function getCategoriesByProjectSlug($slug)
+    {
+        $this->db->query('SELECT * FROM project_categories
+        INNER JOIN projects on project_categories.project_id = projects.id
+        INNER JOIN categories on categories.category_id = project_categories.category_id
+        WHERE project_slug = :slug');
+        $this->db->bind(':slug', $slug);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+
+    // Delete article category
+    public function deleteProjectCategory($category_id, $project_id)
+    {
+        // Prepare Query
+        $this->db->query('DELETE FROM project_categories WHERE category_id = :category_id AND project_id = :project_id');
+
+        // Bind Values
+        $this->db->bind(':category_id', $category_id);
+        $this->db->bind(':project_id', $project_id);
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // get the last id inserted
+    public function getId()
+    {
+        $project_id = $this->db->lastInsertId();
+        return $project_id;
+    }
+
     // Add Project
     public function addProject($data)
     {
@@ -85,7 +131,7 @@ class Projectmodel
     public function updateProject($data)
     {
         // Prepare Query
-        $this->db->query('UPDATE projects SET project_name = :name, project_description = :description, project_sm_image = :small_image, project_lg_image = :large_image, project_url = :url, project_categories = :categories, project_comments = :comments , project_slug = :slug WHERE id = :id');
+        $this->db->query('UPDATE projects SET project_name = :name, project_description = :description, project_sm_image = :small_image, project_lg_image = :large_image, project_url = :url, project_comments = :comments , project_slug = :slug WHERE id = :id');
 
         // Bind Values
         $this->db->bind(':id', $data['id']);
@@ -94,7 +140,6 @@ class Projectmodel
         $this->db->bind(':small_image', $data['small_image']);
         $this->db->bind(':large_image', $data['large_image']);
         $this->db->bind(':url', $data['url']);
-        $this->db->bind(':categories', $data['categories']);
         $this->db->bind(':comments', $data['comments']);
         $this->db->bind(':slug', $data['slug']);
 
@@ -106,15 +151,24 @@ class Projectmodel
         }
     }
 
-    // Get project categories by project id
-    public function getProjectCategoriesbyProjectID($id)
-    {
-        $this->db->query('SELECT * FROM projects LEFT JOIN project_technology_categories ON projects.id = project_technology_categories.project_id INNER JOIN technology_categories ON project_technology_categories.technology_cat_id=technology_categories.id WHERE projects.id = :id');
-        
-        $this->db->bind(':id', $id);
-        $results = $this->db->resultSet();
 
-        return $results;
+
+
+    // add project categories
+    public function addProjectCategory($category, $project_id)
+    {
+        // Prepare Query
+        $this->db->query('INSERT INTO project_categories (category_id, project_id) VALUES (:category, :project_id)');
+
+        // Bind Values
+        $this->db->bind(':category', $category);
+        $this->db->bind(':project_id', $project_id);
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

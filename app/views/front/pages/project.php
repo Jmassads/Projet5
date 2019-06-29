@@ -1,11 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php';?>
 
-<?php 
-$categories_as_string = $data['project']->project_categories;
-$categories = (explode(",",$categories_as_string));
-?>
-
-
 <?php require APPROOT . '/views/inc/sidenav.php';?>
 
 <div id="main" class="main-container">
@@ -26,9 +20,8 @@ $categories = (explode(",",$categories_as_string));
                             <?php echo $data['project']->project_description;?>
                         </div>
                         <div class="single-project--languages-used mt-3">
-                        <h3 class="my-3">Languages utilisés</h3>
-                        <?php foreach($categories as $category):?>
-                        <button class="btn"><?php echo $category;?></button>
+                        <?php foreach($data['categories'] as $category):?>
+                         <button class="btn"><?php echo $category->category_name;?></button>
                         <?php endforeach;?>
                         </div>
                     </div>

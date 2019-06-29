@@ -56,30 +56,16 @@
             <span class="invalid-feedback"><?php echo $data['url_err']; ?></span>
         </div>
         <div class="form-group">
-            <label>Languages:</label>
-            <div class="d-flex justify-content-start mb-3">
-                <div class="mr-4">
-                    <input type="checkbox" name="categories[]" value="html" /> HTML<br>
-                    <input type="checkbox" name="categories[]" value="css" /> CSS<br>
-                    <input type="checkbox" name="categories[]" value="javascript" /> Javascript<br>
-                    <input type="checkbox" name="categories[]" value="jquery" /> jQuery<br>
-                    <input type="checkbox" name="categories[]" value="flexbox" /> flexbox<br>
-                </div>
-                <div class="mr-4">
-                    <input type="checkbox" name="categories[]" value="php" /> PHP<br>
-                    <input type="checkbox" name="categories[]" value="wordpress" /> Wordpress<br>
-                    <input type="checkbox" name="categories[]" value="mySql" /> mySql<br>
-                    <input type="checkbox" name="categories[]" value="architecture MVC" /> Architecture MVC<br>
-                    <input type="checkbox" name="categories[]" value="Webpack" /> Webpack<br>
-                </div>
-                <div class="mr-4">
-                    <input type="checkbox" name="categories[]" value="GSAP" /> GSAP<br>
-                    <input type="checkbox" name="categories[]" value="ScrollMagic" /> ScrollMagic<br>
-                    <input type="checkbox" name="categories[]" value="Sass" /> Sass<br>
-                    <input type="checkbox" name="categories[]" value="Bootstrap" /> Bootstrap<br>
-                    <input type="checkbox" name="categories[]" value="Gulp" /> Gulp<br>
-                </div>
+            <div class="my-4">
+                <label>Languages:</label>
+                <br>
+                <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
+                <?php $category_id = $databaseCategory->category_id;?>
+                <input type="checkbox" name="categories[]" value="<?php echo $databaseCategory->category_id; ?>" />
+                <?php echo $databaseCategory->category_name; ?>
+                <?php endforeach;?>
             </div>
+
         </div>
         <div class="form-group">
             <label>Commentaires du mentor:<sup>*</sup></label>

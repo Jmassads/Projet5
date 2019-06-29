@@ -1,10 +1,5 @@
 <?php require APPROOT . '/views/inc/admin-header.php'; ?>
 
-<?php 
-$categories_as_string = $data['project']->project_categories;
-$categories = (explode(",",$categories_as_string));
-?>
-
 
 <div class="single-project">
     <h2><?php echo $data['project']->project_name;?></h2>
@@ -20,9 +15,7 @@ $categories = (explode(",",$categories_as_string));
 
     <div class="single-project--categories my-4">
         <h3 class="my-3">Languages utilisés</h3>
-        <?php foreach($categories as $category):?>
-        <button class="btn"><?php echo $category;?></button>
-        <?php endforeach;?>
+      <!-- add categories here!!! -->
     </div>
 
     <div class="single-project--comments">

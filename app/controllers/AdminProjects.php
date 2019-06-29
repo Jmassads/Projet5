@@ -9,6 +9,7 @@ class AdminProjects extends Controller
     public function __construct()
     {
         $this->projectModel = $this->model('Projectmodel');
+        $this->categoryModel = $this->model('Categorymodel');
     }
 
     // Tous les projets
@@ -39,11 +40,8 @@ class AdminProjects extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if (isset($_POST['categories'])) {
-                $categories = implode(",", $_POST["categories"]);
-            } else {
-                $categories = '';
-            }
+   
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
 
             $data = [
                 'name' => trim($_POST['name']),
@@ -51,9 +49,10 @@ class AdminProjects extends Controller
                 'small_image' => str_replace(' ', '', $_FILES['project_sm_image']['name']),
                 'large_image' => str_replace(' ', '', $_FILES['project_lg_image']['name']),
                 'url' => trim($_POST['url']),
-                'categories' => $categories,
+                // 'categories' => $categories,
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
+                'databaseCategories' => $databaseCategories,
 
                 'name_err' => '',
                 'description_err' => '',
@@ -98,6 +97,16 @@ class AdminProjects extends Controller
                 // Validation passed
                 //Execute
                 if ($this->projectModel->addProject($data)) {
+
+                    // (lastInsertId) — Retourne l'identifiant de la dernière ligne insérée ou la valeur d'une séquence
+                    $project_id = $this->projectModel->getId();
+                    
+                    $categories = $_POST['categories'];
+                    foreach ($categories as $category) {
+                        // die(print_r($categories));
+                        $this->projectModel->addProjectCategory($category, $project_id);
+                    }
+
                     // Redirect to login
                     flash('project_message', 'Projet ajouté');
                     redirect('AdminProjects');
@@ -110,6 +119,9 @@ class AdminProjects extends Controller
             }
 
         } else {
+
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
+
             $data = [
                 'name' => '',
                 'description' => '',
@@ -119,6 +131,7 @@ class AdminProjects extends Controller
                 'comments' => '',
                 'categories' => '',
                 'slug' => '',
+                'databaseCategories' => $databaseCategories
             ];
 
             $this->view('admin/projects/add', $data);
@@ -127,12 +140,6 @@ class AdminProjects extends Controller
 
     public function edit($id)
     {
-
-        if (!empty($_POST['categories'])) {
-            $categories = implode(",", $_POST["categories"]);
-        } else {
-            $categories = '';
-        }
 
         $project = $this->projectModel->getProjectById($id);
 
@@ -155,7 +162,7 @@ class AdminProjects extends Controller
                 'description' => trim($_POST['description']),
                 'small_image' => $small_image,
                 'large_image' => $large_image,
-                'categories' => $categories,
+   
                 'url' => trim($_POST['url']),
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
@@ -191,8 +198,49 @@ class AdminProjects extends Controller
             // Make sure there are no errors
             if (empty($data['name_err']) && empty($data['description_err']) && empty($data['url_err']) && empty($data['comments_err']) && empty($data['small_image_err']) && empty($data['large_image_err'])) {
                 // Validation passed
+
+                $categories = $this->projectModel->getCategoriesByProjectId($id);
+
+                $checkedCategories = array_map(function ($category) {
+                    return $category->category_id;
+                }, $categories);
+
+                // on verifie si il y a des catégories
+                if (!empty($_POST['categories'])) {
+                    $newCategories = $_POST['categories'];
+                } else {
+                    $newCategories = [];
+                }
+
                 //Execute
                 if ($this->projectModel->updateProject($data)) {
+
+                    // die(print_r($checkedCategories));
+                    foreach ($newCategories as $newCategory) {
+                        // die(print_r($categories));
+                        // on verifie si la categorie existe deja. si elle existe on ne la rajoute pas. si elle n'existe pas on la rajoute
+                        if (!in_array($newCategory, $checkedCategories)) {
+                            $this->projectModel->addProjectCategory($newCategory, $id);
+                        }
+                    }
+
+                    // array with std objects
+                    $databaseCategoriesStd = $this->projectModel->getCategoriesbyProjectID($id);
+
+                    // convert to array to be able to compare 2 arrays later
+                    $databaseCategories = json_decode(json_encode($databaseCategoriesStd), true);
+                    // die(print_r($databaseCategories));
+
+                    foreach ($databaseCategories as $databaseCategory) {
+
+                        $databaseCategoryId = $databaseCategory['category_id'];
+
+                        if (!in_array($databaseCategory['category_id'], $newCategories)) {
+                            // die(print_r($databaseCategory));
+                            $this->projectModel->deleteprojectCategory($databaseCategory['category_id'], $id);
+                        }
+                    }
+
                     // Redirect to login
                     flash('project_message', 'Projet modifié');
                     redirect('AdminProjects');
@@ -206,7 +254,9 @@ class AdminProjects extends Controller
         } else {
             // Get Project from model
             $project = $this->projectModel->getProjectById($id);
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
 
+            $checkedCategories = $this->projectModel->getCategoriesByProjectId($id);
             $data = [
                 'id' => $id,
                 'name' => $project->project_name,
@@ -214,9 +264,10 @@ class AdminProjects extends Controller
                 'large_image' => $project->project_lg_image,
                 'description' => $project->project_description,
                 'url' => $project->project_url,
-                'categories' => $project->project_categories,
                 'comments' => $project->project_comments,
                 'slug' => $project->project_slug,
+                'checkedCategories' => $checkedCategories,
+                'databaseCategories' => $databaseCategories,
             ];
 
             $this->view('admin/projects/edit', $data);

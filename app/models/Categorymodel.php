@@ -17,6 +17,8 @@ class Categorymodel
         return $results;
     }
 
+
+
     // Add Post
     public function addCategory($data){
         // Prepare Query

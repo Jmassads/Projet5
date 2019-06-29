@@ -24,9 +24,11 @@ class Portfolio extends Controller
 
             $projects = $this->projectModel->getProjects();
             $project = $this->projectModel->getprojectBySlug($slug);
+            $categories = $this->projectModel->getCategoriesByProjectSlug($slug);
             $data = [
                 'projects' => $projects,
                 'project' => $project,
+                'categories' => $categories
 
             ];
 

@@ -122,6 +122,9 @@ class Blogmodel
         return $article_id;
     }
 
+    
+
+
     // Update Article
     public function updateArticle($data)
     {
@@ -144,8 +147,8 @@ class Blogmodel
             return false;
         }
     }
-    
-    // Delete Post
+
+    // Delete article category
     public function deleteArticleCategory($category_id, $article_id)
     {
         // Prepare Query

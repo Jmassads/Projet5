@@ -57,51 +57,26 @@
                 </span> 
         
         </div>
-        <div class="d-flex justify-content-start mb-3">
-            <?php 
-            $categories_as_string = $data['categories'];
-            $categories = (explode(",",$categories_as_string));
-          ?>
-            <div class="mr-4">
-                <?php $checked = 'checked'; ?>
-                <input type="checkbox" name="categories[]" value="html" <?php if (in_array("html", $categories)) {
-                echo "checked";};?> /> HTML <br>
-                <input type="checkbox" name="categories[]" value="css" <?php if (in_array("css", $categories)) {
-                echo "checked";};?> /> CSS <br>
-                <input type="checkbox" name="categories[]" value="javascript" <?php if (in_array("javascript", $categories)) {
-                echo "checked";};?> /> Javascript <br>
-                <input type="checkbox" name="categories[]" value="jquery" <?php if (in_array("jquery", $categories)) {
-                echo "checked";};?> /> jQuery <br>
-                <input type="checkbox" name="categories[]" value="flexbox" <?php if (in_array("flexbox", $categories)) {
-                echo "checked";};?> /> Flexbox <br>
-            </div>
-            <div class="mr-4">
-                <input type="checkbox" name="categories[]" value="php" <?php if (in_array("php", $categories)) {
-                echo "checked";};?> /> PHP <br>
-                <input type="checkbox" name="categories[]" value="wordpress" <?php if (in_array("wordpress", $categories)) {
-                echo "checked";};?> /> Wordpress <br>
-                <input type="checkbox" name="categories[]" value="mySql" <?php if (in_array("mySql", $categories)) {
-                echo "checked";};?> /> mySql <br>
-                <input type="checkbox" name="categories[]" value="architecture MVC" <?php if (in_array("architecture MVC", $categories)) {
-                echo "checked";};?> /> Architecture MVC <br>
-                <input type="checkbox" name="categories[]" value="Webpack" 
-                <?php if (in_array("Webpack", $categories)) {
-                echo "checked";};?> /> Webpack <br>
-            </div>
-            <div class="mr-4">
-                <input type="checkbox" name="categories[]" value="GSAP" <?php if (in_array("GSAP", $categories)) {
-                echo "checked";};?> /> GSAP <br>
-                <input type="checkbox" name="categories[]" value="ScrollMagic" <?php if (in_array("ScrollMagic", $categories)) {
-                echo "checked";};?> /> ScrollMagic <br>
-                <input type="checkbox" name="categories[]" value="Sass" 
-                <?php if (in_array("Sass", $categories)) {
-                echo "checked";};?> /> Sass <br>
-               <input type="checkbox" name="categories[]" value="Bootstrap" 
-               <?php if (in_array("Bootstrap", $categories)) {
-                echo "checked";};?> /> Bootstrap <br>
-               <input type="checkbox" name="categories[]" value="Gulp" 
-               <?php if (in_array("Gulp", $categories)) {
-                echo "checked";};?> /> Gulp <br>
+        <div class="form-group">
+            <label>Languages:<sup>*</sup></label>
+            <div class=" my-3">
+
+                <?php
+                $categories = array_map(function ($category) {
+                    return $category->category_id;
+                }, $data['checkedCategories']);
+                ?>
+
+                <!-- get database categories and checked echo checked for all the ones that are checked for an article -->
+
+                <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
+                <?php $category_id = $databaseCategory->category_id;?>
+                <input type="checkbox" name="categories[]" value="<?php echo $databaseCategory->category_id; ?>" <?php if (in_array("$category_id", $categories)) {
+                    echo "checked";}
+                ;?> />
+                <?php echo $databaseCategory->category_name; ?>
+                <?php endforeach;?>
+
             </div>
         </div>
         <div class="form-group">
