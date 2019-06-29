@@ -14,7 +14,7 @@ class Blogmodel
     public function addArticle($data)
     {
         // Prepare Query
-        $this->db->query('INSERT INTO articles (article_title, article_content, article_image, article_excerpt, article_slug) VALUES (:title, :content, :article_image, :excerpt, :slug)');
+        $this->db->query('INSERT INTO articles (article_title, article_content, article_image, article_excerpt, article_slug, is_published) VALUES (:title, :content, :article_image, :excerpt, :slug, :is_published)');
 
         // Bind Values
         $this->db->bind(':title', $data['title']);
@@ -22,6 +22,7 @@ class Blogmodel
         $this->db->bind(':article_image', $data['article_image']);
         $this->db->bind(':excerpt', $data['excerpt']);
         $this->db->bind(':slug', $data['slug']);
+        $this->db->bind(':is_published', $data['is_published']);
 
         //Execute
         if ($this->db->execute()) {
@@ -45,7 +46,7 @@ class Blogmodel
     // Get last 3 articles
     public function getArticlesLimit3()
     {
-        $this->db->query('SELECT * FROM articles ORDER BY articles.article_id DESC LIMIT 3');
+        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 1 ORDER BY articles.article_id DESC LIMIT 3');
 
         $results = $this->db->resultSet();
 
@@ -106,7 +107,7 @@ class Blogmodel
     // pour trouver des articles par nom (slug) (html, cs, javascript...)
     public function getArticlesbyCategoryName($nameSlug)
     {
-        $this->db->query('SELECT * FROM articles INNER JOIN article_categories on article_categories.article_id = articles.article_id INNER JOIN categories on categories.category_id = article_categories.category_id WHERE categories.category_name_slug = :slug');
+        $this->db->query('SELECT * FROM articles INNER JOIN article_categories on article_categories.article_id = articles.article_id INNER JOIN categories on categories.category_id = article_categories.category_id WHERE articles.is_published = 1 AND categories.category_name_slug = :slug');
 
         $this->db->bind(':slug', $nameSlug);
 
@@ -129,7 +130,7 @@ class Blogmodel
     public function updateArticle($data)
     {
         // Prepare Query
-        $this->db->query('UPDATE articles SET article_title= :title, article_content = :content, article_image = :image, article_excerpt = :excerpt, article_url = :url, article_slug = :slug WHERE article_id = :id');
+        $this->db->query('UPDATE articles SET article_title= :title, article_content = :content, article_image = :image, article_excerpt = :excerpt, article_url = :url, article_slug = :slug , is_published = :is_published WHERE article_id = :id');
 
         // Bind Values
         $this->db->bind(':id', $data['id']);
@@ -139,7 +140,7 @@ class Blogmodel
         $this->db->bind(':excerpt', $data['excerpt']);
         $this->db->bind(':url', $data['url']);
         $this->db->bind(':slug', $data['slug']);
-
+        $this->db->bind(':is_published', $data['is_published']);
         //Execute
         if ($this->db->execute()) {
             return true;

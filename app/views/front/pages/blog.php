@@ -66,8 +66,11 @@
                     <div class="col-md-4">
                         <div class="article">
                             <div class="article--meta">
+                                <?php if($article->article_image):?>
                                 <img class="article--image img-fluid"
-                                    src="<?php echo URLROOT; ?>/uploads/<?php echo $article->article_image; ?>" alt="">
+                                    srcset="<?php echo URLROOT;?>/uploads/<?php echo $article->article_image;?>" alt="">
+                                <?php endif;?>
+
                                 <h3 class="article--title"><a href="<?php echo $article->article_url; ?>"
                                         target="blank"><?php echo $article->article_title; ?></a></h3>
                             </div>

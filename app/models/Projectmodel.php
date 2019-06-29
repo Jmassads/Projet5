@@ -61,7 +61,7 @@ class Projectmodel
     public function addProject($data)
     {
         // Prepare Query
-        $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_comments, project_slug) VALUES (:name, :description, :small_image, :large_image, :url, :comments, :slug)');
+        $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_comments, project_slug, is_published) VALUES (:name, :description, :small_image, :large_image, :url, :comments, :slug)');
 
         // Bind Values
         $this->db->bind(':name', $data['name']);
@@ -71,7 +71,6 @@ class Projectmodel
         $this->db->bind(':url', $data['url']);
         $this->db->bind(':comments', $data['comments']);
         $this->db->bind(':slug', $data['slug']);
-
         //Execute
         if ($this->db->execute()) {
             return true;

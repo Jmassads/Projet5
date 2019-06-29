@@ -36,6 +36,7 @@ class AdminArticles extends Controller
                 'slug' => cleaner(trim($_POST['title'])),
                 'excerpt' => trim($_POST['excerpt']),
                 'databaseCategories' => $databaseCategories,
+                'is_published' => $_POST['is_published'],
 
                 'title_err' => '',
                 'content_err' => '',
@@ -138,6 +139,7 @@ class AdminArticles extends Controller
                 'excerpt' => trim($_POST['excerpt']),
                 'url' => trim($_POST['url']),
                 'slug' => cleaner(trim($_POST['title'])),
+                'is_published' => $_POST['is_published'],
 
                 'title_err' => '',
                 'content_err' => '',
@@ -233,6 +235,7 @@ class AdminArticles extends Controller
                 'slug' => $article->article_slug,
                 'excerpt' => $article->article_excerpt,
                 'url' => $article->article_url,
+                'is_published' => $article->is_published,
                 'checkedCategories' => $checkedCategories,
                 'databaseCategories' => $databaseCategories,
             ];

@@ -49,8 +49,13 @@
                 <span><?php echo $error . '</br>'; ?></span>
                 <?php endforeach;?>
             </span>
-
-
+        </div>
+        <div class="form-group">
+            <select name="is_published" class="form-control form-control-md">
+                <option selected="true" disabled="disabled">Souhaitez vous publier l'article?</option>
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
         </div>
         <input name="image" type="file" id="upload" class="hidden" onchange="">
 
