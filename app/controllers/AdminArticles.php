@@ -16,9 +16,13 @@ class AdminArticles extends Controller
     public function index()
     {
         $articles = $this->blogModel->getArticles();
+        $published_articles = $this->blogModel->getPublishedArticles();
+        $nonPublished_articles = $this->blogModel->getNonPublishedArticles();
 
         $data = [
             'articles' => $articles,
+            'published_articles' => $published_articles,
+            'nonPublished_articles' => $nonPublished_articles
         ];
         $this->view('admin/articles/index', $data);
     }

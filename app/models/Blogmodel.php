@@ -43,6 +43,24 @@ class Blogmodel
         return $results;
     }
 
+    public function getPublishedArticles()
+    {
+        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 1 ORDER BY articles.article_id DESC');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getNonPublishedArticles()
+    {
+        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 0 ORDER BY articles.article_id DESC');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
     // Get last 3 articles
     public function getArticlesLimit3()
     {
