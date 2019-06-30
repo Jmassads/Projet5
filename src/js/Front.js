@@ -10,8 +10,7 @@ $('#btn-menu').click(function () {
         $('.overlay').css('width', '0%');
     }
     $('.hamburger').toggleClass("is-active");
-    $(this).toggleClass('btn-open btn-close');
-    
+    $(this).toggleClass('btn-open btn-close');   
 })
 
 
@@ -45,6 +44,7 @@ function scrollFunction() {
   }
 }
 
+// Back to top button
 $('#myBtn').click(function () {
     $('body,html').animate({
         scrollTop: 0
@@ -52,7 +52,7 @@ $('#myBtn').click(function () {
     return false;
 });
 
-
+// To load more articles
 $(document).on('click', '#btn_more', function(){  
     var last_article_id = $(this).data("article");  
     $('#btn_more').html("Chargement...");  
@@ -62,7 +62,7 @@ $(document).on('click', '#btn_more', function(){
         url:"/FinalProjectphp/Blog/ajax",   // La ressource ciblée
         method:"POST",  // Le type de la requête HTTP.
         // data:{last_article_id:last_article_id},
-        data:{last_article_id},  // // On fait passer nos variables au script /FinalProjectphp/Blog/ajax
+        data:{last_article_id},  // On fait passer nos variables au script /FinalProjectphp/Blog/ajax
         dataType:"text",  
         success:function(data) {
             setTimeout(function() {

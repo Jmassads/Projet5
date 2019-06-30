@@ -32,7 +32,7 @@ class Projectmodel
     }
 
 
-    // Delete article category
+    // Delete project category
     public function deleteProjectCategory($category_id, $project_id)
     {
         // Prepare Query
@@ -61,7 +61,7 @@ class Projectmodel
     public function addProject($data)
     {
         // Prepare Query
-        $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_comments, project_slug, is_published) VALUES (:name, :description, :small_image, :large_image, :url, :comments, :slug)');
+        $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_comments, project_slug) VALUES (:name, :description, :small_image, :large_image, :url, :comments, :slug)');
 
         // Bind Values
         $this->db->bind(':name', $data['name']);
@@ -150,9 +150,6 @@ class Projectmodel
         }
     }
 
-
-
-
     // add project categories
     public function addProjectCategory($category, $project_id)
     {
@@ -169,5 +166,19 @@ class Projectmodel
             return false;
         }
     }
+
+    public function deleteProject($id){
+        $this->db->query('DELETE from projects WHERE id = :id');
+
+        $this->db->bind(':id', $id);
+
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
 
 }

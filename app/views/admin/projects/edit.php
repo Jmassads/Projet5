@@ -93,7 +93,7 @@
                 value="<?php echo $data['slug']; ?>">
         </div>
         <div class="form-group">
-            <label>Commentaires du mentor:<sup>*</sup></label>
+            <label>Commentaires du mentor:</label>
             <textarea name="comments"
                 class="mytextarea form-control form-control-md <?php echo (!empty($data['comments_err'])) ? 'is-invalid' : ''; ?>"
                 placeholder="Ajouter les commentaires du mentor..."><?php echo $data['comments']; ?></textarea>

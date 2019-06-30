@@ -16,7 +16,7 @@
                         </div>
                         <div class="pointer py-4"><span class="lnr lnr-pointer-right"></span> <a href="<?php echo $data['project']->project_url;?>" target="blank">Voir le Projet</a></div>
                         <div class="single-project--description">
-                            <h3 class="single-project--description--title pb-2">Description du Projet</h3>
+                            <h3 class="single-project--description--title">Description du Projet</h3>
                             <?php echo $data['project']->project_description;?>
                         </div>
                         <div class="single-project--languages-used mt-3">
@@ -25,10 +25,12 @@
                         <?php endforeach;?>
                         </div>
                     </div>
+                    <?php if($data['project']->project_comments):?>
                     <div class="single-project--feedback my-4">
                             <h3>Commentaires de l'évaluateur</h3>
                             <?php echo $data['project']->project_comments;?>
                     </div>
+                    <?php endif;?>  
                 </div>
                 <div class="col-md-4">
                     <h2 class="others-projects--title">Autres Projets</h2>

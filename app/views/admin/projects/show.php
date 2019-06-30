@@ -18,16 +18,18 @@
       <!-- add categories here!!! -->
     </div>
 
+    <?php if($data['project']->project_comments):?>
     <div class="single-project--comments">
         <h3 class="my-3">Commentaires du mentor</h3>
         <p><?php echo $data['project']->project_comments;?></p>
     </div>
+    <?php endif;?>
 
     <div class="d-flex justify-content-end">
         <a href="<?php echo URLROOT; ?>/AdminProjects/edit/<?php echo $data['project']->id; ?>"
             class="btn btn-dark">Modifier</a>
         <form class="ml-2"
-            action="<?php echo URLROOT; ?>/AdminProjects/delete/<?php echo $data['chapter']->id; ?>"
+            action="<?php echo URLROOT; ?>/AdminProjects/delete/<?php echo $data['project']->id; ?>"
             method="post">
             <button type="submit" class="btn btn-danger"> Supprimer</button>
         </form>

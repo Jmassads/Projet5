@@ -77,11 +77,6 @@ class AdminProjects extends Controller
                 $data['url_err'] = "Merci de rajouter l'url du projet";
             }
 
-            // Validate project comments
-            if (empty($data['comments'])) {
-                $data['comments_err'] = "Merci de rajouter les commentaires du mentor";
-            }
-
             $small_image_uploader = new Uploader();
             $small_image_uploader->uploadFile('project_sm_image');
             $small_image_error_message = $small_image_uploader->getError();
@@ -93,7 +88,7 @@ class AdminProjects extends Controller
             $data['large_image_err'] = $large_image_error_message;
 
             // Make sure there are no errors
-            if (empty($data['name_err']) && empty($data['description_err']) && empty($data['url_err']) && empty($data['comments_err']) && empty($data['small_image_err']) && empty($data['large_image_err'])) {
+            if (empty($data['name_err']) && empty($data['description_err']) && empty($data['url_err']) && empty($data['small_image_err']) && empty($data['large_image_err'])) {
                 // Validation passed
                 //Execute
                 if ($this->projectModel->addProject($data)) {
@@ -196,7 +191,7 @@ class AdminProjects extends Controller
             $data['large_image_err'] = $large_image_error_message;
 
             // Make sure there are no errors
-            if (empty($data['name_err']) && empty($data['description_err']) && empty($data['url_err']) && empty($data['comments_err']) && empty($data['small_image_err']) && empty($data['large_image_err'])) {
+            if (empty($data['name_err']) && empty($data['description_err']) && empty($data['url_err']) && empty($data['small_image_err']) && empty($data['large_image_err'])) {
                 // Validation passed
 
                 $categories = $this->projectModel->getCategoriesByProjectId($id);
@@ -273,5 +268,21 @@ class AdminProjects extends Controller
             $this->view('admin/projects/edit', $data);
         }
     }
+
+    // Delete Post
+    public function delete($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+          //Execute
+          if($this->projectModel->deleteProject($id)){
+            // Redirect to login
+            flash('project_message', 'Projet supprimé');
+            redirect('AdminProjects');
+            } else {
+              die('Something went wrong');
+            }
+        } else {
+          redirect('AdminProjects');
+        }
+      }
 
 }

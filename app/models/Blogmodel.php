@@ -74,7 +74,7 @@ class Blogmodel
     // Get articles with Ajax
     public function getArticleswithAjax($article_id)
     {
-        $this->db->query('SELECT * FROM articles  WHERE article_id < :id ORDER BY articles.article_id DESC LIMIT 3');
+        $this->db->query('SELECT * FROM articles  WHERE article_id < :id AND articles.is_published = 1 ORDER BY articles.article_id DESC LIMIT 3');
 
         $this->db->bind(":id", $article_id);
         $results = $this->db->resultSet();
