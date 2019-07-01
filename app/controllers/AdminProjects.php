@@ -23,6 +23,28 @@ class AdminProjects extends Controller
         $this->view('admin/projects/index', $data);
     }
 
+    public function published()
+    {
+
+        $published_projects = $this->projectModel->getPublishedProjects();
+
+        $data = [
+            'published_projects' => $published_projects,
+        ];
+        $this->view('admin/projects/published', $data);
+    }
+
+    public function notpublished()
+    {
+        $nonPublished_projects = $this->projectModel->getNonPublishedProjects();
+
+        $data = [
+
+            'nonPublished_projects' => $nonPublished_projects,
+        ];
+        $this->view('admin/projects/notpublished', $data);
+    }
+
     // Un seul Projet
     public function show($id)
     {
@@ -53,6 +75,7 @@ class AdminProjects extends Controller
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
                 'databaseCategories' => $databaseCategories,
+                'is_published' => $_POST['is_published'],
 
                 'name_err' => '',
                 'description_err' => '',
@@ -136,21 +159,29 @@ class AdminProjects extends Controller
     public function edit($id)
     {
 
-        $project = $this->projectModel->getProjectById($id);
-
-        if (!empty($_FILES['project_sm_image']['name'])) {
-            $small_image = str_replace(' ', '', $_FILES['project_sm_image']['name']);
-        } else {
-            $small_image = $project->project_sm_image;
-        }
-
-        if (!empty($_FILES['project_lg_image']['name'])) {
-            $large_image = str_replace(' ', '', $_FILES['project_lg_image']['name']);
-        } else {
-            $large_image = $project->project_lg_image;
-        }
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $project = $this->projectModel->getProjectById($id);
+
+            if (!empty($_FILES['project_sm_image']['name'])) {
+                $small_image = str_replace(' ', '', $_FILES['project_sm_image']['name']);
+            } else {
+                $small_image = $project->project_sm_image;
+            }
+    
+            if (!empty($_FILES['project_lg_image']['name'])) {
+                $large_image = str_replace(' ', '', $_FILES['project_lg_image']['name']);
+            } else {
+                $large_image = $project->project_lg_image;
+            }
+
+            if ($_POST['is_published'] != '') {
+                $is_published = $_POST['is_published'];
+            } else {
+                // leave the default value
+                $is_published = $project->is_published;
+            }
+
             $data = [
                 'id' => $id,
                 'name' => trim($_POST['name']),
@@ -161,6 +192,7 @@ class AdminProjects extends Controller
                 'url' => trim($_POST['url']),
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
+                'is_published' => $is_published,
 
                 'name_err' => '',
                 'description_err' => '',
@@ -261,6 +293,7 @@ class AdminProjects extends Controller
                 'url' => $project->project_url,
                 'comments' => $project->project_comments,
                 'slug' => $project->project_slug,
+                'is_published' => $project->is_published,
                 'checkedCategories' => $checkedCategories,
                 'databaseCategories' => $databaseCategories,
             ];

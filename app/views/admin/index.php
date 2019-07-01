@@ -39,7 +39,7 @@
 
 <div class="card mt-3">
     <div class="card-header">
-    <h2><?php echo $data['allProjects'];?> Projets</h2>
+    <h2><img src="<?php echo URLROOT; ?>/img/project-icon.png" alt="" width="40"> <?php echo $data['allProjects'];?> Projets</h2>
     </div>
     <div class="card-body">
         <div>

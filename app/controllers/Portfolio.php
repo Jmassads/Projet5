@@ -15,14 +15,14 @@ class Portfolio extends Controller
     {
 
         if (is_null($slug)) {
-            $projects = $this->projectModel->getProjects();
+            $projects = $this->projectModel->getPublishedProjects();
             $data = [
                 'projects' => $projects,
             ];
             $this->view('front/pages/projects', $data);
         } else {
 
-            $projects = $this->projectModel->getProjects();
+            $projects = $this->projectModel->getPublishedProjects();
             $project = $this->projectModel->getprojectBySlug($slug);
             $categories = $this->projectModel->getCategoriesByProjectSlug($slug);
             $data = [

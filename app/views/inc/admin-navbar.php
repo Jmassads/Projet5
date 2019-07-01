@@ -19,9 +19,17 @@
           <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles/notpublished">Articles non publiés</a>
         </div>
       </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/AdminProjects">Projets</a>
-        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Projets
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminProjects">Tous les projets</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminProjects/published">Projets publiés</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminProjects/notpublished">Projets non publiés</a>
+        </div>
+      </li>
+
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/AdminCategories">Categories</a>
         </li>

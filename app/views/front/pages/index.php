@@ -202,7 +202,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
         </div>
     </section>
 
-    <section id=contact class=contact>
+    <section id=contact class="contact pb-4">
         <div class=container>
             <div class=head-section>
                 <h2 class="headline--red-dot">Contact</h2>
@@ -210,13 +210,13 @@ if(filter_has_var(INPUT_POST, 'submit')){
             <div class=row>
                 <div class=col-lg-6>
                     <ul class="info-contact list-unstyled ">
-                        <li class=mb-4>N'hésitez pas à me contacter pour plus d'informations</li>
                         <li><i class="mr-2 fa fa-map-marker "></i> Saint Germain en Laye</li>
                         <li>
                             <i class="mr-2 fa fa-envelope "></i> <a
                                 href=mailto:support@me.com>juliasajah85@gmail.com</a>
                         </li>
                     </ul>
+                    <div id="map"></div>
                 </div>
                 <div class=col-lg-6>
                     <?php if($msg != ''): ?>
@@ -225,9 +225,12 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     </div>
                     <?php endif; ?>
                     <form method="post" action="index.php#contact">
-
+                        <div class="row">
+                        <div class="col-12">
+                        <h3 class="h4 mt-3">N'hésitez pas à me contacter pour plus d'informations</h3></div>
+                        </div>
                         <div class="row box-form">
-
+                            
                             <div class="col-12 col-lg-6">
 
                                 <input type="text" name="name" class="form-control" placeholder="Votre nom*"

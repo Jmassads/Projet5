@@ -11,6 +11,24 @@ class Projectmodel
 
     // CRUD
 
+    public function getPublishedProjects()
+    {
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id DESC');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getNonPublishedProjects()
+    {
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 0 ORDER BY projects.id DESC');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
     public function getCategoriesByProjectId($id)
     {
         $this->db->query('SELECT * FROM project_categories
@@ -61,7 +79,7 @@ class Projectmodel
     public function addProject($data)
     {
         // Prepare Query
-        $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_comments, project_slug) VALUES (:name, :description, :small_image, :large_image, :url, :comments, :slug)');
+        $this->db->query('INSERT INTO projects (project_name, project_description, project_sm_image, project_lg_image, project_url, project_comments, project_slug, is_published) VALUES (:name, :description, :small_image, :large_image, :url, :comments, :slug, :is_published)');
 
         // Bind Values
         $this->db->bind(':name', $data['name']);
@@ -71,6 +89,8 @@ class Projectmodel
         $this->db->bind(':url', $data['url']);
         $this->db->bind(':comments', $data['comments']);
         $this->db->bind(':slug', $data['slug']);
+        $this->db->bind(':is_published', $data['is_published']);
+
         //Execute
         if ($this->db->execute()) {
             return true;
@@ -90,10 +110,10 @@ class Projectmodel
         return $results;
     }
 
-    // Get first 4 projects
+    // Get first 4 projects that are published
     public function getFirstProjects()
     {
-        $this->db->query('SELECT * FROM projects ORDER BY id ASC limit 4 ');
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY id ASC limit 4 ');
 
         $results = $this->db->resultSet();
 
@@ -130,7 +150,7 @@ class Projectmodel
     public function updateProject($data)
     {
         // Prepare Query
-        $this->db->query('UPDATE projects SET project_name = :name, project_description = :description, project_sm_image = :small_image, project_lg_image = :large_image, project_url = :url, project_comments = :comments , project_slug = :slug WHERE id = :id');
+        $this->db->query('UPDATE projects SET project_name = :name, project_description = :description, project_sm_image = :small_image, project_lg_image = :large_image, project_url = :url, project_comments = :comments , project_slug = :slug, is_published = :is_published WHERE id = :id');
 
         // Bind Values
         $this->db->bind(':id', $data['id']);
@@ -141,6 +161,7 @@ class Projectmodel
         $this->db->bind(':url', $data['url']);
         $this->db->bind(':comments', $data['comments']);
         $this->db->bind(':slug', $data['slug']);
+        $this->db->bind(':is_published', $data['is_published']);
 
         //Execute
         if ($this->db->execute()) {

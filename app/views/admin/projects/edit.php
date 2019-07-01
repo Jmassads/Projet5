@@ -99,6 +99,18 @@
                 placeholder="Ajouter les commentaires du mentor..."><?php echo $data['comments']; ?></textarea>
             <span class="invalid-feedback"><?php echo $data['comments_err']; ?></span>
         </div>
+        <?php if($data['is_published']):?>
+            <p><strong>Votre article à été publié</strong><p>
+        <?php else:?>
+            <p><strong>Votre article n'est pas publié</strong></p>
+        <?php endif;?>
+        <div class="form-group">
+            <select name="is_published" class="form-control form-control-md">
+                <option selected="true" disabled="disabled">Souhaitez vous publier l'article?</option>
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>
+        </div>
         <input type="submit" class="btn btn-primary" value="Envoyer">
     </form>
 </div>
