@@ -15,13 +15,14 @@
 <div class="sidenav">
     <div class="home-icon">
         <a href="<?php echo URLROOT;?>"><img class="img-fluid" src="<?php echo URLROOT;?>/img/iconmonstr-home-thin.svg"
-                alt=""></a>
+                alt="Retour à l'accueil"></a>
     </div>
     <div id="btn-menu" class="btn-open">
         <button class="hamburger hamburger--collapse" type="button">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
+            <span class="sr-only">Menu</span>
         </button>
     </div>
     <a href="#contact" class="btn rounded-0 contact-button shadow-none">Contact</a>

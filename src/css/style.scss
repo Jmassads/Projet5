@@ -4,22 +4,25 @@
 @import "base/_global";
 @import "base/_typography";
 
-@import "modules/_loader";
+
 @import "modules/_overlay";
 @import "modules/_sidenav";
 @import "modules/_menu";
 @import "modules/_hamburger";
 @import "modules/_buttons";
+
+// front page
 @import "modules/_header";
 @import "modules/_about";
 @import "modules/_projects";
 @import "modules/_skills";
-@import "modules/_bcg-parallax";
-@import "modules/_places";
 @import "modules/_contact";
 
+// single project
 @import "modules/_single-project";
-@import "modules/_single-article";
-@import "modules/_feedback";
 
+// single article
+@import "modules/_single-article";
+
+// blog section
 @import "modules/_blog";

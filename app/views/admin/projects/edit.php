@@ -2,7 +2,7 @@
 
 
 
-<a href="<?php echo URLROOT; ?>/AdminProjects" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+<a href="<?php echo URLROOT; ?>/AdminProjects" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Retour</a>
 <div class="card card-body bg-light my-5">
     <div class="d-flex align-items-center mb-3">
         <img src="<?php echo URLROOT; ?>/img/project-icon.png" alt="" width="40">

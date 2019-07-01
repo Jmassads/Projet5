@@ -9,9 +9,16 @@
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT; ?>/Admin">Dashboard</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/AdminArticles">Articles</a>
-        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles">Tous les articles</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles/published">Articles publiés</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles/notpublished">Articles non publiés</a>
+        </div>
+      </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/AdminProjects">Projets</a>
         </li>

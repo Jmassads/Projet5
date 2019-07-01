@@ -13,19 +13,47 @@ class AdminArticles extends Controller
     }
 
 // Tous les articles
-    public function index()
+    public function index($current_page = 1)
     {
         $articles = $this->blogModel->getArticles();
-        $published_articles = $this->blogModel->getPublishedArticles();
-        $nonPublished_articles = $this->blogModel->getNonPublishedArticles();
+        $per_page = 4;
+        $total_count = $this->blogModel->ArticlesPagination();
+        $pagination = new Pagination($current_page, $per_page, $total_count);
+        $offset = $pagination->offset();
+        $articles = $this->blogModel->GetPaginatedArticles($per_page, $offset);
 
         $data = [
             'articles' => $articles,
-            'published_articles' => $published_articles,
-            'nonPublished_articles' => $nonPublished_articles
+            'previous_page' => $pagination->previous_page(),
+            'next_page' => $pagination->next_page(),
+            'total_pages' => $pagination->total_pages(),
+            'current_page' => $current_page,
         ];
         $this->view('admin/articles/index', $data);
     }
+
+    public function published()
+    {
+
+        $published_articles = $this->blogModel->getPublishedArticles();
+
+        $data = [
+            'published_articles' => $published_articles,
+        ];
+        $this->view('admin/articles/published', $data);
+    }
+
+    public function notpublished()
+    {
+        $nonPublished_articles = $this->blogModel->getNonPublishedArticles();
+
+        $data = [
+
+            'nonPublished_articles' => $nonPublished_articles,
+        ];
+        $this->view('admin/articles/notpublished', $data);
+    }
+
     // Ajouter un article
     public function add()
     {
@@ -134,6 +162,12 @@ class AdminArticles extends Controller
             $article_image = $article->article_image;
         }
 
+        if (!empty($_POST['is_published'])) {
+            $is_published = $_POST['is_published'];
+        } else {
+            $is_published = $article->is_published;
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'id' => $id,
@@ -143,7 +177,7 @@ class AdminArticles extends Controller
                 'excerpt' => trim($_POST['excerpt']),
                 'url' => trim($_POST['url']),
                 'slug' => cleaner(trim($_POST['title'])),
-                'is_published' => $_POST['is_published'],
+                'is_published' => $is_published,
 
                 'title_err' => '',
                 'content_err' => '',
@@ -247,7 +281,5 @@ class AdminArticles extends Controller
             $this->view('admin/articles/edit', $data);
         }
     }
-
-
 
 }

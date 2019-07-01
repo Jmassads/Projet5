@@ -9,12 +9,10 @@
             <h2 class="mb-4">Julia Assad.blog</h2>
             <h3 class="blog--title">Des Ressources et de l'inspiration</h3>
             <nav class="navbar navbar-expand-sm mb-4 justify-content-start">
-                <a class="navbar-brand" href="<?php echo URLROOT; ?>/Blog"><i class="far fa-list-alt"></i></a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                <button class="navbar-toggler pl-0" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <span class="lnr lnr-chevron-down"></span>
+                    <span>Catégories </span><span class="lnr lnr-chevron-down"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -58,9 +56,7 @@
                 </div>
             </nav>
 
-
-
-            <div id="load_data_table">
+            <div id="load_data_table" class="articles">
                 <div class="row align-items-start">
                     <?php foreach ($data['articles'] as $article): ?>
                     <div class="col-md-4">

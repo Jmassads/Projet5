@@ -20,7 +20,7 @@
                                         class="lnr lnr-chevron-right"></span></a>
                             </picture>
                         </div>
-                        <h3 class="project--title"><?php echo $project->project_name;?></h3>
+                        <h3 class="project--title h6"><?php echo $project->project_name;?></h3>
                     </div>
                 </div>
                 <?php endforeach;?>

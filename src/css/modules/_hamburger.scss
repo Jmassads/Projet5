@@ -7,7 +7,7 @@
  * @link https://github.com/jonsuh/hamburgers
  */
  .hamburger {
-  padding: 0.8rem;
+
   border: none;
   display: inline-block;
   cursor: pointer;
@@ -26,9 +26,7 @@
   margin: 0;
   overflow: visible;
 
-  &.close {
-    padding: 0.8rem;
-  }
+ 
 }
 
 .hamburger:hover {

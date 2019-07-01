@@ -16,7 +16,7 @@ class Admin extends Controller
     public function index()
     {
 
-        $articles = $this->blogModel->getArticlesLimit3();
+        $articles = $this->blogModel->getArticlesLimit6();
         $categories = $this->categoryModel->getCategories();
         $projects = $this->projectModel->getProjects();
 

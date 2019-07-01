@@ -15,7 +15,7 @@ class Blog extends Controller
     public function index($current_page = 1)
     {
 
-        $articles = $this->BlogModel->getArticlesLimit3();
+        $articles = $this->BlogModel->getArticlesLimit6();
         $categories = $this->categoryModel->getCategories();
         $frontCategories = $this->categoryModel->getFrontCategories();
         $backCategories = $this->categoryModel->getBackCategories();

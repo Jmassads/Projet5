@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-
+<html lang="fr-FR">
 <head>
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Julia Assad</title>
@@ -12,8 +13,10 @@
   <link type="text/css" rel="stylesheet" href="css/normalize.min.css">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600&display=swap" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="css/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">

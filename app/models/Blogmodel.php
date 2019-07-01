@@ -62,9 +62,9 @@ class Blogmodel
     }
 
     // Get last 3 articles
-    public function getArticlesLimit3()
+    public function getArticlesLimit6()
     {
-        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 1 ORDER BY articles.article_id DESC LIMIT 3');
+        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 1 ORDER BY articles.article_id DESC LIMIT 6');
 
         $results = $this->db->resultSet();
 
@@ -183,6 +183,21 @@ class Blogmodel
         } else {
             return false;
         }
+    }
+
+    public function ArticlesPagination()
+    {
+        $this->db->query("SELECT COUNT(article_id) as numarticles FROM articles");
+        $row = $this->db->single();
+        return $row;
+    }
+    public function GetPaginatedArticles($per_page, $offset)
+    {
+        $this->db->query("SELECT * FROM articles ORDER BY article_id DESC LIMIT :limit OFFSET :offset");
+        $this->db->bind(":limit", $per_page);
+        $this->db->bind(":offset", $offset);
+        $results = $this->db->resultSet();
+        return $results;
     }
 
     

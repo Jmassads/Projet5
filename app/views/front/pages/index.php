@@ -88,15 +88,20 @@ if(filter_has_var(INPUT_POST, 'submit')){
                 </div>
                 <div class="col-sm-6">
                     <ul class="header--social-icons">
-                        <li><a href="https://www.facebook.com/julia.assadchevreux" target="_blank"><i class="header--social-icons-facebook fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/julia-assad/" target="_blank"><i class="header--social-icons-linkedin fab fa-linkedin-in"></i></a></li>
-                        <li><a href="https://twitter.com/jmassads" target="_blank"><i class="header--social-icons-twitter fab fa-twitter"></i></a></li>
-                        <li><a href="https://github.com/Jmassads" target="_blank"><i class="header--social-icons-github fab fa-github"></i></a></li>
+                        <li><a href="https://www.facebook.com/julia.assadchevreux" target="_blank"><i
+                                    class="header--social-icons-facebook fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/julia-assad/" target="_blank"><i
+                                    class="header--social-icons-linkedin fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://twitter.com/jmassads" target="_blank"><i
+                                    class="header--social-icons-twitter fab fa-twitter"></i></a></li>
+                        <li><a href="https://github.com/Jmassads" target="_blank"><i
+                                    class="header--social-icons-github fab fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
+
     <section id="projects" class="section projects">
         <div class="container-fluid">
             <h2 class="headline--red-dot">Projets</h2>
@@ -110,12 +115,13 @@ if(filter_has_var(INPUT_POST, 'submit')){
                                     media="(min-width:768px)">
                                 <img class="img-fluid"
                                     srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>"
-                                    alt="" class="large-hero__image">
+                                    alt="<?php echo $project->project_name;?>" class="large-hero__image">
                                 <a href="<?php echo URLROOT;?>/Portfolio/<?php echo $project->project_slug;?>"><span
-                                        class="lnr lnr-chevron-right"></span></a>
+                                        class="lnr lnr-chevron-right"></span>
+                                    <span class="sr-only">Voir le projet</span></a>
                             </picture>
                         </div>
-                        <h3 class="project--title"><?php echo $project->project_name;?></h3>
+                        <h3 class="project--title h6"><?php echo $project->project_name;?></h3>
                     </div>
                 </div>
                 <?php endforeach;?>
@@ -137,7 +143,8 @@ if(filter_has_var(INPUT_POST, 'submit')){
                 Openclassrooms.</p>
             <div class="d-flex justify-content-end">
                 <a href="files/julia_assad_cv.pdf" download
-                    class="blog-button btn btn-outline-dark shadow-none rounded-0"> <i class="fas fa-download"></i> Curriculum vitae</a>
+                    class="blog-button btn btn-outline-dark shadow-none rounded-0"> <i class="fas fa-download"></i>
+                    Curriculum vitae</a>
             </div>
         </div>
     </section>
@@ -149,40 +156,45 @@ if(filter_has_var(INPUT_POST, 'submit')){
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
                         <div class="mb-3">
-                        <h3><img class="img-fluid" src="img/front.png" width="45" height="45"> Front End</h3>
-                        <ul>
-                            <li>HTML5/CSS3</li>
-                            <li>Flexbox</li>
-                            <li>Bootstrap</li>
-                            <li>Sass</li>
-                            <li>Gulp</li>
-                            <li>Webpack</li>
-                            <li>jQuery</li>
-                            <li>Javascript es5/es6</li>
-                            <li>AJAX</li>
-                        </ul>
+                            <h3 class="h5"><img class="img-fluid" src="img/front.png" width="45" height="45"
+                                    alt="front-end icon">
+                                Front End</h3>
+                            <ul>
+                                <li>HTML5/CSS3</li>
+                                <li>Flexbox</li>
+                                <li>Bootstrap</li>
+                                <li>Sass</li>
+                                <li>Gulp</li>
+                                <li>Webpack</li>
+                                <li>jQuery</li>
+                                <li>Javascript es5/es6</li>
+                                <li>AJAX</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-sm-4">
 
-                       <div class="mb-3">
-                       <h3><img class="img-fluid" src="img/back.png" width="35" height="35"> Back End</h3>
-                        <ul>
-                            <li>PHP</li>
-                            <li>MySQL</li>
-                            <li>Architecture MVC</li>
-                            <li>Wordpress</li>
-                        </ul>
-                       </div>
+                        <div class="mb-3">
+                            <h3 class="h5"><img class="img-fluid" src="img/back.png" width="35" height="35"
+                                    alt="back-end icon">
+                                Back End</h3>
+                            <ul>
+                                <li>PHP</li>
+                                <li>MySQL</li>
+                                <li>Architecture MVC</li>
+                                <li>Wordpress</li>
+                            </ul>
+                        </div>
 
                     </div>
                     <div class="col-sm-4">
                         <div class="mb-3">
-                        <h3><img class="img-fluid" src="img/command-line.png" width="45" height="45"> Autres</h3>
-                        <ul>
-                            <li>Git</li>
-                            <li>Basic Command Line</li>
-                        </ul>
+                            <h3 class="h5"><img class="img-fluid" src="img/command-line.png" width="45" height="45"
+                                    alt="database icon"> Autres</h3>
+                            <ul>
+                                <li>Git</li>
+                                <li>Basic Command Line</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -217,14 +229,17 @@ if(filter_has_var(INPUT_POST, 'submit')){
                         <div class="row box-form">
 
                             <div class="col-12 col-lg-6">
+
                                 <input type="text" name="name" class="form-control" placeholder="Votre nom*"
                                     value="<?php echo isset($name) ? $name : '';?>">
                             </div>
                             <div class="col-12 col-lg-6">
+
                                 <input type="text" name="email" class="form-control" placeholder="Votre email*"
                                     value="<?php echo isset($email) ? $email : '';?>">
                             </div>
                             <div class="col-12 col-lg-6">
+
                                 <textarea name="message" class="form-control" placeholder="Votre message.."
                                     rows=3><?php echo isset($message) ? $message : '';?></textarea>
                             </div>
