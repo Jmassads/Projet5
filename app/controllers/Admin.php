@@ -15,18 +15,29 @@ class Admin extends Controller
 
     public function index()
     {
-
-        $articles = $this->blogModel->getArticlesLimit6();
+        $allArticles = $this->blogModel->countAllArticles();
+        $publishedArticles = $this->blogModel->countPublishedArticles();
+        $notPublishedArticles = $this->blogModel->countNotPublishedArticles();
         $categories = $this->categoryModel->getCategories();
+        $allcategories = $this->categoryModel->countAllCategories();
         $projects = $this->projectModel->getProjects();
+        $allProjects = $this->projectModel->countAllProjects();
+        $publishedProjects = $this->projectModel->countPublishedProjects();
+        $notPublishedProjects = $this->projectModel->countNotPublishedProjects();
 
         $data = [
 
+            'allProjects' => $allProjects,
             'projects' => $projects,
-            'articles' => $articles,
+            'publishedProjects' => $publishedProjects,
+            'notPublishedProjects' => $notPublishedProjects,
+            'allArticles' => $allArticles,
+            'publishedArticles' => $publishedArticles,
+            'notPublishedArticles' => $notPublishedArticles,
+            'allcategories' => $allcategories,
             'categories' => $categories,
 
         ];
-        $this->view('admin/pages/index', $data);
+        $this->view('admin/index', $data);
     }
 }

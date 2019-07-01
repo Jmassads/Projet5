@@ -179,6 +179,39 @@ class Projectmodel
         }
     }
 
+    public function countAllProjects()
+    {
+        $this->db->query('SELECT * FROM projects');
+
+        $this->db->resultSet();
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+
+    public function countPublishedProjects()
+    {
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1');
+
+        $this->db->resultSet();
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+
+    public function countNotPublishedProjects()
+    {
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 0');
+
+        $this->db->resultSet();
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+
     
 
 }

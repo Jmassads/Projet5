@@ -189,4 +189,15 @@ class Categorymodel
         }
     }
 
+    public function countAllCategories()
+    {
+        $this->db->query('SELECT * FROM categories');
+
+        $this->db->resultSet();
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+
 }

@@ -152,23 +152,24 @@ class AdminArticles extends Controller
 
     public function edit($id)
     {
-        // To join array elements with a string
-
-        $article = $this->blogModel->getArticleById($id);
-
-        if (!empty($_FILES['article_image']['name'])) {
-            $article_image = str_replace(' ', '', $_FILES['article_image']['name']);
-        } else {
-            $article_image = $article->article_image;
-        }
-
-        if (!empty($_POST['is_published'])) {
-            $is_published = $_POST['is_published'];
-        } else {
-            $is_published = $article->is_published;
-        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $article = $this->blogModel->getArticleById($id);
+            
+            if (!empty($_FILES['article_image']['name'])) {
+                $article_image = str_replace(' ', '', $_FILES['article_image']['name']);
+            } else {
+                $article_image = $article->article_image;
+            }
+    
+            if ($_POST['is_published'] != '') {
+                $is_published = $_POST['is_published'];
+            } else {
+                // leave the default value
+                $is_published = $article->is_published;
+            }
+
             $data = [
                 'id' => $id,
                 'title' => trim($_POST['title']),

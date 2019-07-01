@@ -141,9 +141,6 @@ class Blogmodel
         return $article_id;
     }
 
-    
-
-
     // Update Article
     public function updateArticle($data)
     {
@@ -200,6 +197,37 @@ class Blogmodel
         return $results;
     }
 
-    
+    public function countAllArticles()
+    {
+        $this->db->query('SELECT * FROM articles');
+
+        $this->db->resultSet();
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+
+    public function countPublishedArticles()
+    {
+        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 1');
+
+        $this->db->resultSet();
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+
+    public function countNotPublishedArticles()
+    {
+        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 0');
+
+        $this->db->resultSet();
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
 
 }
