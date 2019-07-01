@@ -132,7 +132,12 @@ class Categorymodel
 
     public function getDatabaseCategories()
     {
-        $this->db->query('SELECT * FROM categories INNER JOIN article_categories on categories.category_id = article_categories.category_id WHERE category_type = :type GROUP BY article_categories.category_id');
+        $this->db->query('SELECT * FROM categories 
+        INNER JOIN article_categories on categories.category_id = article_categories.category_id
+        INNER JOIN articles on articles.article_id = article_categories.article_id 
+        WHERE category_type = :type 
+        AND articles.is_published = 1 
+        GROUP BY article_categories.category_id');
 
         $this->db->bind(':type', 'database');
 

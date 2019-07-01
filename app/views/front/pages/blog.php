@@ -17,6 +17,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ">
+
+                        <?php if($data['frontCategories']):?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,18 +31,25 @@
                                 <?php endforeach;?>
                             </div>
                         </li>
+                        <?php endif;?>
+
+                        <?php if($data['backCategories']):?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Back-End Technologies
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
                                 <?php foreach ($data['backCategories'] as $backCategory): ?>
                                 <a class="dropdown-item"
                                     href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $backCategory->category_name_slug; ?>"><?php echo $backCategory->category_name; ?></a>
                                 <?php endforeach;?>
                             </div>
                         </li>
+                        <?php endif;?>
+
+                        <?php if($data['backCategories']):?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,6 +62,7 @@
                                 <?php endforeach;?>
                             </div>
                         </li>
+                        <?php endif;?>
                 </div>
             </nav>
 
