@@ -230,4 +230,20 @@ class Blogmodel
         return $results;
     }
 
+    // Delete Article
+    public function deleteArticle($id){
+        // Prepare Query
+        $this->db->query('DELETE FROM articles WHERE article_id = :id');
+  
+        // Bind Values
+        $this->db->bind(':id', $id);
+        
+        //Execute
+        if($this->db->execute()){
+          return true;
+        } else {
+          return false;
+        }
+      }
+
 }

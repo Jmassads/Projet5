@@ -32,13 +32,14 @@ $('#btn-menu').click(function () {
 
 
 $('.nav-container a').on('click', function(){
+    $('.hamburger').toggleClass("is-active");
+    $( "#btn-menu" ).toggleClass('btn-open btn-close');
     if($( "#btn-menu" ).hasClass( "btn-open" )){
         $('.overlay').css('width', '100%');
     } else if($( "#btn-menu" ).hasClass( "btn-close" )){
         $('.overlay').css('width', '0%');
     }
-    $('.hamburger').toggleClass("is-active");
-    $( "#btn-menu" ).toggleClass('btn-open btn-close');
+    
     
 });
 

@@ -74,7 +74,7 @@
                             <div class="article--meta">
                                 <?php if($article->article_image):?>
                                 <img class="article--image img-fluid"
-                                    srcset="<?php echo URLROOT;?>/uploads/<?php echo $article->article_image;?>" alt="">
+                                    srcset="uploads/<?php echo $article->article_image;?>" alt="">
                                 <?php endif;?>
 
                                 <h3 class="article--title"><a href="<?php echo $article->article_url; ?>"

@@ -10,6 +10,7 @@
 
 <div class="projects">
     <div class="row my-3">
+        <?php if($data['nonPublished_projects']):?>
         <?php foreach($data['nonPublished_projects'] as $project):?>
         <div class="col-md-6 col-lg-4">
             <div class="projects--single pb-3">
@@ -45,6 +46,11 @@
             </div>
         </div>
         <?php endforeach;?>
+        <?php else:?>
+        <div class="col-12 text-center">
+        <h2>Tous les projets ont été publiés</h2>
+        </div>
+        <?php endif;?>  
     </div>
 </div>
 

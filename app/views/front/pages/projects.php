@@ -16,7 +16,7 @@
                             <picture>
                                 <source srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_sm_image;?>" media="(min-width:768px)">
                                 <img class="img-fluid" srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>" alt="" class="large-hero__image">
-                                <a href="<?php echo URLROOT;?>/Portfolio/<?php echo $project->project_slug;?>"><span
+                                <a href="<?php echo URLROOT;?>/Portfolio/projets/<?php echo $project->project_slug;?>"><span
                                         class="lnr lnr-chevron-right"></span></a>
                             </picture>
                         </div>

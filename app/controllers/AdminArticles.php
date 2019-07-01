@@ -61,6 +61,12 @@ class AdminArticles extends Controller
 
             $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
 
+            if ($_POST['is_published'] != '') {
+                $is_published = $_POST['is_published'];
+            } else {
+              
+                $is_published = '';
+            }
             $data = [
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
@@ -68,7 +74,7 @@ class AdminArticles extends Controller
                 'slug' => cleaner(trim($_POST['title'])),
                 'excerpt' => trim($_POST['excerpt']),
                 'databaseCategories' => $databaseCategories,
-                'is_published' => $_POST['is_published'],
+                'is_published' => $is_published,
 
                 'title_err' => '',
                 'content_err' => '',
@@ -112,7 +118,7 @@ class AdminArticles extends Controller
                     }
                     // Redirect to login
                     flash('article_message', 'Article ajouté');
-                    redirect('AdminArticles');
+                    redirect('AdminArticles' . '/1');
                 } else {
                     die('Something went wrong');
                 }
@@ -253,7 +259,7 @@ class AdminArticles extends Controller
                     }
 
                     flash('article_message', 'Article modifié');
-                    redirect('AdminArticles');
+                    redirect('AdminArticles' . '/1');
                 } else {
                     die('Something went wrong');
                 }
@@ -282,5 +288,21 @@ class AdminArticles extends Controller
             $this->view('admin/articles/edit', $data);
         }
     }
+
+    // Delete Article
+    public function delete($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+          //Execute
+          if($this->blogModel->deleteArticle($id)){
+            // Redirect to login
+            flash('article_message', 'Article supprimé');
+            redirect('AdminArticles' . '/1');
+            } else {
+              die('Something went wrong');
+            }
+        } else {
+            redirect('AdminArticles' . '/1');
+        }
+      }
 
 }

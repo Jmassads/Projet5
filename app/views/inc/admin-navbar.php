@@ -14,7 +14,7 @@
          Articles
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles">Tous les articles</a>
+        <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles/1">Tous les articles</a>
           <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles/published">Articles publiés</a>
           <a class="dropdown-item" href="<?php echo URLROOT; ?>/AdminArticles/notpublished">Articles non publiés</a>
         </div>

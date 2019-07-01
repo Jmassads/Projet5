@@ -49,11 +49,11 @@
         convert_urls: false,
         image_prepend_url: "../../",
         // without images_upload_url set, Upload tab won't show up
-        images_upload_url: '../../upload.php',
+        images_upload_url: '/FinalProjectphp/Upload/',
         image_dimensions: true,
-        relative_urls: false,
-        remove_script_host: false,
-        convert_urls: true,
+        // relative_urls: false,
+        // remove_script_host: false,
+        // convert_urls: true,
         // forced_root_block: 'div',
         extended_valid_elements: "*[*]",
 
@@ -65,7 +65,7 @@
             xhr.withCredentials = false;
 
 
-            xhr.open('POST', '../../upload.php');
+            xhr.open('POST', '/FinalProjectphp/Upload/');
             // xhr.open('POST', 'index.php?url=Upload');
             xhr.onload = function() {
                 var json;

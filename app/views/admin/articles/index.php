@@ -16,7 +16,7 @@
                 <div class="d-flex justify-content-start align-items-center">
                     <?php if($article->article_image):?>
                     <img class="single-article--image img-fluid mr-3"
-                        srcset="<?php echo URLROOT;?>/uploads/<?php echo $article->article_image;?>" alt="">
+                        srcset="../uploads/<?php echo $article->article_image;?>" alt="">
                     <?php endif;?>
 
                     <h2 class="h5"><?php echo $article->article_title;?></h2>
@@ -35,7 +35,12 @@
                         href="<?php echo URLROOT;?>/AdminArticles/show/<?php echo $article->article_id;?>">Voir</a>
                     <a class="btn btn-md btn-outline-info"
                         href="<?php echo URLROOT;?>/AdminArticles/edit/<?php echo $article->article_id;?>">Modifier</a>
-                    <a class="btn btn-md btn-outline-danger" href="">Supprimer</a>
+
+                    <form class="ml-2"
+                        action="<?php echo URLROOT; ?>/AdminArticles/delete/<?php echo $article->article_id; ?>"
+                        method="post">
+                        <button type="submit" class="btn btn-md btn-outline-danger rounded-0"> Supprimer</button>
+                    </form>
                 </div>
 
             </div>
@@ -56,7 +61,8 @@
         </li>
         <?php else:?>
         <li class="page-item">
-            <a class="page-link" href="<?php echo URLROOT;?>/AdminArticles/<?php echo $data['current_page'] - 1;?>" aria-label="Previous">
+            <a class="page-link" href="<?php echo URLROOT;?>/AdminArticles/<?php echo $data['current_page'] - 1;?>"
+                aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">Previous</span>
             </a>
@@ -80,7 +86,8 @@
         </li>
         <?php else:?>
         <li class="page-item">
-            <a class="page-link" href="<?php echo URLROOT;?>/AdminArticles/<?php echo $data['current_page'] + 1;?>" aria-label="Next">
+            <a class="page-link" href="<?php echo URLROOT;?>/AdminArticles/<?php echo $data['current_page'] + 1;?>"
+                aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
                 <span class="sr-only">Next</span>
             </a>

@@ -116,7 +116,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
                                 <img class="img-fluid"
                                     srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>"
                                     alt="<?php echo $project->project_name;?>" class="large-hero__image">
-                                <a href="<?php echo URLROOT;?>/Portfolio/<?php echo $project->project_slug;?>"><span
+                                <a href="<?php echo URLROOT;?>/Portfolio/projets/<?php echo $project->project_slug;?>"><span
                                         class="lnr lnr-chevron-right"></span>
                                     <span class="sr-only">Voir le projet</span></a>
                             </picture>
@@ -208,7 +208,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
                 <h2 class="headline--red-dot">Contact</h2>
             </div>
             <div class=row>
-                <div class=col-lg-6>
+                <div class="col-md-6">
                     <ul class="info-contact list-unstyled ">
                         <li><i class="mr-2 fa fa-map-marker "></i> Saint Germain en Laye</li>
                         <li>
@@ -218,7 +218,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     </ul>
                     <div id="map"></div>
                 </div>
-                <div class=col-lg-6>
+                <div class="col-md-6">
                     <?php if($msg != ''): ?>
                     <div class="alert_msg alert <?php echo $msgClass;?>">
                         <?php echo $msg;?>

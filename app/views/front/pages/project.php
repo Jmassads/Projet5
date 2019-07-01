@@ -37,7 +37,7 @@
                     <ul class="list-group">
                         <?php foreach($data['projects'] as $project):?>
                         <?php if($data['project']->id != $project->id):?>
-                        <li class="list-group-item rounded-0"><a href="<?php echo URLROOT;?>/Portfolio/<?php echo $project->project_slug;?>"><?php echo $project->project_name;?></a></li>
+                        <li class="list-group-item rounded-0"><a href="<?php echo URLROOT;?>/Portfolio/projets/<?php echo $project->project_slug;?>"><?php echo $project->project_name;?></a></li>
                         <?php endif;?>
                         <?php endforeach;?>
                     </ul>
