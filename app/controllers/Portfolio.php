@@ -9,6 +9,7 @@ class Portfolio extends Controller
     public function __construct()
     {
         $this->projectModel = $this->model('Projectmodel');
+        $this->categoryModel = $this->model('Categorymodel');
     }
 
     public function index($slug = null)
@@ -42,6 +43,7 @@ class Portfolio extends Controller
 
     }
 
+
     public function projets($slug = null)
     {
 
@@ -63,7 +65,7 @@ class Portfolio extends Controller
 
             ];
 
-            if (!$project) {
+            if(!$project){
                 die("le projet n'existe pas");
             } else {
                 $this->view('front/pages/project', $data);
@@ -71,5 +73,8 @@ class Portfolio extends Controller
 
         }
 
+        
+
     }
+
 }

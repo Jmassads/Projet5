@@ -4,7 +4,7 @@
         <div class="article">
             <div class="article--meta">
                 <img class="article--image img-fluid"
-                    src="<?php echo URLROOT; ?>/uploads/<?php echo $article->article_image; ?>" alt="">
+                    src="uploads/<?php echo $article->article_image; ?>" alt="">
                 <h3 class="article--title h6"><a href="<?php echo $article->article_url; ?>"
                         target="blank"><?php echo $article->article_title; ?></a></h3>
             </div>

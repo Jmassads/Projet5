@@ -76,7 +76,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     <h1>Julia Assad</h1>
                     <h2 class="h4 mb-3">Développeuse Web Junior</h2>
                     <p>Ayant une passion pour l'informatique, j'ai choisi de faire une reconversion professionelle en
-                        2017. Je me suis d'abord formée en autodidacte puis j'ai suivi le parcours 'Développeur Web
+                        2016. Je me suis d'abord formée en autodidacte puis j'ai suivi le parcours 'Développeur Web
                         Junior' chez Openclassrooms</p>
                     <div class="my-4 d-flex justify-content-between align-items-center">
                         <a href="#projects"
@@ -138,9 +138,16 @@ if(filter_has_var(INPUT_POST, 'submit')){
             <h2 class="headline--red-dot">Qui suis-je?</h2>
             <p class="about--description">
                 J'ai obtenu mon diplôme en management de système d'information en 2009 aux États Unis. Je suis rentrée
-                en France en 2012 et j'ai passé plusieurs années à travailler dans l'hôtellerie. Fin 2016, le
+                en France en 2012 et j'ai passé plusieurs années à travailler dans l'hôtellerie. En 2016, le
                 développement web est devenu une réelle passion pour moi et j'ai décidé de me former chez
                 Openclassrooms.</p>
+            <div class="row">
+            <div class="col-sm-6">
+            <div class="timer-container mb-3">
+            <div class="timer"></div>
+            </div>
+            </div>
+            </div>
             <div class="d-flex justify-content-end">
                 <a href="files/julia_assad_cv.pdf" download
                     class="blog-button btn btn-outline-dark shadow-none rounded-0"> <i class="fas fa-download"></i>

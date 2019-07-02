@@ -13,7 +13,7 @@ class Projectmodel
 
     public function getPublishedProjects()
     {
-        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id DESC');
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id ASC');
 
         $results = $this->db->resultSet();
 
@@ -22,7 +22,7 @@ class Projectmodel
 
     public function getNonPublishedProjects()
     {
-        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 0 ORDER BY projects.id DESC');
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 0 ORDER BY projects.id ASC');
 
         $results = $this->db->resultSet();
 
@@ -110,10 +110,10 @@ class Projectmodel
         return $results;
     }
 
-    // Get first 4 projects that are published
+    // Get first 4 projects that are published - for the homepage
     public function getFirstProjects()
     {
-        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY id ASC limit 4 ');
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id ASC limit 4 ');
 
         $results = $this->db->resultSet();
 
@@ -229,6 +229,30 @@ class Projectmodel
         $this->db->resultSet();
 
         $results = $this->db->rowCount();
+
+        return $results;
+    }
+
+    // pour trouver des projets par nom (slug) (html, cs, javascript...)
+    public function getProjectssbyCategoryName($nameSlug)
+    {
+        $this->db->query('SELECT * FROM projects INNER JOIN project_categories on project_categories.project_id = projects.id INNER JOIN categories on categories.category_id = project_categories.category_id WHERE projects.is_published = 1 AND categories.category_name_slug = :slug');
+
+        $this->db->bind(':slug', $nameSlug);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getProjectCategories(){
+        $this->db->query('SELECT * FROM categories
+        INNER JOIN project_categories on categories.category_id = project_categories.category_id
+        INNER JOIN projects on projects.id = project_categories.project_id 
+        AND projects.is_published = 1
+        GROUP BY project_categories.category_id');
+
+        $results = $this->db->resultSet();
 
         return $results;
     }

@@ -20,6 +20,13 @@ function init() {
 window.init = init;
 
 
+import {
+	Timer
+} from './front-modules/timer';
+
+let timer = new Timer('.timer');
+
+
 $('#btn-menu').click(function () {
     if($( "#btn-menu" ).hasClass( "btn-open" )){
         $('.overlay').css('width', '100%');
