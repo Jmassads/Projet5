@@ -266,4 +266,4 @@ if(filter_has_var(INPUT_POST, 'submit')){
 
     <button id="myBtn" title="Go to top"><span class="lnr lnr-chevron-up"></span></button>
 
-    <?php require APPROOT . '/views/inc/footer.php';?>
+    <?php require APPROOT . '/views/inc/homepage-footer.php';?>
