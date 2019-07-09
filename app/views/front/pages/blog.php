@@ -1,84 +1,75 @@
 <?php require APPROOT . '/views/inc/header.php';?>
 
-<?php require APPROOT . '/views/inc/sidenav.php';?>
+<?php require APPROOT . '/views/inc/top-menu.php';?>
 
 <div id="main" class="main-container">
     <section class="blog">
-        <div class="container-fluid">
-
-            <h2 class="mb-4">Julia Assad.blog</h2>
-            <h3 class="blog--title">Des Ressources et de l'inspiration</h3>
-            <nav class="navbar navbar-expand-sm mb-4 justify-content-start">
-                <button class="navbar-toggler pl-0" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span>Catégories </span><span class="lnr lnr-chevron-down"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ">
-
-                        <?php if($data['frontCategories']):?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Front-End Technologies
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <?php foreach ($data['frontCategories'] as $frontCategory): ?>
-                                <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $frontCategory->category_name_slug; ?>"><?php echo $frontCategory->category_name; ?></a>
-                                <?php endforeach;?>
-                            </div>
-                        </li>
-                        <?php endif;?>
-
-                        <?php if($data['backCategories']):?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Back-End Technologies
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <?php foreach ($data['backCategories'] as $backCategory): ?>
-                                <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $backCategory->category_name_slug; ?>"><?php echo $backCategory->category_name; ?></a>
-                                <?php endforeach;?>
-                            </div>
-                        </li>
-                        <?php endif;?>
-
-                        <?php if($data['backCategories']):?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Databases
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
-                                <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $databaseCategory->category_name_slug; ?>"><?php echo $databaseCategory->category_name; ?></a>
-                                <?php endforeach;?>
-                            </div>
-                        </li>
-                        <?php endif;?>
+        <div class="container">
+            <span class="heading-meta text-center">Julia Assad.blog</span>
+            <h2 class="mb-4 text-center section-title">Des Ressources et de l'inspiration</h2>
+            <nav class="navbar justify-content-center mb-4">
+                <?php if($data['frontCategories']):?>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-fluid" src="img/front.png" width="45" height="45"
+                                    alt="front-end icon"> Front-End
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <?php foreach ($data['frontCategories'] as $frontCategory): ?>
+                        <a class="dropdown-item"
+                            href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $frontCategory->category_name_slug; ?>"><?php echo $frontCategory->category_name; ?></a>
+                        <?php endforeach;?>
+                    </div>
                 </div>
+                <?php endif;?>
+
+                <?php if($data['backCategories']):?>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-fluid" src="img/back.png" width="40" height="40"
+                                    alt="front-end icon"> Back-End
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <?php foreach ($data['backCategories'] as $backCategory): ?>
+                        <a class="dropdown-item"
+                            href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $backCategory->category_name_slug; ?>"><?php echo $backCategory->category_name; ?></a>
+                        <?php endforeach;?>
+                    </div>
+                </div>
+                <?php endif;?>
+
+                <?php if($data['databaseCategories']):?>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Database
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                        <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
+                        <a class="dropdown-item"
+                            href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $databaseCategory->category_name_slug; ?>"><?php echo $databaseCategory->category_name; ?></a>
+                        <?php endforeach;?>
+                    </div>
+                </div>
+                <?php endif;?>
+
             </nav>
 
             <div id="load_data_table" class="articles">
                 <div class="row align-items-start">
                     <?php foreach ($data['articles'] as $article): ?>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="article">
-                            <div class="article--meta">
+                            <div class="d-flex justify-content-start align-items-center">
                                 <?php if($article->article_image):?>
-                                <img class="article--image img-fluid"
+                                <img class="article--image img-fluid py-2"
                                     srcset="uploads/<?php echo $article->article_image;?>" alt="">
                                 <?php endif;?>
 
-                                <h3 class="article--title"><a href="<?php echo $article->article_url; ?>"
-                                        target="blank"><?php echo $article->article_title; ?></a></h3>
+                                <h3 class="article--title"><a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"
+                                        ><?php echo $article->article_title; ?></a></h3>
                             </div>
                             <div class="article--excerpt">
                                 <p><?php echo $article->article_excerpt; ?></p>

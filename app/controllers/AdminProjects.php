@@ -65,6 +65,14 @@ class AdminProjects extends Controller
    
             $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
 
+            if (!isset($_POST['is_published'])) {
+                $is_published = '';
+  
+            } else {
+                // leave the default value
+                $is_published = $_POST['is_published'];
+            }
+
             $data = [
                 'name' => trim($_POST['name']),
                 'description' => trim($_POST['description']),
@@ -75,7 +83,7 @@ class AdminProjects extends Controller
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
                 'databaseCategories' => $databaseCategories,
-                'is_published' => $_POST['is_published'],
+                'is_published' => $is_published,
 
                 'name_err' => '',
                 'description_err' => '',
@@ -149,7 +157,8 @@ class AdminProjects extends Controller
                 'comments' => '',
                 'categories' => '',
                 'slug' => '',
-                'databaseCategories' => $databaseCategories
+                'databaseCategories' => $databaseCategories,
+                'is_published' => ''
             ];
 
             $this->view('admin/projects/add', $data);

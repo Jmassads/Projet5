@@ -1,13 +1,10 @@
 .single-article {
-  @include atMedium {
-    padding-left: 70px;
-  }
-
+ 
   h2 a {
     color: $mainRed;
 
     &:hover {
-      color: darken($mainRed, 80%)
+      color: lighten($mainRed, 10%)
     }
   }
 

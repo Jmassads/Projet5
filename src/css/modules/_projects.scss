@@ -1,10 +1,7 @@
 /* =Project Section */
 
 .projects {
-  @include atMedium {
-    padding-left: 70px;
-  }
-
+ 
   .project {
     margin-bottom: 1.5rem;
     -webkit-transition: all 1s ease-out;

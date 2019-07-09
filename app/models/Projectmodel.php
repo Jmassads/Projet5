@@ -103,7 +103,7 @@ class Projectmodel
     // Get all projects
     public function getProjects()
     {
-        $this->db->query('SELECT * FROM projects');
+        $this->db->query('SELECT * FROM projects ORDER BY id DESC');
 
         $results = $this->db->resultSet();
 
@@ -113,7 +113,7 @@ class Projectmodel
     // Get first 4 projects that are published - for the homepage
     public function getFirstProjects()
     {
-        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id ASC limit 4 ');
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id DESC limit 4 ');
 
         $results = $this->db->resultSet();
 

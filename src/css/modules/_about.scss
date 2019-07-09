@@ -1,7 +1,33 @@
-
-.about {
-  @include atMedium {
-    padding-left: 70px;
+.timer-items {
+    display: flex;
+    margin-bottom: 1.8rem;
   }
-}
-
+  
+  .time-item {
+    display: flex;
+    flex-direction: column;
+    width: 65px;
+    text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    margin-right: 5px;
+    position: relative;
+  
+    .time-amount {
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+    }
+  
+    .time-text {
+      //  background-color: rgba(0, 0, 0, .5);
+      display: inline-block;
+      font-size: 0.775rem;
+      color: #000;
+      border-top: 1px solid #eee;
+    }
+  }
+  
+  
+  

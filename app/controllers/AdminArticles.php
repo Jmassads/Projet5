@@ -61,11 +61,12 @@ class AdminArticles extends Controller
 
             $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
 
-            if ($_POST['is_published'] != '') {
-                $is_published = $_POST['is_published'];
-            } else {
-              
+            if (!isset($_POST['is_published'])) {
                 $is_published = '';
+  
+            } else {
+                // leave the default value
+                $is_published = $_POST['is_published'];
             }
             $data = [
                 'title' => trim($_POST['title']),

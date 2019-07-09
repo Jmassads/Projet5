@@ -1,12 +1,4 @@
 .skills {
-  @include atMedium {
-    padding-left: 70px;
-  }
-}
-
-/*Skills SECTION*/
-
-.skills {
   ul {
     padding: 0;
     margin: 0 auto;
@@ -30,33 +22,3 @@
   }
 }
 
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(184, 59, 59, 0.4);
-  }
-
-  70% {
-    -webkit-box-shadow: 0 0 0 10px rgba(184, 59, 59, 0);
-  }
-
-  100% {
-    -webkit-box-shadow: 0 0 0 0 rgba(184, 59, 59, 0);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    -moz-box-shadow: 0 0 0 0 rgba(184, 59, 59, 0.4);
-    box-shadow: 0 0 0 0 rgba(184, 59, 59, 0.4);
-  }
-
-  70% {
-    -moz-box-shadow: 0 0 0 10px rgba(184, 59, 59, 0);
-    box-shadow: 0 0 0 10px rgba(184, 59, 59, 0);
-  }
-
-  100% {
-    -moz-box-shadow: 0 0 0 0 rgba(184, 59, 59, 0);
-    box-shadow: 0 0 0 0 rgba(184, 59, 59, 0);
-  }
-}

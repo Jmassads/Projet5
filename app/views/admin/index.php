@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2><?php echo $data['allArticles'];?> Articles</h2>
+        <h2><img src="<?php echo URLROOT; ?>/img/articles-icon.png" alt="" width="40"> <?php echo $data['allArticles'];?> Articles</h2>
     </div>
     <div class="card-body">
         <div>
@@ -68,7 +68,7 @@
                 <?php endif;?>
             </h5>
             <?php if($data['notPublishedProjects'] == '1'):?>
-            <a href="<?php echo URLROOT;?>/AdminProjects/notpublished" class="btn btn-sm btn-red">Voir l'article</a>
+            <a href="<?php echo URLROOT;?>/AdminProjects/notpublished" class="btn btn-sm btn-red">Voir le projet</a>
             <?php else:?>
             <a href="<?php echo URLROOT;?>/AdminProjects/notpublished" class="btn btn-sm btn-red">Voir les projets</a>
             <?php endif;?>
@@ -76,9 +76,9 @@
     </div>
 </div>
 
-<div class="card mt-3">
+<div class="card mt-3 mb-4">
     <div class="card-header">
-    <h2><?php echo $data['allcategories'];?> Catégories</h2>
+    <h2><img src="<?php echo URLROOT; ?>/img/categories-icon.png" alt="" width="40"> <?php echo $data['allcategories'];?> Catégories</h2>
     </div>
     <div class="card-body">
     <a href="<?php echo URLROOT;?>/AdminCategories" class="btn btn-sm btn-red">Voir les catégories</a>

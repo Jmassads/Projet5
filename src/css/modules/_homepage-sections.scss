@@ -1,0 +1,7 @@
+.inside-sections {
+  @include atMedium {
+    padding: 1.5rem;
+    margin-left: 18%;
+    position: relative;
+  }
+}

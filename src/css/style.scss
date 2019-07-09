@@ -1,28 +1,43 @@
+// @import "@fortawesome/fontawesome-free/css/all.css";
+// @import "@fortawesome/fontawesome-free/js/all.js";
+
+@import "smartmenus/src/css/sm-core-css.css";
+@import "smartmenus/src/css/sm-clean/sm-clean.css";
+@import "aos/dist/aos.css";
 @import "bootstrap";
 @import "base/_variables";
 @import "base/_mixins";
 @import "base/_global";
 @import "base/_typography";
 
-
-@import "modules/_overlay";
-@import "modules/_sidenav";
-@import "modules/_menu";
-@import "modules/_hamburger";
+/* Buttons */
 @import "modules/_buttons";
+/* Keyframes */
+@import "modules/keyframes";
 
-// front page
-@import "modules/_header";
+/* HOMEPAGE */
+@import "modules/homepage-banner";
+@import "modules/homepage-sidenav";
+@import "modules/homepage-sections";
 @import "modules/_about";
 @import "modules/_projects";
 @import "modules/_skills";
 @import "modules/_contact";
+@import "modules/map";
 
-// single project
+
+/* Fixed Top Menu */
+@import "modules/top-menu";
+
+/* Blog */
+@import "modules/_blog";
+
+/* Single Project */
 @import "modules/_single-project";
 
-// single article
+/* Single Article */
 @import "modules/_single-article";
 
-// blog section
-@import "modules/_blog";
+/* 404 */
+@import "modules/notFound";
+

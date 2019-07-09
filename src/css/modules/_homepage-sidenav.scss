@@ -1,0 +1,95 @@
+.sidenav {
+    display: none;
+  
+    @include atMedium {
+      border-right: 1px solid #ece9e1;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 0;
+      position: fixed;
+      top: 0;
+      left: 0 !important;
+      height: 100%;
+      width: 18% !important;
+      text-align: center;
+  
+      &--arrow-down {
+  
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        opacity: 0;
+  
+        span {
+          display: inline-block;
+          font-size: 2.5rem;
+          animation: move_up_and_down 0.6s infinite alternate;
+          color: $mainRed;
+  
+  
+  
+        }
+      }
+  
+      .logo {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        color: $mainRed;
+        font-size: 1.1rem;
+        font-weight: 400;
+        display: flex;
+        opacity: 0;
+  
+        span {
+          flex: 1;
+          font-weight: bold;
+          padding: 0.8rem;
+        }
+  
+        .initial_first_name {
+          border-bottom: 1px solid #eee;
+        }
+  
+        .initial_last_name {
+          background-color: #b83b3b;
+          color: #fff;
+        }
+      }
+  
+      ul {
+  
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+  
+        li {
+          list-style-type: none;
+  
+        }
+  
+        a {
+          display: block;
+          padding: 0.8rem 0;
+          color: #000;
+          font-weight: 500;
+          font-size: 10px;
+          text-transform: uppercase;
+          color: black;
+          font-weight: 500;
+          letter-spacing: 5px;
+          transition: 0.2s;
+  
+          &:hover {
+            color: $mainRed;
+          }
+        }
+      }
+    }
+  }
+  
+  

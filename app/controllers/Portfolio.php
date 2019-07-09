@@ -66,14 +66,12 @@ class Portfolio extends Controller
             ];
 
             if(!$project){
-                die("le projet n'existe pas");
+                $this->view('404');
             } else {
                 $this->view('front/pages/project', $data);
             }
 
-        }
-
-        
+        }   
 
     }
 

@@ -13,6 +13,8 @@
   "author": "Julia Assad",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "aos": "^2.3.4",
     "autoprefixer": "^9.5.1",
     "bootstrap": "^4.3.1",
     "browser-sync": "^2.26.5",
@@ -30,6 +32,7 @@
     "popper.js": "^1.15.0",
     "sass-module-importer": "^1.4.0",
     "scrollmagic": "^2.0.7",
+    "smartmenus": "^1.1.0",
     "swiper": "^4.5.0"
   },
   "devDependencies": {

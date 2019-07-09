@@ -1,5 +1,5 @@
 .btn {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 button:focus {
@@ -9,7 +9,7 @@ button:focus {
 
 .btn-outline-dark:hover {
   color: #fff !important;
-  background-color:$mainRed;
+  background-color: $mainRed;
   border-color: $mainRed;
 }
 
@@ -18,30 +18,83 @@ button:focus {
   transition: all 0.2s linear;
 }
 
-// back to top button
+.btn-outline-dark:not(:disabled):not(.disabled):active,
+.show>.btn-outline-dark.dropdown-toggle {
+  color: #fff;
+  background-color: $mainRed;
+  border-color: $mainRed;
+}
+
+// back to top button for front pages
 
 #myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 10px; /* Place the button at the bottom of the page */
-  right: 20px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Fixed/sticky position */
+  bottom: 10px;
+  /* Place the button at the bottom of the page */
+  right: 20px;
+  /* Place the button 30px from the right */
+  z-index: 99;
+  /* Make sure it does not overlap */
+  border: none;
+  /* Remove borders */
+  outline: none;
+  /* Remove outline */
   background-color: $mainRed;
-  color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
+  color: white;
+  /* Text color */
+  cursor: pointer;
+  /* Add a mouse pointer on hover */
   width: 46px;
   height: 46px;
   padding: 0;
-  border-radius: 50%; /* Rounded corners */
+  border-radius: 50%;
+  /* Rounded corners */
   cursor: pointer;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 #myBtn:hover {
-  background-color: #000; /* Add a dark-grey background on hover */
+  background-color: #000;
+  /* Add a dark-grey background on hover */
+}
+
+// back to top homepage
+#backTotop {
+  opacity: 0;
+  position: fixed;
+  /* Fixed/sticky position */
+  bottom: 10px;
+  /* Place the button at the bottom of the page */
+  right: 20px;
+  /* Place the button 30px from the right */
+  z-index: 99;
+  /* Make sure it does not overlap */
+  border: none;
+  /* Remove borders */
+  outline: none;
+  /* Remove outline */
+  background-color: $mainRed;
+  color: white;
+  /* Text color */
+  cursor: pointer;
+  /* Add a mouse pointer on hover */
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border-radius: 50%;
+  /* Rounded corners */
+  cursor: pointer;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+#backTotop:hover {
+  background-color: #000;
+  /* Add a dark-grey background on hover */
 }
 
 .contact-button {
@@ -51,5 +104,39 @@ button:focus {
 
   &:hover {
     color: #fff;
+  }
+}
+
+
+.banner-button {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+  color: #000;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: 0.125em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  max-width: 20rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 2rem;
+  padding: 0 1.2rem;
+
+
+  &:hover {
+    color: $mainRed;
+    box-shadow: inset 0 0 0 1px $mainRed;
+  }
+
+  @include atMedium{
+    height: 3.75em;
+    line-height: 3.75em;
+    border-radius: 3.75em;
+    padding: 0 2rem;
   }
 }

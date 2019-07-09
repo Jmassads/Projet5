@@ -19,8 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 
     <!-- Linear Icons -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
@@ -46,12 +46,12 @@
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'
         ],
-        convert_urls: false,
-        image_prepend_url: "../../",
+        // convert_urls: false,
+        image_prepend_url: "http://localhost:3001/FinalProjectphp/",
         // without images_upload_url set, Upload tab won't show up
         images_upload_url: '/FinalProjectphp/Upload/',
         image_dimensions: true,
-        // relative_urls: false,
+        relative_urls: false,
         // remove_script_host: false,
         // convert_urls: true,
         // forced_root_block: 'div',

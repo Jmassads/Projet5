@@ -1,6 +1,6 @@
 <?php
 // Allowed origins to upload images
-$accepted_origins = array("http://localhost", "http://localhost:8888", "http://localhost:3000", "https://juliaassad.fr");
+$accepted_origins = array("http://localhost", "http://localhost:8888", "http://localhost:3000", "https://juliaassad.fr", "http://localhost:3001");
 
 // Images upload path
 $imageFolder = "uploads/";

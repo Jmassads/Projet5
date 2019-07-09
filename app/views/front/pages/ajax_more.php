@@ -1,6 +1,6 @@
 <div class="row align-items-start">
     <?php foreach ($data['newArticles'] as $article): ?>
-    <div class="col-md-4">
+    <div class="col-sm-6 col-lg-4">
         <div class="article">
             <div class="article--meta">
                 <img class="article--image img-fluid"

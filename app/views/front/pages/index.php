@@ -57,59 +57,100 @@ if(filter_has_var(INPUT_POST, 'submit')){
     }
 }
 
-    
 
 ?>
 
 <?php require APPROOT . '/views/inc/header.php';?>
 
-<?php require APPROOT . '/views/inc/sidenav.php';?>
+<section id="banner" class="banner">
+    <div class="content">
+        <div>
+            <nav class="d-md-none top-menu">
+                <ul class="top-menu">
+                    <li class="m-0 current"><a href="#about">À Propos</a></li>
+                    <li class=""><a href="#projects">Projets</a></li>
+                    <li><a href="#skills">Compétences</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="banner--bottom">
+            <h1>Julia Assad</h1>
+            <h2>Développeuse Web</h2>
+            <p class="d-none d-md-block">Ayant une passion pour <strong>l'informatique</strong>, j'ai choisi de faire
+                une reconversion professionelle en 2016. Je me
+                suis d'abord formée en autodidacte puis j'ai suivi le parcours <strong>'Développeur Web Junior'</strong>
+                chez Openclassrooms
+            </p>
+        </div>
+        <ul class="social-icons">
+            <a href="https://www.facebook.com/julia.assadchevreux" target="_blank"><li class="social-icon"><i class="fab fa-facebook-f" aria-hidden="true"></i></li></a>
+            <a href="https://www.linkedin.com/in/julia-assad/" target="_blank"><li class="social-icon"><i class="fab fa-linkedin-in" aria-hidden="true"></i></li></a>
+           <a href="https://github.com/Jmassads" target="_blank"> <li class="social-icon"><i class="fab fa-github" aria-hidden="true"></i></li></a>
+            <a href="https://twitter.com/jmassads" target="_blank"><li class="social-icon"><i class="fab fa-twitter" aria-hidden="true"></i></li></a>
+        </ul>
+    </div>
+    <div class="image">
+        <p class="text-light">N'hésitez pas à me contacter pour plus d'infos</p>
+        <a class="btn btn-md btn-light shadow-none" href="#contact">Contact</a>
+    </div>
+</section>
 
 
-<div id="main" class="main-container">
+<div class="sidenav">
+    <a href="#banner">
+        <div class="logo">
+            <span class="initial_first_name">J</span>
+            <span class="initial_last_name">A</span>
+        </div>
+    </a>
 
-    <!-- Header -->
-    <header id="header" class="header">
+    <ul class="sidenav--menu">
+        <li><a class="active" href="#about">A Propos</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+
+<section class="inside-sections">
+
+    <section id="about" class="section about">
         <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-sm-6">
-                    <h1>Julia Assad</h1>
-                    <h2 class="h4 mb-3">Développeuse Web Junior</h2>
-                    <p>Ayant une passion pour l'informatique, j'ai choisi de faire une reconversion professionelle en
-                        2016. Je me suis d'abord formée en autodidacte puis j'ai suivi le parcours 'Développeur Web
-                        Junior' chez Openclassrooms</p>
-                    <div class="my-4 d-flex justify-content-between align-items-center">
-                        <a href="#projects"
-                            class="project-button btn btn-outline-dark shadow-none rounded-0">Projets</a>
-                        <hr class="hr-line">
-                        <a href="<?php echo URLROOT;?>/Blog"
-                            class="blog-button btn btn-outline-dark shadow-none rounded-0">Blog</a>
+            <span class="heading-meta">À Propos</span>
+            <h2 class="headline--red-dot">Qui suis-je?</h2>
+            <p class="about--description">
+                J'ai obtenu mon diplôme en management de système d'information en 2009 aux États Unis. Je suis
+                rentrée
+                en France en 2012 et j'ai passé plusieurs années à travailler dans l'hôtellerie. En 2016, le
+                développement web est devenu une réelle passion pour moi et j'ai décidé de me former chez
+                Openclassrooms.</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="timer-container">
+                        <div class="timer"></div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <ul class="header--social-icons">
-                        <li><a href="https://www.facebook.com/julia.assadchevreux" target="_blank"><i
-                                    class="header--social-icons-facebook fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/julia-assad/" target="_blank"><i
-                                    class="header--social-icons-linkedin fab fa-linkedin-in"></i></a></li>
-                        <li><a href="https://twitter.com/jmassads" target="_blank"><i
-                                    class="header--social-icons-twitter fab fa-twitter"></i></a></li>
-                        <li><a href="https://github.com/Jmassads" target="_blank"><i
-                                    class="header--social-icons-github fab fa-github"></i></a></li>
-                    </ul>
-                </div>
+            </div>
+            <div class="d-flex justify-content-start">
+                <a href="files/julia_assad_cv.pdf" download
+                    class="blog-button btn-sm btn btn-outline-dark shadow-none rounded-0"> <i
+                        class="fas fa-download"></i>
+                    Curriculum vitae</a>
             </div>
         </div>
-    </header>
+    </section>
 
     <section id="projects" class="section projects">
         <div class="container-fluid">
-            <h2 class="headline--red-dot">Projets</h2>
+            <span class="heading-meta">Projets</span>
+            <h2 class="headline--red-dot">Projets récents</h2>
             <div class="row justify-content-center">
                 <?php foreach($data['projects'] as $project):?>
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6">
                     <div class="project">
-                        <div class="project--image">
+                        <div class="project--image mb-2">
                             <picture>
                                 <source srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_sm_image;?>"
                                     media="(min-width:768px)">
@@ -121,37 +162,15 @@ if(filter_has_var(INPUT_POST, 'submit')){
                                     <span class="sr-only">Voir le projet</span></a>
                             </picture>
                         </div>
-                        <h3 class="project--title h6"><?php echo $project->project_name;?></h3>
+                        <h3 class="project--title"><?php echo $project->project_name;?></h3>
                     </div>
                 </div>
                 <?php endforeach;?>
             </div>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-start">
                 <a href="<?php echo URLROOT;?>/Portfolio"
-                    class="blog-button btn btn-outline-dark shadow-none rounded-0">Tous mes projets</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section about">
-        <div class="container-fluid">
-            <h2 class="headline--red-dot">Qui suis-je?</h2>
-            <p class="about--description">
-                J'ai obtenu mon diplôme en management de système d'information en 2009 aux États Unis. Je suis rentrée
-                en France en 2012 et j'ai passé plusieurs années à travailler dans l'hôtellerie. En 2016, le
-                développement web est devenu une réelle passion pour moi et j'ai décidé de me former chez
-                Openclassrooms.</p>
-            <div class="row">
-            <div class="col-sm-6">
-            <div class="timer-container mb-3">
-            <div class="timer"></div>
-            </div>
-            </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <a href="files/julia_assad_cv.pdf" download
-                    class="blog-button btn btn-outline-dark shadow-none rounded-0"> <i class="fas fa-download"></i>
-                    Curriculum vitae</a>
+                    class="blog-button btn btn-sm btn-outline-dark shadow-none rounded-0">Tous mes Projets <span
+                        class="lnr lnr-arrow-right"></span></a>
             </div>
         </div>
     </section>
@@ -159,7 +178,8 @@ if(filter_has_var(INPUT_POST, 'submit')){
     <section id="skills" class="section skills">
         <div class="container-fluid">
             <div class="py-4">
-                <h2 class="headline--red-dot">Compétences</h2>
+                <span class="heading-meta">Compétences</span>
+                <h2 class="headline--red-dot">Langages de programmation</h2>
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
                         <div class="mb-3">
@@ -209,12 +229,28 @@ if(filter_has_var(INPUT_POST, 'submit')){
         </div>
     </section>
 
-    <section id=contact class="contact pb-4">
-        <div class=container>
-            <div class=head-section>
+    <section id="blog" class="section about">
+        <div class="container-fluid">
+            <span class="heading-meta">Lire</span>
+            <h2 class="headline--red-dot">Blog</h2>
+            <p>Faire de la veille, c'est important. J'ai donc decidé de partager des ressources sur le développement
+                web. Les articles que je partage sont des cours et des tutoriels, principalement sur le HTML, CSS, PHP
+                et Javascript.</p>
+            <div class="d-flex justify-content-start">
+                <a href="<?php echo URLROOT;?>/Blog"
+                    class="blog-button btn-sm btn btn-outline-dark shadow-none rounded-0">Mon Blog <span
+                        class="lnr lnr-arrow-right"></span></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact pb-4">
+        <div class="container-fluid">
+            <div class="head-section">
+                <span class="heading-meta">Contact</span>
                 <h2 class="headline--red-dot">Contact</h2>
             </div>
-            <div class=row>
+            <div class="row">
                 <div class="col-md-6">
                     <ul class="info-contact list-unstyled ">
                         <li><i class="mr-2 fa fa-map-marker "></i> Saint Germain en Laye</li>
@@ -233,11 +269,12 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     <?php endif; ?>
                     <form method="post" action="index.php#contact">
                         <div class="row">
-                        <div class="col-12">
-                        <h3 class="h4 mt-3">N'hésitez pas à me contacter pour plus d'informations</h3></div>
+                            <div class="col-12">
+                                <h3 class="h6 mt-3">N'hésitez pas à me contacter pour plus d'informations</h3>
+                            </div>
                         </div>
                         <div class="row box-form">
-                            
+
                             <div class="col-12 col-lg-6">
 
                                 <input type="text" name="name" class="form-control" placeholder="Votre nom*"
@@ -264,6 +301,13 @@ if(filter_has_var(INPUT_POST, 'submit')){
         </div>
     </section>
 
-    <button id="myBtn" title="Go to top"><span class="lnr lnr-chevron-up"></span></button>
+    <button id="backTotop" class="backTotop" title="Go to top"><span class="lnr lnr-chevron-up"></span></button>
+</section>
 
-    <?php require APPROOT . '/views/inc/homepage-footer.php';?>
+
+
+
+
+
+
+<?php require APPROOT . '/views/inc/homepage-footer.php';?>

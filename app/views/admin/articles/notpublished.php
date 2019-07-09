@@ -8,7 +8,7 @@
 </div>
 
 <div class="articles">
-    <h2>Article non publiés:</h2>   
+    <h2><img src="<?php echo URLROOT; ?>/img/articles-icon.png" alt="" width="40"> Article non publiés:</h2>   
     <div class="row my-3">
         <?php foreach($data['nonPublished_articles'] as $article):?>
         <div class="col-md-6 col-lg-4">

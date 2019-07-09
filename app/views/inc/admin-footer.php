@@ -8,7 +8,7 @@
 
 
   
-    <script src="<?php echo URLROOT; ?>/js/adminApp.js"></script>
+    <script src="<?php echo URLROOT; ?>/js/adminBundle.js"></script>
 
    
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

@@ -22,7 +22,18 @@ Timer.prototype.calculateTimeDifference = function () {
     days %= 30;
     months %= 12;
 
-    this.selector.innerHTML = (`<p>Je &lt;/&gt; depuis ${years} ans, ${months} mois, ${days} jours, ${minutes} minutes et ${seconds} secondes</p>`);
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+
+    this.selector.innerHTML = (`<p><strong>Je code depuis:</strong></p><div class="timer-items"><span class="time-item"><span class="time-amount">${years}</span><span class="time-text"> Ans</span></span> 
+    <span class="time-item"><span class="time-amount">${months}</span><span class="time-text"> Mois</span></span>
+    <span class="time-item"><span class="time-amount">${days}</span><span class="time-text"> Jours</span></span>
+    <span class="time-item"><span class="time-amount">${minutes}</span><span class="time-text"> Minutes</span></span>
+    <span class="time-item"><span class="time-amount">${seconds}</span><span class="time-text"> Secondes</span></span></div>`);
 }
 
 Timer.prototype.run_timer = function () {

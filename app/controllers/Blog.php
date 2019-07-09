@@ -58,7 +58,7 @@ class Blog extends Controller
     public function categorie($nameSlug = null)
     {
         if (is_null($nameSlug)) {
-            die("redirection");
+            $this->view('404');
         } else {
             $categoryByNameSlug = $this->categoryModel->getCategoriesByNameSlug($nameSlug);
             $articles = $this->BlogModel->getArticlesbyCategoryName($nameSlug);
@@ -75,7 +75,7 @@ class Blog extends Controller
             ];
 
             if (!$categoryByNameSlug) {
-                die("Redirection - la catégorie n'existe pas");
+                $this->view('404');
             } else {
                 $this->view('front/pages/category', $data);
             }
@@ -86,7 +86,7 @@ class Blog extends Controller
     {
 
         if (is_null($slug)) {
-            die('redirection page');
+            $this->view('404');
         } else {
 
             $categories = $this->categoryModel->getcategories();
@@ -103,7 +103,7 @@ class Blog extends Controller
             ];
 
             if (!$article) {
-                die("cet article n'existe pas");
+                $this->view('404');
             } else {
                 $this->view('front/pages/single-article', $data);
             }

@@ -1,10 +1,10 @@
 <?php require APPROOT . '/views/inc/header.php';?>
 
-<?php require APPROOT . '/views/inc/sidenav.php';?>
+<?php require APPROOT . '/views/inc/top-menu.php';?>
 
 <div id="main" class="main-container">
     <section class="single-project">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <h2 class="single-project--title">

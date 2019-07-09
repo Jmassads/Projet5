@@ -1,23 +1,21 @@
 
 .blog {
-  @include atMedium {
-    padding-left: 70px;
-  }
   &--title {
     position: relative;
     text-transform: uppercase;
     margin-bottom: 2rem;
   }
-
- 
 }
 
 .article {
 margin-bottom: 3rem;
+
   &--title {
     display: block;
     position: relative;
     margin-bottom: 0;
+    font-weight: 400;
+    font-size: 1rem;
     a{
       color: $mainRed;
     }
@@ -40,40 +38,7 @@ margin-bottom: 3rem;
 
 }
 
-.card {
-  border: 1px solid transparent;
-  margin-top: 30px;
-}
-
-.card-header {
-  padding: .75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: $mainRed;
-  border-bottom: 1px solid $mainRed;
-  color: #fff;
-  border-radius: 0;
-  &:first-child {
-    border-radius: 0;
-  }
-}
-
-.card-body {
-  border: 1px solid #eee;
-
-}
-.about-image {
-  margin: auto;
-  border: 5px solid #f0f0f0;
-  img {
-    -webkit-transform: rotate(-4deg);
-    -ms-transform: rotate(-4deg);
-    transform: rotate(-4deg);
-    position: relative;
-    -webkit-box-shadow: 1px 4px 30px 0 rgba(51,51,51,.5);
-    -moz-box-shadow: 1px 4px 30px 0 rgba(51,51,51,.5);
-    -o-box-shadow: 1px 4px 30px 0 rgba(51,51,51,.5);
-    -ms-box-shadow: 1px 4px 30px 0 rgba(51,51,51,.5);
-    border: 3px solid #f0f0f0;
-  }
+.dropdown-item {
+  font-weight: 300;
 }
 

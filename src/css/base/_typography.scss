@@ -1,37 +1,104 @@
-h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
-	font-weight: 400;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 500;
   line-height: 1.2;
   margin-bottom: 1.2rem;
-  font-family: 'Crimson Text', Georgia, serif;
-
-}
-a, a:visited{
-  color: rgba(0,0,0,0.87);
-}
-a:hover{
-  color: $mainRed;
-  text-decoration: none;
-}
-b, strong{
-	font-weight: 300;
-}
+  font-family: 'Quicksand', sans-serif;
 
 
-// h2,h3,h4,h5,h6{ font-style: italic; }
+}
 
-h1{ font-size: 2.625rem; } // 42px
-h2{ font-size: 2.25rem; } // 36px
-h3{ font-size: 1.875rem; } // 30px
-h4{ font-size: 1.5rem; } // 24px
-h5{ font-size: 1.125; } // 18px
-h6, .lead{ font-size: 1rem; } // 16px
-p, li, .dropdown-menu, span {font-size: 0.875rem;} // 14px
-b, strong {
+.hero-section h1,
+.hero-section h2 {
   font-weight: 400;
 }
 
+a,
+a:visited {
+  color: rgba(0,0,0,.7);
+}
+
+a:hover {
+  color: $mainRed;
+  text-decoration: none;
+}
+
+
+
+.section-title {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+
+
+.project--title {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, .7);
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 2.625rem;
+}
+
+// 42px
+h2 {
+  font-size: 2.25rem;
+}
+
+// 36px
+h3 {
+  font-size: 1.875rem;
+}
+
+// 30px
+h4 {
+  font-size: 1.5rem;
+}
+
+// 24px
+h5 {
+  font-size: 1.125;
+}
+
+// 18px
+h6,
+.lead,
+li {
+  font-size: 1rem;
+}
+
+// 16px
+p,
+span {
+  font-size: 0.875rem;
+}
+
+// 14px
+b,
+strong {
+  font-weight: 500;
+}
+
+// Homepage titles:
+
 .headline--red-dot {
   display: inline-block;
+  font-size: 1.125rem;
+  text-transform: uppercase;
 }
 
 .headline--red-dot::after {
@@ -42,6 +109,18 @@ b, strong {
   background: $mainRed;
   display: inline-block;
   margin-left: 10px;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
+
+.heading-meta {
+  margin-bottom: 15px;
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #999;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+
+
