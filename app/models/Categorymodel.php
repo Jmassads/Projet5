@@ -8,6 +8,7 @@ class Categorymodel
         $this->db = new Database;
     }
 
+    // Récuperer toutes les catégories de la base de donnée
     public function getAllDatabaseCategories()
     {
         $this->db->query('SELECT * FROM categories ORDER BY category_type DESC');
@@ -17,7 +18,7 @@ class Categorymodel
         return $results;
     }
 
-    // Add Post
+    // Ajouter categorie
     public function addCategory($data)
     {
         // Prepare Query
@@ -38,6 +39,7 @@ class Categorymodel
         }
     }
 
+    // Récuperer une categorie par id
     public function getCategoryById($id)
     {
         $this->db->query("SELECT * FROM categories WHERE category_id = :id");
@@ -49,6 +51,7 @@ class Categorymodel
         return $row;
     }
 
+    // Modifier une catégorie
     public function updateCategory($data)
     {
         // Prepare Query
@@ -70,7 +73,7 @@ class Categorymodel
         }
     }
 
-    // Delete Post
+    // Supprimer catégorie
     public function deleteCategory($id)
     {
         // Prepare Query
@@ -87,17 +90,7 @@ class Categorymodel
         }
     }
 
-    // Get all languages (HTML, CSS< Javascript...) review
-    public function getCategories()
-    {
-        $this->db->query('SELECT * FROM categories INNER JOIN article_categories on article_categories.category_id = categories.category_id');
-
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    // REVIEW THIS!!!! this is so that categories that don't have articles don't show up! 
+    // Récuperer les catégories du front (celles qui ont un article avec une catégorie du front uniquement)
     public function getFrontCategories()
     {
         $this->db->query('SELECT * FROM categories
@@ -114,6 +107,7 @@ class Categorymodel
         return $results;
     }
 
+    // Récuperer les catégories du back (celles qui ont un article avec une catégorie du back uniquement)
     public function getBackCategories()
     {
         $this->db->query('SELECT * FROM categories 
@@ -124,22 +118,6 @@ class Categorymodel
         GROUP BY article_categories.category_id');
 
         $this->db->bind(':type', 'back-end');
-
-        $results = $this->db->resultSet();
-
-        return $results;
-    }
-
-    public function getDatabaseCategories()
-    {
-        $this->db->query('SELECT * FROM categories 
-        INNER JOIN article_categories on categories.category_id = article_categories.category_id
-        INNER JOIN articles on articles.article_id = article_categories.article_id 
-        WHERE category_type = :type 
-        AND articles.is_published = 1 
-        GROUP BY article_categories.category_id');
-
-        $this->db->bind(':type', 'database');
 
         $results = $this->db->resultSet();
 
@@ -177,7 +155,23 @@ class Categorymodel
         return $results;
     }
 
-    // Add Article with article category
+    // Recuper les categories pour un article
+    public function getArticleCategoriesByArticleId($id){
+        $this->db->query('SELECT * FROM categories
+        INNER JOIN article_categories on categories.category_id = article_categories.category_id
+        INNER JOIN articles on articles.article_id = article_categories.article_id 
+        WHERE articles.article_id = :id
+        GROUP BY article_categories.category_id');
+
+        $this->db->bind(':id', $id);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+
+    // Ajouter categories pour un article
     public function addArticleCategory($category, $article_id)
     {
         // Prepare Query
@@ -194,6 +188,7 @@ class Categorymodel
         }
     }
 
+    // Compter les categories
     public function countAllCategories()
     {
         $this->db->query('SELECT * FROM categories');
@@ -204,5 +199,31 @@ class Categorymodel
 
         return $results;
     }
+
+    // recuperer les categories pour les articles
+    public function getDatabaseCategories()
+    {
+        $this->db->query('SELECT * FROM categories 
+        INNER JOIN article_categories on categories.category_id = article_categories.category_id
+        INNER JOIN articles on articles.article_id = article_categories.article_id 
+        WHERE category_type = :type 
+        AND articles.is_published = 1 
+        GROUP BY article_categories.category_id');
+        $this->db->bind(':type', 'database');
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+
+    // Récuperer les categories des articles? 
+    public function getCategories()
+    {
+        $this->db->query('SELECT * FROM categories INNER JOIN article_categories on article_categories.category_id = categories.category_id');
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
 
 }

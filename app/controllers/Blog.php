@@ -12,8 +12,10 @@ class Blog extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
-    public function index($current_page = 1)
+    public function index()
     {
+
+
 
         $articles = $this->BlogModel->getArticlesLimit6();
         $categories = $this->categoryModel->getCategories();

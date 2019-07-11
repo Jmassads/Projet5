@@ -4,41 +4,38 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Julia Assad</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php echo SITENAME;?></title>
+    <meta name="keywords"
+        content="developpeur web, web developper, portfolio, front end developper, developpeur front end, back end developper, Julia Assad, Julia, developpeuse web, integrateur web, developpeuse front end, html, développeur Saint Germain en Laye, css, site internet, développement web, javascript, programmation, création site web, wordpress, développeuse Saint Germain en Laye, bootstrap " />
+    <meta name="description"
+        content="Julia Assad Développeuse Web" />
+
+    <link rel="canonical" href="https://juliaassad.fr/projet5/" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Julia Assad | Développeuse Web" />
+    <meta property="og:description"
+        content="Julia Assad Développeuse Web" />
+    <meta property="og:url" content="https://juliaassad.fr/projet5/" />
+    <meta property="og:site_name" content="Julia Assad | Développeuse Web" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description"
+        content="Julia Assad Développeuse Web" />
+    <meta name="twitter:title" content="Julia Assad Développeuse Web" />
+
+
     <!-- Normalize -->
     <link type="text/css" rel="stylesheet" href="css/normalize.min.css">
-
-
-
-    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo URLROOT;?>/img//apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo URLROOT;?>/img//apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo URLROOT;?>/img//apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo URLROOT;?>/img//apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo URLROOT;?>/img//apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo URLROOT;?>/img//apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo URLROOT;?>/img//apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo URLROOT;?>/img//apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo URLROOT;?>/img//apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="<?php echo URLROOT;?>/img//android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo URLROOT;?>/img//favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo URLROOT;?>/img//favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URLROOT;?>/img//favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="<?php echo URLROOT;?>/img//ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="<?php echo URLROOT;?>/img/favicon.ico" type="image/x-icon" />
 
 
     <!-- Fonts -->
 
     <link type="text/css" rel="stylesheet" href="css/normalize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->

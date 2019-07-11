@@ -64,7 +64,10 @@ class Blogmodel
     // Get last 3 articles
     public function getArticlesLimit6()
     {
-        $this->db->query('SELECT * FROM articles WHERE articles.is_published = 1 ORDER BY articles.article_id DESC LIMIT 6');
+        $this->db->query('SELECT * FROM articles
+        WHERE articles.is_published = 1 
+
+        ORDER BY articles.article_id DESC LIMIT 6');
 
         $results = $this->db->resultSet();
 

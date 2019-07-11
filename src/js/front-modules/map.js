@@ -36,17 +36,6 @@ Map.prototype.addMarker = function (title) {
 	});
 };
 
-Map.prototype.addMarker = function (title) {
-	let marker = new google.maps.Marker({
-		position: {
-			lat: this.lat,
-			lng: this.lng
-		},
-		map: this.map,
-		title: title
-	});
-};
-
 export {
 	Map
 };

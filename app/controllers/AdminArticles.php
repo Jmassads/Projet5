@@ -12,7 +12,7 @@ class AdminArticles extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
-// Tous les articles
+    // Voir tous les articles (pagingation)
     public function index($current_page = 1)
     {
         $articles = $this->blogModel->getArticles();
@@ -30,28 +30,6 @@ class AdminArticles extends Controller
             'current_page' => $current_page,
         ];
         $this->view('admin/articles/index', $data);
-    }
-
-    public function published()
-    {
-
-        $published_articles = $this->blogModel->getPublishedArticles();
-
-        $data = [
-            'published_articles' => $published_articles,
-        ];
-        $this->view('admin/articles/published', $data);
-    }
-
-    public function notpublished()
-    {
-        $nonPublished_articles = $this->blogModel->getNonPublishedArticles();
-
-        $data = [
-
-            'nonPublished_articles' => $nonPublished_articles,
-        ];
-        $this->view('admin/articles/notpublished', $data);
     }
 
     // Ajouter un article
@@ -146,17 +124,21 @@ class AdminArticles extends Controller
         }
     }
 
+    // Voir un article
     public function show($id)
     {
 
         $article = $this->blogModel->getArticleById($id);
+        $categories = $this->categoryModel->getArticleCategoriesByArticleId($id);
 
         $data = [
             'article' => $article,
+            'categories' => $categories
         ];
         $this->view('admin/articles/show', $data);
     }
 
+    // Modifier un article
     public function edit($id)
     {
 
@@ -290,20 +272,44 @@ class AdminArticles extends Controller
         }
     }
 
-    // Delete Article
+    // Supprimer un Article
     public function delete($id){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-          //Execute
-          if($this->blogModel->deleteArticle($id)){
-            // Redirect to login
-            flash('article_message', 'Article supprimé');
-            redirect('AdminArticles' . '/1');
-            } else {
-              die('Something went wrong');
-            }
-        } else {
-            redirect('AdminArticles' . '/1');
-        }
-      }
+            //Execute
+            if($this->blogModel->deleteArticle($id)){
+              // Redirect to login
+              flash('article_message', 'Article supprimé');
+              redirect('AdminArticles' . '/1');
+              } else {
+                die('Something went wrong');
+              }
+          } else {
+              redirect('AdminArticles' . '/1');
+          }
+    }
 
+
+    // Voir tous les article publiés
+    public function published()
+    {
+
+        $published_articles = $this->blogModel->getPublishedArticles();
+
+        $data = [
+            'published_articles' => $published_articles,
+        ];
+        $this->view('admin/articles/published', $data);
+    }
+
+    // Voir tous les article non publiés
+    public function notpublished()
+    {
+        $nonPublished_articles = $this->blogModel->getNonPublishedArticles();
+
+        $data = [
+
+            'nonPublished_articles' => $nonPublished_articles,
+        ];
+        $this->view('admin/articles/notpublished', $data);
+    }
 }

@@ -2,6 +2,7 @@
 
 <?php require APPROOT . '/views/inc/top-menu.php';?>
 
+
 <div id="main" class="main-container">
     <section class="blog">
         <div class="container">
@@ -13,7 +14,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="img-fluid front-end-img" src="img/front.png" width="45" height="45"
-                                    alt="front-end icon"> Front-End
+                            alt="front-end icon"> Front-End
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <?php foreach ($data['frontCategories'] as $frontCategory): ?>
@@ -29,7 +30,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="img-fluid back-end-img" src="img/back.png" width="40" height="40"
-                                    alt="front-end icon"> Back-End
+                            alt="front-end icon"> Back-End
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                         <?php foreach ($data['backCategories'] as $backCategory): ?>
@@ -52,11 +53,20 @@
                                     src="uploads/<?php echo $article->article_image;?>" alt="">
                                 <?php endif;?>
 
-                                <h3 class="article--title"><a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"
-                                        ><?php echo $article->article_title; ?></a></h3>
+                                <h3 class="article--title"><a
+                                        href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"><?php echo $article->article_title; ?></a>
+                                </h3>
                             </div>
                             <div class="article--excerpt">
                                 <?php echo $article->article_excerpt; ?>
+                            </div>
+                            <div class="mb-3">
+                            <?php foreach ($data['categories'] as $category):?>
+                            <?php if($article->article_id == $category->article_id):?>
+                            <a href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $category->category_name_slug;?>" class="badge badge-light"><?php echo $category->category_name_slug;?></a>
+                       
+                            <?php endif;?>
+                            <?php endforeach;?>
                             </div>
                             <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"
                                 class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Lire la suite</a>
@@ -70,7 +80,8 @@
                     <button type="button" name="btn_more" data-article="<?php echo $article->article_id; ?>"
                         id="btn_more" class="btn btn-sm btn-outline-dark rounded-0 mb-4 shadow-none">Voir plus
                         d'articles</button>
-                </div></div>
+                </div>
+            </div>
         </div>
     </section>
 

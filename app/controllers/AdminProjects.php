@@ -62,12 +62,11 @@ class AdminProjects extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-   
             $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
 
             if (!isset($_POST['is_published'])) {
                 $is_published = '';
-  
+
             } else {
                 // leave the default value
                 $is_published = $_POST['is_published'];
@@ -126,7 +125,7 @@ class AdminProjects extends Controller
 
                     // (lastInsertId) — Retourne l'identifiant de la dernière ligne insérée ou la valeur d'une séquence
                     $project_id = $this->projectModel->getId();
-                    
+
                     $categories = $_POST['categories'];
                     foreach ($categories as $category) {
                         // die(print_r($categories));
@@ -158,7 +157,7 @@ class AdminProjects extends Controller
                 'categories' => '',
                 'slug' => '',
                 'databaseCategories' => $databaseCategories,
-                'is_published' => ''
+                'is_published' => '',
             ];
 
             $this->view('admin/projects/add', $data);
@@ -177,7 +176,7 @@ class AdminProjects extends Controller
             } else {
                 $small_image = $project->project_sm_image;
             }
-    
+
             if (!empty($_FILES['project_lg_image']['name'])) {
                 $large_image = str_replace(' ', '', $_FILES['project_lg_image']['name']);
             } else {
@@ -197,7 +196,7 @@ class AdminProjects extends Controller
                 'description' => trim($_POST['description']),
                 'small_image' => $small_image,
                 'large_image' => $large_image,
-   
+
                 'url' => trim($_POST['url']),
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
@@ -310,21 +309,24 @@ class AdminProjects extends Controller
             $this->view('admin/projects/edit', $data);
         }
     }
-
+    
     // Delete Post
-    public function delete($id){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-          //Execute
-          if($this->projectModel->deleteProject($id)){
-            // Redirect to login
-            flash('project_message', 'Projet supprimé');
-            redirect('AdminProjects');
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Execute
+            if ($this->projectModel->deleteProject($id)) {
+                // Redirect to login
+                flash('project_message', 'Projet supprimé');
+                redirect('AdminProjects');
             } else {
-              die('Something went wrong');
+                die('Something went wrong');
             }
         } else {
-          redirect('AdminProjects');
+            redirect('AdminProjects');
         }
-      }
+    }
+
+  
 
 }

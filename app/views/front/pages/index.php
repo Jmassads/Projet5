@@ -2,14 +2,14 @@
 
 <section id="banner" class="banner">
     <div class="content">
-            <nav class="d-md-none top-menu-container">
-                <ul class="top-menu">
-                    <li class="m-0 current"><a href="#about">À Propos</a></li>
-                    <li class=""><a href="#projects">Projets</a></li>
-                    <li><a href="#skills">Compétences</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                </ul>
-            </nav>
+        <nav class="d-md-none top-menu-container">
+            <ul class="top-menu">
+                <li class="m-0 current"><a href="#about"></a></li>
+                <li class=""><a href="#projects">Projets</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
         <div class="banner--bottom">
             <div class="banner--bottom--titles">
                 <h1>Julia Assad</h1>
@@ -22,10 +22,14 @@
             </p>
         </div>
         <ul class="social-icons">
-            <li><a class="target=_blank" href="https://www.facebook.com/julia.assadchevreux"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a class="target=_blank" href="https://www.linkedin.com/in/julia-assad/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-            <li><a class="target=_blank" href="https://github.com/Jmassads"><i class="fab fa-github" aria-hidden="true"></i></a></li>
-            <li><a class="target=_blank" href="https://twitter.com/jmassads"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a class="target=_blank" href="https://www.facebook.com/julia.assadchevreux"><i
+                        class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a class="target=_blank" href="https://www.linkedin.com/in/julia-assad/"><i class="fab fa-linkedin-in"
+                        aria-hidden="true"></i></a></li>
+            <li><a class="target=_blank" href="https://github.com/Jmassads"><i class="fab fa-github"
+                        aria-hidden="true"></i></a></li>
+            <li><a class="target=_blank" href="https://twitter.com/jmassads"><i class="fab fa-twitter"
+                        aria-hidden="true"></i></a></li>
         </ul>
     </div>
     <div class="image">
@@ -44,7 +48,7 @@
     </a>
 
     <ul class="sidenav--menu">
-        <li><a class="active" href="#about">A Propos</a></li>
+        <li><a href="#about">A Propos</a></li>
         <li><a href="#projects">Projets</a></li>
         <li><a href="#skills">Compétences</a></li>
         <li><a href="#blog">Blog</a></li>
@@ -95,9 +99,9 @@
                                     src="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>"
                                     alt="<?php echo $project->project_name;?>">
                             </picture>
-                             <a href="<?php echo URLROOT;?>/Portfolio/projets/<?php echo $project->project_slug;?>"><span
-                                        class="lnr lnr-chevron-right"></span>
-                                    <span class="sr-only">Voir le projet</span></a>
+                            <a href="<?php echo URLROOT;?>/Portfolio/projets/<?php echo $project->project_slug;?>"><span
+                                    class="lnr lnr-chevron-right"></span>
+                                <span class="sr-only">Voir le projet</span></a>
                         </div>
                         <h3 class="project--title"><?php echo $project->project_name;?></h3>
                     </div>
@@ -198,9 +202,6 @@
                     <div id="map"></div>
                 </div>
                 <div class="col-md-6">
-
-                    <!-- message -->
-                    <?php flash('contact_message'); ?>
                     <form method="post" action="<?php echo URLROOT;?>/Home/Index/#contact">
                         <div class="row">
                             <div class="col-12">
@@ -233,6 +234,10 @@
                             </div>
                         </div>
                     </form>
+                    <!-- message -->
+                    <div class="mt-3">
+                        <?php flash('contact_message'); ?>
+                    </div>
                 </div>
             </div>
         </div>

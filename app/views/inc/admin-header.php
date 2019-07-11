@@ -64,7 +64,7 @@
             xhr.withCredentials = false;
 
 
-            xhr.open('POST', '/FinalProjectphp//Upload/');
+            xhr.open('POST', '/FinalProjectphp/Upload/');
             // xhr.open('POST', 'index.php?url=Upload');
             xhr.onload = function() {
                 var json;

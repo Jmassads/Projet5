@@ -2,7 +2,6 @@ function Timer(selector) {
     this.selector = document.querySelector(selector);
     this.timeinterval;
     this.run_timer();
-
 }
 
 
