@@ -13,7 +13,7 @@ class Projectmodel
 
     public function getPublishedProjects()
     {
-        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id ASC');
+        $this->db->query('SELECT * FROM projects WHERE projects.is_published = 1 ORDER BY projects.id DESC');
 
         $results = $this->db->resultSet();
 

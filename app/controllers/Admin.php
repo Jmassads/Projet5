@@ -8,6 +8,10 @@ class Admin extends Controller
 
     public function __construct()
     {
+        if (!isset($_SESSION['user_id'])) {
+            redirect('Users/login');
+        }
+        
         $this->projectModel = $this->model('Projectmodel');
         $this->blogModel = $this->model('Blogmodel');
         $this->categoryModel = $this->model('Categorymodel');

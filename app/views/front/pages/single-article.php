@@ -17,7 +17,7 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-fluid" src="../../img/front.png" width="45" height="45"
+                        <img class="img-fluid front-end-img" src="../../img/front.png" width="45" height="45"
                                     alt="front-end icon"> Front-End
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -33,7 +33,7 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-fluid" src="../../img/back.png" width="40" height="40"
+                        <img class="img-fluid back-end-img" src="../../img/back.png" width="40" height="40"
                                     alt="front-end icon"> Back-End
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -45,25 +45,10 @@
                 </div>
                 <?php endif;?>
 
-                <?php if($data['databaseCategories']):?>
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Database
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                        <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
-                        <a class="dropdown-item"
-                            href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $databaseCategory->category_name_slug; ?>"><?php echo $databaseCategory->category_name; ?></a>
-                        <?php endforeach;?>
-                    </div>
-                </div>
-                <?php endif;?>
-
             </nav>
                     <h2 class="mt-3 h4"><a href="<?php echo $data['article']->article_url;?>" target="_blank"><span
                                 class="lnr lnr-link"></span> <?php echo $data['article']->article_title; ?></a></h2>
-                    <p><?php echo $data['article']->article_content; ?></p>
+                    <?php echo $data['article']->article_content; ?>
                 </div>
             </div>
         </div>

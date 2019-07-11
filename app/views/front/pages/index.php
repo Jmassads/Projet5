@@ -1,71 +1,8 @@
-<?php
-
-// Message Vars
-
-$msg = '';
-$msgClass = '';
-
-// Check for Submit
-
-// Here we put submit as it's looking at the form name="submit"
-if(filter_has_var(INPUT_POST, 'submit')){
-    // Get Form Data
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-    
-    // Check Required Fields
-    
-    if(!empty($email) && !empty($name) && !empty($message)){
-        // PASSED
-        
-        // Check Email
-        if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
-            // Failed
-            $msg = 'Please use a valid email';
-            $msgClass = 'alert-danger';
-        } else {
-            // Passed
-           
-          
-            // Recipien Email
-            $toEmail = 'juliasajah85@gmail.com';
-            $subject = 'Contact Request From ' .$name;
-            $body =  "<h2>Contact Request</h2>
-                     <h4>Name</h4>
-                     <p>$name</p>
-                     <h4>Email</h4><p>$email</p>
-                     <h4>Message</h4><p>$message</p>";
-            // Email Headers
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-Type:text/html;charset=UTF-8" . "\r\n";
-            
-            // Additional Headers
-            $headers .= "From: " .$name. "<" .$email. ">" . "\r\n";
-            
-            if(mail($toEmail, $subject, $body, $headers)){
-                $msg = 'Your email has been sent';
-                $msgClass = 'alert-success';
-            } else {
-                $msg = 'Your email was not sent';
-                $msgClass = 'alert-alert';
-            }
-        }
-    }else{
-        $msg = 'Please fill in all fields';
-        $msgClass = 'alert-danger';
-    }
-}
-
-
-?>
-
 <?php require APPROOT . '/views/inc/header.php';?>
 
 <section id="banner" class="banner">
     <div class="content">
-        <div>
-            <nav class="d-md-none top-menu">
+            <nav class="d-md-none top-menu-container">
                 <ul class="top-menu">
                     <li class="m-0 current"><a href="#about">À Propos</a></li>
                     <li class=""><a href="#projects">Projets</a></li>
@@ -73,10 +10,11 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     <li><a href="#blog">Blog</a></li>
                 </ul>
             </nav>
-        </div>
         <div class="banner--bottom">
-            <h1>Julia Assad</h1>
-            <h2>Développeuse Web</h2>
+            <div class="banner--bottom--titles">
+                <h1>Julia Assad</h1>
+                <h2>Développeuse Web</h2>
+            </div>
             <p class="d-none d-md-block">Ayant une passion pour <strong>l'informatique</strong>, j'ai choisi de faire
                 une reconversion professionelle en 2016. Je me
                 suis d'abord formée en autodidacte puis j'ai suivi le parcours <strong>'Développeur Web Junior'</strong>
@@ -84,10 +22,10 @@ if(filter_has_var(INPUT_POST, 'submit')){
             </p>
         </div>
         <ul class="social-icons">
-            <a href="https://www.facebook.com/julia.assadchevreux" target="_blank"><li class="social-icon"><i class="fab fa-facebook-f" aria-hidden="true"></i></li></a>
-            <a href="https://www.linkedin.com/in/julia-assad/" target="_blank"><li class="social-icon"><i class="fab fa-linkedin-in" aria-hidden="true"></i></li></a>
-           <a href="https://github.com/Jmassads" target="_blank"> <li class="social-icon"><i class="fab fa-github" aria-hidden="true"></i></li></a>
-            <a href="https://twitter.com/jmassads" target="_blank"><li class="social-icon"><i class="fab fa-twitter" aria-hidden="true"></i></li></a>
+            <li><a class="target=_blank" href="https://www.facebook.com/julia.assadchevreux"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a class="target=_blank" href="https://www.linkedin.com/in/julia-assad/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a class="target=_blank" href="https://github.com/Jmassads"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+            <li><a class="target=_blank" href="https://twitter.com/jmassads"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
         </ul>
     </div>
     <div class="image">
@@ -114,7 +52,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
     </ul>
 </div>
 
-<section class="inside-sections">
+<div class="inside-sections">
 
     <section id="about" class="section about">
         <div class="container-fluid">
@@ -135,8 +73,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
             </div>
             <div class="d-flex justify-content-start">
                 <a href="files/julia_assad_cv.pdf" download
-                    class="blog-button btn-sm btn btn-outline-dark shadow-none rounded-0"> <i
-                        class="fas fa-download"></i>
+                    class="blog-button btn btn btn-outline-dark shadow-none rounded-0"> <i class="fas fa-download"></i>
                     Curriculum vitae</a>
             </div>
         </div>
@@ -154,13 +91,13 @@ if(filter_has_var(INPUT_POST, 'submit')){
                             <picture>
                                 <source srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_sm_image;?>"
                                     media="(min-width:768px)">
-                                <img class="img-fluid"
-                                    srcset="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>"
-                                    alt="<?php echo $project->project_name;?>" class="large-hero__image">
-                                <a href="<?php echo URLROOT;?>/Portfolio/projets/<?php echo $project->project_slug;?>"><span
+                                <img class="img-fluid large-hero__image"
+                                    src="<?php echo URLROOT;?>/uploads/<?php echo $project->project_lg_image;?>"
+                                    alt="<?php echo $project->project_name;?>">
+                            </picture>
+                             <a href="<?php echo URLROOT;?>/Portfolio/projets/<?php echo $project->project_slug;?>"><span
                                         class="lnr lnr-chevron-right"></span>
                                     <span class="sr-only">Voir le projet</span></a>
-                            </picture>
                         </div>
                         <h3 class="project--title"><?php echo $project->project_name;?></h3>
                     </div>
@@ -169,7 +106,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
             </div>
             <div class="d-flex justify-content-start">
                 <a href="<?php echo URLROOT;?>/Portfolio"
-                    class="blog-button btn btn-sm btn-outline-dark shadow-none rounded-0">Tous mes Projets <span
+                    class="blog-button btn btn-outline-dark shadow-none rounded-0">Tous mes Projets <span
                         class="lnr lnr-arrow-right"></span></a>
             </div>
         </div>
@@ -183,8 +120,8 @@ if(filter_has_var(INPUT_POST, 'submit')){
                 <div class="row justify-content-center">
                     <div class="col-sm-4">
                         <div class="mb-3">
-                            <h3 class="h5"><img class="img-fluid" src="img/front.png" width="45" height="45"
-                                    alt="front-end icon">
+                            <h3 class="h6"><img class="img-fluid" src="<?php echo URLROOT;?>/img/front.png" width="45"
+                                    height="45" alt="front-end icon">
                                 Front End</h3>
                             <ul>
                                 <li>HTML5/CSS3</li>
@@ -202,8 +139,8 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     <div class="col-sm-4">
 
                         <div class="mb-3">
-                            <h3 class="h5"><img class="img-fluid" src="img/back.png" width="35" height="35"
-                                    alt="back-end icon">
+                            <h3 class="h6"><img class="img-fluid" src="<?php echo URLROOT;?>/img/back.png" width="35"
+                                    height="35" alt="back-end icon">
                                 Back End</h3>
                             <ul>
                                 <li>PHP</li>
@@ -216,8 +153,8 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     </div>
                     <div class="col-sm-4">
                         <div class="mb-3">
-                            <h3 class="h5"><img class="img-fluid" src="img/command-line.png" width="45" height="45"
-                                    alt="database icon"> Autres</h3>
+                            <h3 class="h6"><img class="img-fluid" src="<?php echo URLROOT;?>/img/command-line.png"
+                                    width="45" height="45" alt="database icon"> Autres</h3>
                             <ul>
                                 <li>Git</li>
                                 <li>Basic Command Line</li>
@@ -237,9 +174,8 @@ if(filter_has_var(INPUT_POST, 'submit')){
                 web. Les articles que je partage sont des cours et des tutoriels, principalement sur le HTML, CSS, PHP
                 et Javascript.</p>
             <div class="d-flex justify-content-start">
-                <a href="<?php echo URLROOT;?>/Blog"
-                    class="blog-button btn-sm btn btn-outline-dark shadow-none rounded-0">Mon Blog <span
-                        class="lnr lnr-arrow-right"></span></a>
+                <a href="<?php echo URLROOT;?>/Blog" class="blog-button btn btn-outline-dark shadow-none rounded-0">Mon
+                    Blog <span class="lnr lnr-arrow-right"></span></a>
             </div>
         </div>
     </section>
@@ -262,12 +198,10 @@ if(filter_has_var(INPUT_POST, 'submit')){
                     <div id="map"></div>
                 </div>
                 <div class="col-md-6">
-                    <?php if($msg != ''): ?>
-                    <div class="alert_msg alert <?php echo $msgClass;?>">
-                        <?php echo $msg;?>
-                    </div>
-                    <?php endif; ?>
-                    <form method="post" action="index.php#contact">
+
+                    <!-- message -->
+                    <?php flash('contact_message'); ?>
+                    <form method="post" action="<?php echo URLROOT;?>/Home/Index/#contact">
                         <div class="row">
                             <div class="col-12">
                                 <h3 class="h6 mt-3">N'hésitez pas à me contacter pour plus d'informations</h3>
@@ -276,14 +210,17 @@ if(filter_has_var(INPUT_POST, 'submit')){
                         <div class="row box-form">
 
                             <div class="col-12 col-lg-6">
-
-                                <input type="text" name="name" class="form-control" placeholder="Votre nom*"
-                                    value="<?php echo isset($name) ? $name : '';?>">
+                                <input type="text" name="name"
+                                    class="form-control <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>"
+                                    value="<?php echo $data['name']; ?>" placeholder="Votre nom*">
+                                <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
                             </div>
-                            <div class="col-12 col-lg-6">
 
-                                <input type="text" name="email" class="form-control" placeholder="Votre email*"
-                                    value="<?php echo isset($email) ? $email : '';?>">
+                            <div class="col-12 col-lg-6">
+                                <input type="text" name="email"
+                                    class="form-control <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>"
+                                    value="<?php echo $data['email']; ?>" placeholder="Votre email*">
+                                <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
                             </div>
                             <div class="col-12 col-lg-6">
 
@@ -302,11 +239,7 @@ if(filter_has_var(INPUT_POST, 'submit')){
     </section>
 
     <button id="backTotop" class="backTotop" title="Go to top"><span class="lnr lnr-chevron-up"></span></button>
-</section>
-
-
-
-
+</div>
 
 
 

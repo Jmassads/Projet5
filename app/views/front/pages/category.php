@@ -17,7 +17,7 @@
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-fluid" src="../../img/front.png" width="45" height="45" alt="front-end icon">
+                                <img class="img-fluid front-end-img" src="../../img/front.png" width="45" height="45" alt="front-end icon">
                                 Front-End
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -33,7 +33,7 @@
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-fluid" src="../../img/back.png" width="40" height="40" alt="front-end icon">
+                                <img class="img-fluid back-end-img" src="../../img/back.png" width="40" height="40" alt="front-end icon">
                                 Back-End
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -44,22 +44,6 @@
                             </div>
                         </div>
                         <?php endif;?>
-
-                        <?php if($data['databaseCategories']):?>
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Database
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                <?php foreach ($data['databaseCategories'] as $databaseCategory): ?>
-                                <a class="dropdown-item"
-                                    href="<?php echo URLROOT; ?>/Blog/categorie/<?php echo $databaseCategory->category_name_slug; ?>"><?php echo $databaseCategory->category_name; ?></a>
-                                <?php endforeach;?>
-                            </div>
-                        </div>
-                        <?php endif;?>
-
                     </nav>
 
 
@@ -76,7 +60,7 @@
                                             ><?php echo $article->article_title; ?></a></h3>
                                 </div>
                                 <div class="article--excerpt">
-                                    <p><?php echo $article->article_excerpt; ?></p>
+                                    <?php echo $article->article_excerpt; ?>
                                 </div>
                                 <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"
                                     class="btn btn-sm btn-outline-dark">Lire la suite</a>

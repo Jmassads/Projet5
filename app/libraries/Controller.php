@@ -39,4 +39,15 @@ class Controller
    die("View does not exist");
   }
  }
+
+ public function viewSection($view, $section, $data = [])
+ {
+  // Check for view file
+  if (file_exists('../app/views/' . $view . '/' . $section . '.php')) {
+   require_once '../app/views/' . $view . '/' . $section. '.php';
+  } else {
+   // View does not exist
+   die("View does not exist");
+  }
+ }
 }

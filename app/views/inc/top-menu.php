@@ -1,4 +1,4 @@
-<nav class="main-nav" role="navigation">
+<nav class="main-nav">
 
     <!-- Mobile menu toggle button (hamburger/x icon) -->
     <input id="main-menu-state" type="checkbox" />
@@ -8,10 +8,10 @@
 
 
     <a href="<?php echo URLROOT;?>">
-        <h2 class="nav-brand">
+        <div class="nav-brand">
             <div class="initial_first_name"><span>J</span></div>
             <div class="initial_last_name"><span>A</span></div>
-        </h2>
+        </div>
     </a>
 
     <!-- Sample menu definition -->

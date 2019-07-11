@@ -7,6 +7,13 @@
   }
 }
 
+.front-end-img, .back-end-img{
+  display: none;
+  @include atSmaller {
+    display: inline-block;
+  }
+}
+
 .article {
 margin-bottom: 3rem;
 
@@ -38,7 +45,12 @@ margin-bottom: 3rem;
 
 }
 
+
 .dropdown-item {
   font-weight: 300;
+  font-size: 0.875rem;
+  @include atSmall{
+    font-size: 1rem;
+  }
 }
 

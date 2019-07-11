@@ -11,7 +11,7 @@ h6,
 .h5,
 .h6 {
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.4;
   margin-bottom: 1.2rem;
   font-family: 'Quicksand', sans-serif;
 
@@ -71,7 +71,7 @@ h4 {
 
 // 24px
 h5 {
-  font-size: 1.125;
+  font-size: 1.125rem;
 }
 
 // 18px
@@ -84,7 +84,8 @@ li {
 // 16px
 p,
 span {
-  font-size: 0.875rem;
+  // font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 // 14px
@@ -116,7 +117,7 @@ strong {
 .heading-meta {
   margin-bottom: 15px;
   display: block;
-  font-size: 10px;
+  font-size: 0.75rem;
   text-transform: uppercase;
   color: #999;
   font-weight: 500;

@@ -8,7 +8,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Julia Assad</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +27,7 @@
     <link type="text/css" rel="stylesheet" href="<?php echo URLROOT; ?>/admincss/style.css">
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 
@@ -47,9 +46,9 @@
             '//www.tinymce.com/css/codepen.min.css'
         ],
         // convert_urls: false,
-        image_prepend_url: "http://localhost:3001/FinalProjectphp/",
+        image_prepend_url: "http://localhost:8888/FinalProjectphp/",
         // without images_upload_url set, Upload tab won't show up
-        images_upload_url: '/FinalProjectphp/Upload/',
+        images_upload_url: '/FinalProjectphp//Upload/',
         image_dimensions: true,
         relative_urls: false,
         // remove_script_host: false,
@@ -65,7 +64,7 @@
             xhr.withCredentials = false;
 
 
-            xhr.open('POST', '/FinalProjectphp/Upload/');
+            xhr.open('POST', '/FinalProjectphp//Upload/');
             // xhr.open('POST', 'index.php?url=Upload');
             xhr.onload = function() {
                 var json;

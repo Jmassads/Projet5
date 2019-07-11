@@ -32,7 +32,7 @@
             <label>url de la ressource:<sup>*</sup></label>
             <textarea name="url"
                 class="form-control form-control-md <?php echo (!empty($data['url_err'])) ? 'is-invalid' : ''; ?>"
-                placeholder="Ajouter l'url du projet..."><?php echo $data['url']; ?></textarea>
+                placeholder="Ajouter l'url du l'article..."><?php echo $data['url']; ?></textarea>
             <span class="invalid-feedback"><?php echo $data['url_err']; ?></span>
         </div>
         <div class="form-group">

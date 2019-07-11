@@ -2,6 +2,7 @@ import $ from 'jquery';
 import AOS from 'aos';
 import 'smartmenus/src/jquery.smartmenus';
 
+
 /*
 CARTES
 */
@@ -30,13 +31,15 @@ import {
 
 let timer = new Timer('.timer');
 
-/* all links animation */
+
 $(document).on('click', 'a[href^="#"]', function (event) {
-    event.preventDefault();
-    $('html, body').animate({
-        scrollTop: $($.attr(this, 'href')).offset().top
-    }, 500);
+	event.preventDefault();
+	$('html, body').animate({
+		scrollTop: $($.attr(this, 'href')).offset().top
+	}, 500);
 });
+
+
 
 // Init ScrollMagic
 var controller = new ScrollMagic.Controller();
@@ -75,13 +78,7 @@ var Scene1 = new ScrollMagic.Scene({
 	// }) // this requires a plugin
 	.addTo(controller);
 
-$(window).on("scroll", function () {
-	if ($(document).scrollTop() > 20) {
-		$(".top-menu").addClass("nav-scroll")
-	} else {
-		$(".top-menu").removeClass("nav-scroll")
-	}
-});
+
 
 // Back to top button for homepage
 $('.backTotop').click(function () {
@@ -95,4 +92,37 @@ $('.backTotop').click(function () {
 $('.top-menu li a').on('click', function () {
 	$('.top-menu li a.active').removeClass('active');
 	$(this).addClass('active');
+});
+
+
+
+
+$(window).resize(function(){
+
+	if ($(window).width() >= 768) {  
+
+		var sections = $('section')
+		, nav = $('.sidenav--menu')
+		, nav_height = nav.outerHeight();
+	   
+	  $(window).on('scroll', function () {
+		var cur_pos = $(this).scrollTop();
+	   
+		sections.each(function() {
+		  var top = $(this).offset().top - nav_height,
+			  bottom = top + $(this).outerHeight();
+	   
+		  if (cur_pos >= top && cur_pos <= bottom) {
+			nav.find('a').removeClass('active');
+			sections.removeClass('active');
+	   
+			$(this).addClass('active');
+			nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
+		  }
+		});
+	  });
+	  
+
+	}     
+
 });

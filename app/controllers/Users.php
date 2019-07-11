@@ -4,15 +4,12 @@
       $this->userModel = $this->model('User');
     }
 
-    public function index(){
-      redirect('home');
-    }
 
     public function register(){
       // Check if logged in
-      if($this->isLoggedIn()){
-        redirect('posts');
-      }
+      if (!isset($_SESSION['user_id'])) {
+        redirect('Users/login');
+       }
 
       // Check if POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -40,7 +37,7 @@
         } else{
           // Check Email
           if($this->userModel->findUserByEmail($data['email'])){
-            $data['email_err'] = 'Email is already taken.';
+            $data['email_err'] = "L'email est déja enregistré";
           }
         }
 
@@ -48,15 +45,16 @@
         if(empty($data['password'])){
           $password_err = 'Please enter a password.';     
         } elseif(strlen($data['password']) < 6){
-          $data['password_err'] = 'Password must have atleast 6 characters.';
+          $data['password_err'] = 'Le mot de passe doit contenir au moins 6 caractères';
         }
 
         // Validate confirm password
         if(empty($data['confirm_password'])){
-          $data['confirm_password_err'] = 'Please confirm password.';     
+          $data['confirm_password_err'] = 'Merci de confirmer le mot de passe.';     
         } else{
             if($data['password'] != $data['confirm_password']){
-                $data['confirm_password_err'] = 'Password do not match.';
+                $data['confirm_password_err'] = '
+                Les mots de passe ne correspondent pas.';
             }
         }
          
@@ -120,12 +118,12 @@
 
         // Check for email
         if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email.';
+          $data['email_err'] = 'Merci de rajouter votre email';
         }
 
         // Check for name
         if(empty($data['name'])){
-          $data['name_err'] = 'Please enter name.';
+          $data['name_err'] = 'Merci de rajouter votre nom';
         }
 
         // Check for user
@@ -133,7 +131,7 @@
           // User Found
         } else {
           // No User
-          $data['email_err'] = 'This email is not registered.';
+          $data['email_err'] = "Cet email n'est pas enregistré";
         }
 
         // Make sure errors are empty
@@ -147,7 +145,7 @@
             $this->createUserSession($loggedInUser);
            
           } else {
-            $data['password_err'] = 'Password incorrect.';
+            $data['password_err'] = 'Mot de passe incorrect';
             // Load View
             $this->view('users/login', $data);
           }

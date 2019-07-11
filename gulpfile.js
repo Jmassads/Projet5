@@ -46,6 +46,7 @@ gulp.task('adminstyles', function () {
 
 gulp.task('watch', ['php'], function () {
 
+    // créer un serveur Browsersync
     browserSync.init({
         proxy:"http://localhost:8888/FinalProjectphp/",
         baseDir: "./",
@@ -85,7 +86,6 @@ gulp.task('admincssInject', ['adminstyles'], function(){
 
 gulp.task('scripts', function(callback){
     webpack(require('./webpack.config.js'), function(){
-        console.log('hooray, webpack completed');
         callback();
     })
 })

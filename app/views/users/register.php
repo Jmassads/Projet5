@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/users-header.php'; ?>
+<?php require APPROOT . '/views/inc/admin-header.php'; ?>
 
 <div class="row">
   <div class="col-md-8 mx-auto">

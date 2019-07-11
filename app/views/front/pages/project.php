@@ -12,7 +12,7 @@
                     </h2>
                     <div class="single-project--inner">
                         <div class="single-project--image">
-                             <img class="img-fluid" srcset="<?php echo URLROOT;?>/uploads/<?php echo $data['project']->project_lg_image;?>" alt="" class="large-hero__image">
+                             <img class="img-fluid large-hero__image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['project']->project_lg_image;?>" alt="<?php echo $data['project']->project_name;?>">
                         </div>
                         <div class="pointer py-4"><span class="lnr lnr-pointer-right"></span> <a href="<?php echo $data['project']->project_url;?>" target="blank">Voir le Projet</a></div>
                         <div class="single-project--description">

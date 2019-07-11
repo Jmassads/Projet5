@@ -23,7 +23,6 @@
                 <option selected="true" disabled="disabled">Choisissez un nouveau type de catégorie</option>
                 <option value="Front-End">Front-End</option>
                 <option value="Back-End">Back-End</option>
-                <option value="Database">Database</option>
             </select>
         </div>
         <input type="submit" class="btn btn-success" value="Envoyer">
