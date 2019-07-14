@@ -2,6 +2,7 @@
 
 <?php require APPROOT . '/views/inc/top-menu.php';?>
 
+
 <div id="main" class="main-container">
     <section class="single-project">
         <div class="container">
@@ -12,9 +13,9 @@
                     </h2>
                     <div class="single-project--inner">
                         <div class="single-project--image">
-                             <img class="img-fluid large-hero__image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['project']->project_lg_image;?>" alt="<?php echo $data['project']->project_name;?>">
+                            <a href="<?php echo $data['project']->project_url;?>" target="_blank"> <img class="img-fluid large-hero__image" src="<?php echo URLROOT;?>/uploads/<?php echo $data['project']->project_lg_image;?>" alt="<?php echo $data['project']->project_name;?>"></a>
                         </div>
-                        <div class="pointer py-4"><span class="lnr lnr-pointer-right"></span> <a href="<?php echo $data['project']->project_url;?>" target="blank">Voir le Projet</a></div>
+                        <div class="pointer py-4"><span class="lnr lnr-pointer-right"></span> <a href="<?php echo $data['project']->project_url;?>" target="_blank">Voir le Projet</a></div>
                         <div class="single-project--description">
                             <h3 class="single-project--description--title">Description du Projet</h3>
                             <?php echo $data['project']->project_description;?>

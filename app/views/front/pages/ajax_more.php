@@ -14,7 +14,7 @@
                 <?php foreach ($data['categories'] as $category):?>
                 <?php if($article->article_id == $category->article_id):?>
                 <a href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $category->category_name_slug;?>"
-                    class="badge badge-light"><?php echo $category->category_name_slug;?></a>
+                    class="badge badge-light"><?php echo $category->category_name;?></a>
 
                 <?php endif;?>
                 <?php endforeach;?>

@@ -32,6 +32,8 @@ class Projectmodel
     public function getCategoriesByProjectId($id)
     {
         $this->db->query('SELECT * FROM project_categories
+        INNER JOIN projects on project_categories.project_id = projects.id
+        INNER JOIN categories on categories.category_id = project_categories.category_id
         WHERE project_id = :id');
         $this->db->bind(':id', $id);
         $results = $this->db->resultSet();

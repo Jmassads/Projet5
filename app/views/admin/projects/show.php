@@ -16,6 +16,10 @@
     <div class="single-project--categories my-4">
         <h3 class="my-3">Languages utilisés</h3>
       <!-- add categories here!!! -->
+      <?php foreach($data['categories'] as $category):?>
+                         <button class="btn"><?php echo $category->category_name;?></button>
+                      
+                        <?php endforeach;?>
     </div>
 
     <?php if($data['project']->project_comments):?>

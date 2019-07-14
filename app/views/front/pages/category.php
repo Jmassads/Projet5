@@ -12,6 +12,14 @@
                     <a href="<?php echo URLROOT; ?>/Blog" class="btn btn-sm btn-light"><i class="fa fa-backward"
                             aria-hidden="true"></i>
                         Tous les articles</a>
+
+                    <ul class="breadcrumb bg-light mt-3">
+                        <li><a href="<?php echo URLROOT;?>/Blog">Blog</a> <span class="divider">/</span></li>
+                        <li class="active"><?php echo $data['categoryName']->category_name;?></li>
+                    </ul>
+
+            
+
                     <nav class="navbar justify-content-center mb-4">
                         <?php if($data['frontCategories']):?>
                         <div class="nav-item dropdown">

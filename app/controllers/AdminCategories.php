@@ -11,7 +11,7 @@ class AdminCategories extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
-    // Load All Posts
+    // Voir toutes les catégories
     public function index()
     {
         $categories = $this->categoryModel->getAllDatabaseCategories();
@@ -23,7 +23,7 @@ class AdminCategories extends Controller
         $this->view('admin/categories/index', $data);
     }
 
-    // Add Category
+    // Ajouter un catégorie
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -73,7 +73,7 @@ class AdminCategories extends Controller
         }
     }
 
-    // Edit Post
+    // Modifier une catégorie
     public function edit($id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -137,7 +137,7 @@ class AdminCategories extends Controller
 
     }
 
-    // Delete Post
+    // Supprimer une catégorie
     public function delete($id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

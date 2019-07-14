@@ -145,6 +145,8 @@ class AdminArticles extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $article = $this->blogModel->getArticleById($id);
+            $checkedCategories = $this->categoryModel->getCategoriesByArticleId($id);
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
             
             if (!empty($_FILES['article_image']['name'])) {
                 $article_image = str_replace(' ', '', $_FILES['article_image']['name']);
@@ -152,12 +154,13 @@ class AdminArticles extends Controller
                 $article_image = $article->article_image;
             }
     
-            if ($_POST['is_published'] != '') {
+            if (isset($_POST['is_published']) && $_POST['is_published'] != '') {
                 $is_published = $_POST['is_published'];
             } else {
                 // leave the default value
                 $is_published = $article->is_published;
             }
+
 
             $data = [
                 'id' => $id,
@@ -168,28 +171,30 @@ class AdminArticles extends Controller
                 'url' => trim($_POST['url']),
                 'slug' => cleaner(trim($_POST['title'])),
                 'is_published' => $is_published,
+                'checkedCategories' => $checkedCategories,
+                'databaseCategories' => $databaseCategories,
 
                 'title_err' => '',
                 'content_err' => '',
                 'excerpt_err' => '',
             ];
 
-            // FINISH ERRORS!!!!!!!!!!!
-
             // Validate article title
-            if (empty($data['name'])) {
-                $data['name_err'] = 'Merci de rajouter un nom pour le projet';
+            if (empty($data['title'])) {
+                $data['title_err'] = "Merci de rajouter un titre pour l'article";
 
             }
             // Validate article content
-            if (empty($data['description'])) {
-                $data['description_err'] = 'Merci de rajouter une description';
+            if (empty($data['content'])) {
+                $data['content_err'] = 'Merci de rajouter un contenu';
             }
 
             // Validate article content
             if (empty($data['excerpt'])) {
-                $data['excerpt_err'] = 'Merci de rajouter une excerpt';
+                $data['excerpt_err'] = 'Merci de rajouter un excerpt';
             }
+
+       
 
             $article_image_uploader = new Uploader();
             $article_image_uploader->uploadFile('article_image');
@@ -197,7 +202,7 @@ class AdminArticles extends Controller
             $data['article_image_err'] = $article_image_error_message;
 
             // Make sure there are no errors
-            if (empty($data['title_err']) && empty($data['content_err']) && empty($data['article_image_err'])) {
+            if (empty($data['title_err']) && empty($data['content_err']) && empty($data['excerpt_err']) && empty($data['article_image_err'])) {
                 $categories = $this->categoryModel->getCategoriesByArticleId($id);
 
                 $checkedCategories = array_map(function ($category) {
@@ -252,9 +257,9 @@ class AdminArticles extends Controller
             }
         } else {
             // Get Article from model
-            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
             $article = $this->blogModel->getArticleById($id);
             $checkedCategories = $this->categoryModel->getCategoriesByArticleId($id);
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
             $data = [
                 'id' => $id,
                 'content' => $article->article_content,

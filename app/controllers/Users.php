@@ -107,8 +107,10 @@
       // Check if POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Sanitize POST
+        // Récupère les valeurs et on les filtre
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
+        // On récupère l'email et mot de passe 
         $data = [       
           'email' => trim($_POST['email']),
           'password' => trim($_POST['password']),        
@@ -116,32 +118,34 @@
           'password_err' => '',       
         ];
 
-        // Check for email
+        // On verifie que l'email n'est pas 'vide'
         if(empty($data['email'])){
           $data['email_err'] = 'Merci de rajouter votre email';
         }
 
-        // Check for name
+        // On verifie que le mot de passe n'est pas 'vide'
         if(empty($data['name'])){
           $data['name_err'] = 'Merci de rajouter votre nom';
         }
 
-        // Check for user
+        // On appelle la methode finfUserByEmail du model pour verifier si l'email existe
         if($this->userModel->findUserByEmail($data['email'])){
-          // User Found
+          // si TRUE on continue... l'email a bien été trouvé
         } else {
-          // No User
+          // sinon, on affiche à l'utilisateur que l'email n'est pas enregistré
           $data['email_err'] = "Cet email n'est pas enregistré";
         }
 
-        // Make sure errors are empty
+        // Si il n'y a pas d'erreurs
         if(empty($data['email_err']) && empty($data['password_err'])){
 
-          // Check and set logged in user
+          // On appelle la méthode login du model qui permet de verifier le mot de passe
+          // hashed avec password_verify du mot de passe qui a ete entré
           $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
+          // si il y a bien un résultat
           if($loggedInUser){
-            // User Authenticated!
+            // On crée une session pour l'utilisateur
             $this->createUserSession($loggedInUser);
            
           } else {
@@ -171,7 +175,7 @@
       }
     }
 
-    // Create Session With User Info
+    // On crée une session pour l'utilisateur et on redirige vers l'admin
     public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email; 

@@ -4,7 +4,7 @@
     <div class="content">
         <nav class="d-md-none top-menu-container">
             <ul class="top-menu">
-                <li class="m-0 current"><a href="#about"></a></li>
+                <li class="m-0 current"><a href="#about">À propos</a></li>
                 <li class=""><a href="#projects">Projets</a></li>
                 <li><a href="#skills">Compétences</a></li>
                 <li><a href="#blog">Blog</a></li>
@@ -22,13 +22,13 @@
             </p>
         </div>
         <ul class="social-icons">
-            <li><a class="target=_blank" href="https://www.facebook.com/julia.assadchevreux"><i
+            <li><a target="_blank" href="https://www.facebook.com/julia.assadchevreux"><i
                         class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a class="target=_blank" href="https://www.linkedin.com/in/julia-assad/"><i class="fab fa-linkedin-in"
+            <li><a target="_blank" href="https://www.linkedin.com/in/julia-assad/"><i class="fab fa-linkedin-in"
                         aria-hidden="true"></i></a></li>
-            <li><a class="target=_blank" href="https://github.com/Jmassads"><i class="fab fa-github"
+            <li><a target="_blank" href="https://github.com/Jmassads"><i class="fab fa-github"
                         aria-hidden="true"></i></a></li>
-            <li><a class="target=_blank" href="https://twitter.com/jmassads"><i class="fab fa-twitter"
+            <li><a target="_blank" href="https://twitter.com/jmassads"><i class="fab fa-twitter"
                         aria-hidden="true"></i></a></li>
         </ul>
     </div>

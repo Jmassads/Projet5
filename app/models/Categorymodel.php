@@ -225,5 +225,17 @@ class Categorymodel
         return $results;
     }
 
+    public function getCategoryName($slug)
+    {
+        $this->db->query("SELECT * FROM categories WHERE category_name_slug = :slug");
+
+        $this->db->bind(':slug', $slug);
+
+        $row = $this->db->single();
+
+        return $row;
+
+    }
+
 
 }

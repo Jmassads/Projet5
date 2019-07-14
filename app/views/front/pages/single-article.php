@@ -53,9 +53,18 @@
                     <?php else: ?>
                     <h2 class="mt-3 h4"><?php echo $data['article']->article_title; ?></h2>
                     <?php endif;?>
-                    
+
 
                     <?php echo $data['article']->article_content; ?>
+                    <div class="mb-3">
+                        <?php foreach ($data['categories'] as $category):?>
+                        <?php if($data['article']->article_id == $category->article_id):?>
+                        <a href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $category->category_name_slug;?>"
+                            class="badge badge-light"><?php echo $category->category_name;?></a>
+
+                        <?php endif;?>
+                        <?php endforeach;?>
+                    </div>
                 </div>
             </div>
         </div>

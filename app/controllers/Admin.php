@@ -17,6 +17,7 @@ class Admin extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
+    // Tableau de bord
     public function index()
     {
         $allArticles = $this->blogModel->countAllArticles();

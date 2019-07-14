@@ -12,7 +12,7 @@ class AdminProjects extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
-    // Tous les projets
+    // Voir tous les projets
     public function index()
     {
         $projects = $this->projectModel->getProjects();
@@ -23,36 +23,16 @@ class AdminProjects extends Controller
         $this->view('admin/projects/index', $data);
     }
 
-    public function published()
-    {
-
-        $published_projects = $this->projectModel->getPublishedProjects();
-
-        $data = [
-            'published_projects' => $published_projects,
-        ];
-        $this->view('admin/projects/published', $data);
-    }
-
-    public function notpublished()
-    {
-        $nonPublished_projects = $this->projectModel->getNonPublishedProjects();
-
-        $data = [
-
-            'nonPublished_projects' => $nonPublished_projects,
-        ];
-        $this->view('admin/projects/notpublished', $data);
-    }
-
-    // Un seul Projet
+    // Voir un seul Projet
     public function show($id)
     {
 
         $project = $this->projectModel->getProjectById($id);
+        $categories = $this->projectModel->getCategoriesByProjectId($id);
 
         $data = [
             'project' => $project,
+            'categories' => $categories
         ];
         $this->view('admin/projects/show', $data);
     }
@@ -164,12 +144,15 @@ class AdminProjects extends Controller
         }
     }
 
+    // Modifier un projet
     public function edit($id)
     {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $project = $this->projectModel->getProjectById($id);
+            $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
+            $checkedCategories = $this->projectModel->getCategoriesByProjectId($id);
 
             if (!empty($_FILES['project_sm_image']['name'])) {
                 $small_image = str_replace(' ', '', $_FILES['project_sm_image']['name']);
@@ -183,12 +166,16 @@ class AdminProjects extends Controller
                 $large_image = $project->project_lg_image;
             }
 
-            if ($_POST['is_published'] != '') {
+            if (isset($_POST['is_published']) && $_POST['is_published'] != '') {
                 $is_published = $_POST['is_published'];
+           
             } else {
                 // leave the default value
                 $is_published = $project->is_published;
+               
             }
+
+        
 
             $data = [
                 'id' => $id,
@@ -201,6 +188,8 @@ class AdminProjects extends Controller
                 'comments' => trim($_POST['comments']),
                 'slug' => cleaner(trim($_POST['name'])),
                 'is_published' => $is_published,
+                'checkedCategories' => $checkedCategories,
+                'databaseCategories' => $databaseCategories,
 
                 'name_err' => '',
                 'description_err' => '',
@@ -218,6 +207,10 @@ class AdminProjects extends Controller
             // Validate project description
             if (empty($data['description'])) {
                 $data['description_err'] = 'Merci de rajouter une description';
+            }
+
+            if (empty($data['url'])) {
+                $data['url_err'] = 'Merci de rajouter une description';
             }
 
             $small_image_uploader = new Uploader();
@@ -239,6 +232,8 @@ class AdminProjects extends Controller
                 $checkedCategories = array_map(function ($category) {
                     return $category->category_id;
                 }, $categories);
+
+                // die(print_r($checkedCategories));
 
                 // on verifie si il y a des catégories
                 if (!empty($_POST['categories'])) {
@@ -290,7 +285,6 @@ class AdminProjects extends Controller
             // Get Project from model
             $project = $this->projectModel->getProjectById($id);
             $databaseCategories = $this->categoryModel->getAllDatabaseCategories();
-
             $checkedCategories = $this->projectModel->getCategoriesByProjectId($id);
             $data = [
                 'id' => $id,
@@ -309,8 +303,8 @@ class AdminProjects extends Controller
             $this->view('admin/projects/edit', $data);
         }
     }
-    
-    // Delete Post
+
+    // Supprimer un projet
     public function delete($id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -327,6 +321,27 @@ class AdminProjects extends Controller
         }
     }
 
-  
+    // Voir les projets publiés
+    public function published()
+    {
 
+        $published_projects = $this->projectModel->getPublishedProjects();
+
+        $data = [
+            'published_projects' => $published_projects,
+        ];
+        $this->view('admin/projects/published', $data);
+    }
+
+    // Voir les projets non publiés
+    public function notpublished()
+    {
+        $nonPublished_projects = $this->projectModel->getNonPublishedProjects();
+
+        $data = [
+
+            'nonPublished_projects' => $nonPublished_projects,
+        ];
+        $this->view('admin/projects/notpublished', $data);
+    }
 }

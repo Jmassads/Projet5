@@ -36,10 +36,11 @@ class Blog extends Controller
 
     public function ajax()
     {
-
+        // On utilise la méthode POST pour envoyer l'id du dernier article posté au serveur
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $article_id = $_POST['last_article_id'];
+            $categories = $this->categoryModel->getCategories();
 
             if (!empty($this->BlogModel->getArticleswithAjax($article_id))) {
                 $newArticles = $this->BlogModel->getArticleswithAjax($article_id);
@@ -49,6 +50,7 @@ class Blog extends Controller
 
             $data = [
                 'newArticles' => $newArticles,
+                'categories' => $categories
             ];
 
             $this->view('front/pages/ajax_more', $data);
@@ -68,12 +70,14 @@ class Blog extends Controller
             $frontCategories = $this->categoryModel->getFrontCategories();
             $backCategories = $this->categoryModel->getBackCategories();
             $databaseCategories = $this->categoryModel->getDatabaseCategories();
+            $categoryName = $this->categoryModel->getCategoryName($nameSlug);
             $data = [
                 'articles' => $articles,
                 'categories' => $categories,
                 'frontCategories' => $frontCategories,
                 'backCategories' => $backCategories,
                 'databaseCategories' => $databaseCategories,
+                'categoryName' => $categoryName
             ];
 
             if (!$categoryByNameSlug) {
