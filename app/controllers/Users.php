@@ -5,6 +5,7 @@
     }
 
 
+    // Pour enregister un utilisateur
     public function register(){
       // Check if logged in
       if (!isset($_SESSION['user_id'])) {
@@ -98,6 +99,7 @@
       }
     }
 
+    // Pour se connecter
     public function login(){
       // Check if logged in
       if($this->isLoggedIn()){

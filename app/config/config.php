@@ -14,8 +14,3 @@ define('SITENAME', 'Julia Assad | Développeuse Web');
 
 define('APPVERSION', '1');
 
-define('DOMAIN','FinalProjectphp');
-
-// Language
-
-define('DEFAULT_LANGUAGE', 'fr');

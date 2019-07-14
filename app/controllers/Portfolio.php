@@ -12,6 +12,7 @@ class Portfolio extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
+    // Pour voir tous les projets au front-end
     public function index($slug = null)
     {
 
@@ -44,6 +45,7 @@ class Portfolio extends Controller
     }
 
 
+    // Pour voir un seul projet au front-end
     public function projets($slug = null)
     {
 

@@ -23,7 +23,7 @@ class AdminCategories extends Controller
         $this->view('admin/categories/index', $data);
     }
 
-    // Ajouter un catégorie
+    // Ajouter une catégorie
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -12,6 +12,7 @@
         
       }
 
+      // Pour l'upload d'images dans tinyMCE
       public function index()
       {
           $this->view('admin/upload');

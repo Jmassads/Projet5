@@ -23,8 +23,8 @@ gulp.task('styles', function () {
             importer: moduleImporter()
         }))
         .pipe(autoprefixer({
-            // browsers: ['> 1%', 'last 3 versions', 'Firefox >= 20', 'iOS >=7'],
-            // cascade: false
+            browsers: ['> 1%', 'last 3 versions', 'Firefox >= 20', 'iOS >=7'],
+            cascade: false
         }))
         .pipe(cssnano())
         .pipe(gulp.dest('build/css'));

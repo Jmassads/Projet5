@@ -12,6 +12,7 @@
         $this->projectModel = $this->model('Projectmodel');
       }
 
+      // Page d'accueil (4 derniers projets et formulaire de contact)
       public function index()
       {
          if($_SERVER['REQUEST_METHOD'] == 'POST'){

@@ -12,10 +12,9 @@ class Blog extends Controller
         $this->categoryModel = $this->model('Categorymodel');
     }
 
+    // Page Blog du front-end
     public function index()
     {
-
-
 
         $articles = $this->BlogModel->getArticlesLimit6();
         $categories = $this->categoryModel->getCategories();
@@ -34,6 +33,7 @@ class Blog extends Controller
         $this->view('front/pages/blog', $data);
     }
 
+    // Pour voir d'autres articles avec AJAX
     public function ajax()
     {
         // On utilise la méthode POST pour envoyer l'id du dernier article posté au serveur
@@ -59,6 +59,7 @@ class Blog extends Controller
         }
     }
 
+    // Pour voir les articles par catégorie (HTML, CSS, JAVASCRIPT....)
     public function categorie($nameSlug = null)
     {
         if (is_null($nameSlug)) {
@@ -88,6 +89,7 @@ class Blog extends Controller
         }
     }
     
+    // Pour voir un seul article (front-end)
     public function article($slug = null)
     {
 
