@@ -14,7 +14,7 @@ class Blogmodel
     public function addArticle($data)
     {
         // Prepare Query
-        $this->db->query('INSERT INTO articles (article_title, article_content, article_image, article_excerpt, article_slug, is_published) VALUES (:title, :content, :article_image, :excerpt, :slug, :is_published)');
+        $this->db->query('INSERT INTO articles (article_title, article_content, article_image, article_excerpt, article_url, article_slug, is_published) VALUES (:title, :content, :article_image, :excerpt, :url, :slug, :is_published)');
 
         // Bind Values
         $this->db->bind(':title', $data['title']);
@@ -22,6 +22,7 @@ class Blogmodel
         $this->db->bind(':article_image', $data['article_image']);
         $this->db->bind(':excerpt', $data['excerpt']);
         $this->db->bind(':slug', $data['slug']);
+        $this->db->bind(':url', $data['url']);
         $this->db->bind(':is_published', $data['is_published']);
 
         //Execute

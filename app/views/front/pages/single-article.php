@@ -2,7 +2,7 @@
 
 <?php require APPROOT . '/views/inc/top-menu.php';?>
 
-<div id="main" class="main-container">
+<div id="main" class="main-container blog">
     <section class="single-article">
         <div class="container">
             <div class="row">

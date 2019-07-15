@@ -123,7 +123,7 @@ class AdminCategories extends Controller
             }
 
         } else {
-            // Get post from model
+       
             $category = $this->categoryModel->getCategoryById($id);
 
             $data = [

@@ -1,6 +1,6 @@
-<div class="row align-items-start">
+
     <?php foreach ($data['newArticles'] as $article): ?>
-    <div class="col-sm-6 col-lg-4">
+    <div class="col-md-6 col-lg-4">
         <div class="article">
             <div class="article--meta">
                 <img class="article--image img-fluid" src="uploads/<?php echo $article->article_image; ?>" alt="">
@@ -24,10 +24,10 @@
         </div>
     </div>
     <?php endforeach;?>
-</div>
 
 
-<div id="remove_row" class="d-flex justify-content-center">
+
+<div id="remove_row" class="col-12 text-center">
     <button type="button" name="btn_more" data-article="<?php echo $article->article_id; ?>" id="btn_more"
         class="btn btn-sm btn-outline-dark rounded-0 mb-4 shadow-none">Voir plus
         d'articles</button>

@@ -16,7 +16,7 @@ class AdminArticles extends Controller
     public function index($current_page = 1)
     {
         $articles = $this->blogModel->getArticles();
-        $per_page = 4;
+        $per_page = 6;
         $total_count = $this->blogModel->ArticlesPagination();
         $pagination = new Pagination($current_page, $per_page, $total_count);
         $offset = $pagination->offset();
@@ -54,6 +54,7 @@ class AdminArticles extends Controller
                 'excerpt' => trim($_POST['excerpt']),
                 'databaseCategories' => $databaseCategories,
                 'is_published' => $is_published,
+                'url' => trim($_POST['url']),
 
                 'title_err' => '',
                 'content_err' => '',
@@ -118,6 +119,7 @@ class AdminArticles extends Controller
                 'excerpt' => '',
                 'categories' => [],
                 'databaseCategories' => $databaseCategories,
+                'url' => ''
             ];
 
             $this->view('admin/articles/add', $data);

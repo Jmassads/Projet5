@@ -42,7 +42,7 @@
                 <?php endif;?>
             </nav>
 
-            <div id="load_data_table" class="articles">
+            <div id="load_data_articles" class="articles">
                 <div class="row align-items-start">
                     <?php foreach ($data['articles'] as $article): ?>
                     <div class="col-md-6 col-lg-4">
@@ -61,12 +61,13 @@
                                 <?php echo $article->article_excerpt; ?>
                             </div>
                             <div class="mb-3">
-                            <?php foreach ($data['categories'] as $category):?>
-                            <?php if($article->article_id == $category->article_id):?>
-                            <a href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $category->category_name_slug;?>" class="badge badge-light"><?php echo $category->category_name;?></a>
-                       
-                            <?php endif;?>
-                            <?php endforeach;?>
+                                <?php foreach ($data['categories'] as $category):?>
+                                <?php if($article->article_id == $category->article_id):?>
+                                <a href="<?php echo URLROOT;?>/Blog/categorie/<?php echo $category->category_name_slug;?>"
+                                    class="badge badge-light"><?php echo $category->category_name;?></a>
+
+                                <?php endif;?>
+                                <?php endforeach;?>
                             </div>
                             <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"
                                 class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Lire la suite</a>
@@ -75,7 +76,7 @@
                     <?php endforeach;?>
                 </div>
 
-                <div id="remove_row" class="d-flex justify-content-center">
+                <div id="remove_row" class="col-12 text-center">
                     <button type="button" name="btn_more" data-article="<?php echo $article->article_id; ?>"
                         id="btn_more" class="btn btn-sm btn-outline-dark rounded-0 mb-4 shadow-none">Voir plus
                         d'articles</button>

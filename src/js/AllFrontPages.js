@@ -55,7 +55,8 @@ $(document).on('click', '#btn_more', function () {
         if (data != '') {
           $('#remove_row').remove();
           // on ajoute les articles au DOM
-          $('#load_data_table').append(data);
+          $('#load_data_articles .row').append(data);
+
           // $('#load_data_table').add();
           $("html, body").animate({
             scrollTop: $('#remove_row').offset().top

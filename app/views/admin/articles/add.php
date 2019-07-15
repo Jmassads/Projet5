@@ -28,6 +28,13 @@
             <span class="invalid-feedback"><?php echo $data['content_err']; ?></span>
         </div>
         <div class="form-group">
+            <label>url de la ressource:</label>
+            <textarea name="url"
+                class="form-control form-control-md <?php echo (!empty($data['url_err'])) ? 'is-invalid' : ''; ?>"
+                placeholder="Ajouter l'url du l'article..."><?php echo $data['url']; ?></textarea>
+            <span class="invalid-feedback"><?php echo $data['url_err']; ?></span>
+        </div>
+        <div class="form-group">
             <div class="my-4">
                 <label>Languages:</label>
                 <br>
