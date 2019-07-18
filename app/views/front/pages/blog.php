@@ -13,7 +13,7 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-fluid front-end-img" src="img/front.png" width="45" height="45"
+                        <img class="img-fluid front-end-img" src="<?php echo URLROOT;?>/img/front.png" width="45" height="45"
                             alt="front-end icon"> Front-End
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -29,7 +29,7 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-fluid back-end-img" src="img/back.png" width="40" height="40"
+                        <img class="img-fluid back-end-img" src="<?php echo URLROOT;?>/img/back.png" width="40" height="40"
                             alt="front-end icon"> Back-End
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -42,6 +42,7 @@
                 <?php endif;?>
             </nav>
 
+           
             <div id="load_data_articles" class="articles">
                 <div class="row align-items-start">
                     <?php foreach ($data['articles'] as $article): ?>
@@ -50,7 +51,7 @@
                             <div class="d-flex justify-content-start align-items-center">
                                 <?php if($article->article_image):?>
                                 <img class="article--image img-fluid py-2"
-                                    src="uploads/<?php echo $article->article_image;?>" alt="">
+                                    src="<?php echo URLROOT;?>/uploads/<?php echo $article->article_image;?>" alt="">
                                 <?php endif;?>
 
                                 <h3 class="article--title"><a
@@ -71,6 +72,7 @@
                             </div>
                             <a href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"
                                 class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Lire la suite</a>
+                                <input type="hidden" value="<?php echo $article->article_id;?>">
                         </div>
                     </div>
                     <?php endforeach;?>

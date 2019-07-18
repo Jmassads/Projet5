@@ -23,13 +23,6 @@ class Uploader
   $file_parts = explode('.', $file_name);
   $file_ext = strtolower(end($file_parts));
   $extensions = array("jpeg", "jpg", "png", "gif", "ico");
-  // $ext         =   $this->getExtension($file_name);
-
-
-
-  // if(empty($file_name)){
-  //   $this->addError("Merci de rajouter une image");
-  // } 
 
   if (!empty($file_name) && in_array($file_ext, $extensions) === false) {
     $this->addError("Les fichiers autorises sont: .jpg, .jpeg, .png, .gif, .ico, .svg");
@@ -43,6 +36,7 @@ class Uploader
   }
 
   if (empty($this->errors)) {
+    // Déplace l'image dans mon dossier uploads 
    move_uploaded_file($file_tmp, "uploads/" . $file_name);
    return true;
   } else {

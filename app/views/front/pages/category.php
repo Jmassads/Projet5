@@ -25,7 +25,7 @@
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-fluid front-end-img" src="../../img/front.png" width="45" height="45"
+                                <img class="img-fluid front-end-img" src="<?php echo URLROOT;?>/img/front.png" width="45" height="45"
                                     alt="front-end icon">
                                 Front-End
                             </a>
@@ -42,7 +42,7 @@
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-fluid back-end-img" src="../../img/back.png" width="40" height="40"
+                                <img class="img-fluid back-end-img" src="<?php echo URLROOT;?>/img/back.png" width="40" height="40"
                                     alt="front-end icon">
                                 Back-End
                             </a>
@@ -65,7 +65,7 @@
                             <div class="article">
                                 <div class="article--meta">
                                     <img class="article--image img-fluid"
-                                        src="../../uploads/<?php echo $article->article_image; ?>" alt="">
+                                        src="<?php echo URLROOT;?>/uploads/<?php echo $article->article_image; ?>" alt="">
                                     <h3 class="article--title"><a
                                             href="<?php echo URLROOT; ?>/Blog/article/<?php echo $article->article_slug; ?>"><?php echo $article->article_title; ?></a>
                                     </h3>

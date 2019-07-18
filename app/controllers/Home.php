@@ -17,6 +17,7 @@
       {
          if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+          // htmlspecialchars permet de filtrer les symboles du type <, & ou encore ", en les remplaçant par leur équivalent en HTML.
           $projects = $this->projectModel->getFirstProjects();
           $data = [
             'projects' => $projects,
@@ -50,21 +51,22 @@
 
         
 
-            $toEmail = 'juliasajah85@gmail.com';
-            $subject = 'Contact Request From ' .$name;
+            $toEmail = 'juliasajah85@gmail.com'; // L’adresse e-mail du destinataire
+            $subject = 'Contact Request From ' .$name; // Le sujet du mail.
             $body =  "<h2>Contact Request</h2>
                      <h4>Name</h4>
                      <p>$name</p>
                      <h4>Email</h4><p>$email</p>
                      <h4>Message</h4><p>$message</p>";
-            // Email Headers
-            // $header = "From: noreply@example.com\r\n"; 
+
+            // Chaque mail comporte des en-têtes. Ils contiennent des informations vitales telles que De l’ mail .
+            // https://www.php.net/manual/fr/function.mail.php
             $header.= "MIME-Version: 1.0\r\n"; 
             $header.= "Content-Type: text/html; charset=ISO-8859-1\r\n"; 
             $header.= "X-Priority: 1\r\n"; 
             $header .= 'From: ' . $name . "\r\n";
 
-            
+            // mail($to,$subject,$message,$headers) – Il s’agit d’une fonction PHP qui exécute le mail. 
             if(mail($toEmail, $subject, $body, $header)){
                 flash('contact_message', 'Message envoyé');
                 header('location: ' . URLROOT . '/' . '#contact');

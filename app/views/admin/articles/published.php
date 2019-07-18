@@ -28,7 +28,11 @@
                         href="<?php echo URLROOT;?>/AdminArticles/show/<?php echo $article->article_id;?>">Voir</a>
                     <a class="btn btn-md btn-outline-info"
                         href="<?php echo URLROOT;?>/AdminArticles/edit/<?php echo $article->article_id;?>">Modifier</a>
-                    <a class="btn btn-md btn-outline-danger" href="">Supprimer</a>
+                        <form class="ml-2"
+                        action="<?php echo URLROOT; ?>/AdminArticles/delete/<?php echo $article->article_id; ?>"
+                        method="post">
+                        <button type="submit" class="btn btn-md btn-outline-danger rounded-0"> Supprimer</button>
+                    </form>
                 </div>
 
             </div>

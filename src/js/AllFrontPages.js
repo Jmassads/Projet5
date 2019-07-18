@@ -34,30 +34,30 @@ $('#myBtn').click(function () {
 });
 
 
-// To load more articles
-// appeler un script PHP et interagir avec le serveur directement depuis jQuery. 
+// Afficher plus d'articles
 $(document).on('click', '#btn_more', function () {
   var last_article_id = $(this).data("article");
   $('#btn_more').html("Chargement...");
   console.log(last_article_id);
   var delay = 500;
+  // envoyer une requête au serveur et d’attendre le résultat
   $.ajax({
-    url: "/FinalProjectphp/Blog/ajax", // La ressource ciblée
+    url: "/FinalProjectphp/Blog/ajax", // l’url a appeler 
     method: "POST", // Le type de la requête HTTP (POST pour envoyer une information (last_article_id) au serveur)
     data: {
       last_article_id
     }, // On fait passer nos variables au script /FinalProjectphp/Blog/ajax
     dataType: "text", // Le type de données à recevoir, ici, du texte. (html marche aussi)
 
-    success: function (data) {
+    // en cas de réussite, exécuté QUE si l'appel AJAX a abouti.
+    success: function (code_html) {
       // data contient le HTML renvoyé
       setTimeout(function () {
-        if (data != '') {
+        if (code_html != '') {
           $('#remove_row').remove();
           // on ajoute les articles au DOM
-          $('#load_data_articles .row').append(data);
+          $('#load_data_articles .row').append(code_html); // On insère le code_html (le résultat de la requete) à la fin des articles précédent
 
-          // $('#load_data_table').add();
           $("html, body").animate({
             scrollTop: $('#remove_row').offset().top
           }, 1500);

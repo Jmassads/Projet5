@@ -44,16 +44,15 @@ class Blog extends Controller
 
             if (!empty($this->BlogModel->getArticleswithAjax($article_id))) {
                 $newArticles = $this->BlogModel->getArticleswithAjax($article_id);
-            } else {
-                die();
+                $data = [
+                    'newArticles' => $newArticles,
+                    'categories' => $categories
+                ];
+    
+                $this->view('front/pages/ajax_more', $data);
             }
 
-            $data = [
-                'newArticles' => $newArticles,
-                'categories' => $categories
-            ];
-
-            $this->view('front/pages/ajax_more', $data);
+            
         } else {
             $article_id = '';
         }

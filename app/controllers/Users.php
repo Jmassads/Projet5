@@ -106,10 +106,11 @@
         redirect('admin');
       }
 
-      // Check if POST
+
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Sanitize POST
-        // Récupère les valeurs et on les filtre
+        // https://zestedesavoir.com/tutoriels/pdf/295/les-filtres-en-php.pdf
+        // Supprime les balises, et supprime ou encode les caractères spéciaux (Pour valider plusieurs variables à la fois)
+        // htmlspecialchars — Convertit les caractères spéciaux en entités HTML
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
         // On récupère l'email et mot de passe 
@@ -119,6 +120,10 @@
           'email_err' => '',
           'password_err' => '',       
         ];
+
+
+
+        // die(print_r($_POST));
 
         // On verifie que l'email n'est pas 'vide'
         if(empty($data['email'])){
@@ -162,7 +167,6 @@
         }
 
       } else {
-        // If NOT a POST
 
         // Init data
         $data = [
