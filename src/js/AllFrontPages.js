@@ -38,8 +38,9 @@ $('#myBtn').click(function () {
 $(document).on('click', '#btn_more', function () {
   var last_article_id = $(this).data("article");
   $('#btn_more').html("Chargement...");
-  console.log(last_article_id);
+  // console.log(last_article_id);
   var delay = 500;
+  // $.ajax methode de jquery qui permet d'interagir avec la base de donnees sans rafraichir la page
   // envoyer une requête au serveur et d’attendre le résultat
   $.ajax({
     url: "/FinalProjectphp/Blog/ajax", // l’url a appeler 

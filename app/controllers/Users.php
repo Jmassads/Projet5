@@ -119,8 +119,7 @@
           'password' => trim($_POST['password']),        
           'email_err' => '',
           'password_err' => '',       
-        ];
-
+        ];     
 
 
         // die(print_r($_POST));

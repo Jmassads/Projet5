@@ -15,18 +15,20 @@ class AdminArticles extends Controller
     // Voir tous les articles (pagingation)
     public function index($current_page = 1)
     {
-        $articles = $this->blogModel->getArticles();
-        $per_page = 6;
-        $total_count = $this->blogModel->ArticlesPagination();
-        $pagination = new Pagination($current_page, $per_page, $total_count);
-        $offset = $pagination->offset();
-        $articles = $this->blogModel->GetPaginatedArticles($per_page, $offset);
+        $per_page = 6; // nombre d'article par page
+        $total_count = $this->blogModel->ArticlesPagination(); //SELECT COUNT(article_id) as numarticles FROM articles (on compte le nombre d'articles)
+        $pagination = new Pagination($current_page, $per_page, $total_count); //(1,6,24);
+        $offset = $pagination->offset(); // $this->per_page * ($this->current_page - 1); ex: (6*0)
+        $articles = $this->blogModel->GetPaginatedArticles($per_page, $offset); //SELECT * FROM articles ORDER BY article_id DESC LIMIT :limit OFFSET :offset"
+        // 1ère page = no offset
+        // 2ème page = offset de 6
+        // 3ème page = offest de 12, etc...
 
         $data = [
             'articles' => $articles,
             'previous_page' => $pagination->previous_page(),
             'next_page' => $pagination->next_page(),
-            'total_pages' => $pagination->total_pages(),
+            'total_pages' => $pagination->total_pages(), // ceil($this->total_count / $this->per_page);
             'current_page' => $current_page,
         ];
         $this->view('admin/articles/index', $data);
