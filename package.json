@@ -33,7 +33,7 @@
     "sass-module-importer": "^1.4.0",
     "scrollmagic": "^2.0.7",
     "smartmenus": "^1.1.0",
-    "swiper": "^4.5.0"
+    "swiper": "^6.5.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
